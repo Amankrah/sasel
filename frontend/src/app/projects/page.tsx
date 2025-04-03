@@ -34,40 +34,46 @@ export default function ProjectsPage() {
       <section className="mb-16">
         <h2 className="text-2xl font-semibold mb-6 border-b pb-2">Active Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects
-            .filter(project => project.is_active)
-            .map(project => (
-              <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                {project.image && (
-                  <div className="h-48 overflow-hidden relative">
-                    <Image 
-                      src={project.image} 
-                      alt={project.title} 
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex justify-between items-center text-sm text-gray-500">
-                    <span>Started: {new Date(project.start_date).toLocaleDateString()}</span>
-                    {project.github_repo && (
-                      <a 
-                        href={project.github_repo} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline"
-                      >
-                        GitHub
-                      </a>
-                    )}
+          {Array.isArray(projects) && projects.filter(project => project.is_active).length > 0 ? (
+            projects
+              .filter(project => project.is_active)
+              .map(project => (
+                <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  {project.image && (
+                    <div className="h-48 overflow-hidden relative">
+                      <Image 
+                        src={project.image} 
+                        alt={project.title} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                    <div className="flex justify-between items-center text-sm text-gray-500">
+                      <span>Started: {new Date(project.start_date).toLocaleDateString()}</span>
+                      {project.github_repo && (
+                        <a 
+                          href={project.github_repo} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          GitHub
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+          ) : (
+            <div className="col-span-full text-center py-8">
+              <p className="text-gray-500">No active projects found.</p>
+            </div>
+          )}
         </div>
       </section>
       
@@ -75,46 +81,52 @@ export default function ProjectsPage() {
       <section>
         <h2 className="text-2xl font-semibold mb-6 border-b pb-2">Past Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects
-            .filter(project => !project.is_active)
-            .map(project => (
-              <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden opacity-75">
-                {project.image && (
-                  <div className="h-48 overflow-hidden relative">
-                    <Image 
-                      src={project.image} 
-                      alt={project.title} 
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex justify-between items-center text-sm text-gray-500">
-                    <span>
-                      {project.start_date && project.end_date ? (
-                        `${new Date(project.start_date).getFullYear()} - ${new Date(project.end_date).getFullYear()}`
-                      ) : (
-                        project.start_date ? `Started: ${new Date(project.start_date).toLocaleDateString()}` : ''
+          {Array.isArray(projects) && projects.filter(project => !project.is_active).length > 0 ? (
+            projects
+              .filter(project => !project.is_active)
+              .map(project => (
+                <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden opacity-75">
+                  {project.image && (
+                    <div className="h-48 overflow-hidden relative">
+                      <Image 
+                        src={project.image} 
+                        alt={project.title} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
+                    <div className="flex justify-between items-center text-sm text-gray-500">
+                      <span>
+                        {project.start_date && project.end_date ? (
+                          `${new Date(project.start_date).getFullYear()} - ${new Date(project.end_date).getFullYear()}`
+                        ) : (
+                          project.start_date ? `Started: ${new Date(project.start_date).toLocaleDateString()}` : ''
+                        )}
+                      </span>
+                      {project.github_repo && (
+                        <a 
+                          href={project.github_repo} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          GitHub
+                        </a>
                       )}
-                    </span>
-                    {project.github_repo && (
-                      <a 
-                        href={project.github_repo} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline"
-                      >
-                        GitHub
-                      </a>
-                    )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+          ) : (
+            <div className="col-span-full text-center py-8">
+              <p className="text-gray-500">No past projects found.</p>
+            </div>
+          )}
         </div>
       </section>
     </div>

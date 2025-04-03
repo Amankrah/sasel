@@ -6,14 +6,26 @@ import type {
 
 // Generic function to get all items of a specific type
 const getAll = async <T>(endpoint: string): Promise<T[]> => {
-  const response = await apiClient.get<T[]>(`/${endpoint}/`);
-  return response.data;
+  try {
+    const response = await apiClient.get<T[]>(`/${endpoint}/`);
+    // Ensure we always return an array
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
+    console.error(`Error fetching ${endpoint}:`, error);
+    // Return empty array on error to prevent map errors
+    return [];
+  }
 };
 
 // Generic function to get a single item by slug
-const getBySlug = async <T>(endpoint: string, slug: string): Promise<T> => {
-  const response = await apiClient.get<T>(`/${endpoint}/${slug}/`);
-  return response.data;
+const getBySlug = async <T>(endpoint: string, slug: string): Promise<T | null> => {
+  try {
+    const response = await apiClient.get<T>(`/${endpoint}/${slug}/`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching ${endpoint} with slug ${slug}:`, error);
+    return null;
+  }
 };
 
 // Lab Members

@@ -29,7 +29,9 @@ export default function PublicationsPage() {
   }
 
   // Get unique years for filter
-  const years = [...new Set(publications.map(pub => pub.year))].sort((a, b) => b - a);
+  const years = Array.isArray(publications) 
+    ? [...new Set(publications.map(pub => pub.year))].sort((a, b) => b - a)
+    : [];
   
   // Publication types for filter
   const publicationTypes = [
@@ -43,16 +45,18 @@ export default function PublicationsPage() {
   ];
 
   // Filter publications
-  const filteredPublications = publications.filter(pub => {
-    let matches = true;
-    if (filterYear !== null) {
-      matches = matches && pub.year === filterYear;
-    }
-    if (filterType !== null) {
-      matches = matches && pub.publication_type === filterType;
-    }
-    return matches;
-  });
+  const filteredPublications = Array.isArray(publications) 
+    ? publications.filter(pub => {
+        let matches = true;
+        if (filterYear !== null) {
+          matches = matches && pub.year === filterYear;
+        }
+        if (filterType !== null) {
+          matches = matches && pub.publication_type === filterType;
+        }
+        return matches;
+      })
+    : [];
 
   // Sort publications by year (newest first)
   const sortedPublications = [...filteredPublications].sort((a, b) => {
@@ -101,7 +105,7 @@ export default function PublicationsPage() {
       
       {/* Publications List */}
       <div className="space-y-8">
-        {sortedPublications.length > 0 ? (
+        {Array.isArray(sortedPublications) && sortedPublications.length > 0 ? (
           sortedPublications.map(pub => (
             <div key={pub.id} className="bg-white p-6 rounded-lg shadow-md">
               <h2 className="text-xl font-semibold mb-2">{pub.title}</h2>
@@ -124,45 +128,41 @@ export default function PublicationsPage() {
                 
                 {/* Year, Publisher */}
                 <p className="mb-1">
-                  {pub.year}
-                  {pub.publisher && ` · ${pub.publisher}`}
+                  {pub.year}{pub.month ? `, ${pub.month}` : ''}
+                  {pub.publisher && `, ${pub.publisher}`}
                 </p>
               </div>
               
-              {pub.abstract && (
-                <div className="mt-4 mb-4">
-                  <p className="text-gray-700 line-clamp-3">{pub.abstract}</p>
+              {/* Links */}
+              {pub.doi || pub.url ? (
+                <div className="flex gap-4 mt-4">
+                  {pub.doi && (
+                    <a 
+                      href={`https://doi.org/${pub.doi}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      DOI
+                    </a>
+                  )}
+                  {pub.url && (
+                    <a 
+                      href={pub.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Link
+                    </a>
+                  )}
                 </div>
-              )}
-              
-              <div className="flex flex-wrap gap-3 mt-4">
-                {pub.doi && (
-                  <a 
-                    href={`https://doi.org/${pub.doi}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline text-sm"
-                  >
-                    DOI: {pub.doi}
-                  </a>
-                )}
-                
-                {pub.url && (
-                  <a 
-                    href={pub.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline text-sm"
-                  >
-                    View Publication
-                  </a>
-                )}
-              </div>
+              ) : null}
             </div>
           ))
         ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500">No publications match your filter criteria.</p>
+          <div className="text-center py-8">
+            <p className="text-gray-500">No publications found.</p>
           </div>
         )}
       </div>

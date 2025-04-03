@@ -68,16 +68,25 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
           apiServices.getPartnerships()
         ]);
 
-        // Update state with fetched data
-        setLabMembers(membersData);
-        setProjects(projectsData);
-        setCollaborations(collaborationsData);
-        setGrants(grantsData);
-        setAwards(awardsData);
-        setPublications(publicationsData);
-        setPartnerships(partnershipsData);
+        // Validate and ensure data is in the correct format
+        setLabMembers(Array.isArray(membersData) ? membersData : []);
+        setProjects(Array.isArray(projectsData) ? projectsData : []);
+        setCollaborations(Array.isArray(collaborationsData) ? collaborationsData : []);
+        setGrants(Array.isArray(grantsData) ? grantsData : []);
+        setAwards(Array.isArray(awardsData) ? awardsData : []);
+        setPublications(Array.isArray(publicationsData) ? publicationsData : []);
+        setPartnerships(Array.isArray(partnershipsData) ? partnershipsData : []);
       } catch (err) {
+        console.error('API Error:', err);
         setError(err instanceof Error ? err : new Error('Unknown error occurred'));
+        // Set empty arrays for all data to prevent map errors
+        setLabMembers([]);
+        setProjects([]);
+        setCollaborations([]);
+        setGrants([]);
+        setAwards([]);
+        setPublications([]);
+        setPartnerships([]);
       } finally {
         setLoading(false);
       }
