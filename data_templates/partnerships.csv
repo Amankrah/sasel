@@ -1,0 +1,4 @@
+name,organization,description,start_date,end_date,is_active,website,contact_name,contact_email,projects,image
+"Sustainable Food Innovation Partnership","Danone","Partnership for developing sustainable food solutions.","2022-07-15","","true","https://danone.com","Contact Person","contact@danone.com","DISH Research Platform","images/partnerships/danone.jpg"
+"Agricultural Technology Advancement","Agriculture and Agri-Food Canada","Partnership focused on advancing agricultural technology.","2023-04-01","","true","https://agriculture.canada.ca","Contact Person","contact@agr.gc.ca","Pea Protein Analysis System,Life Expectancy & Water Share Predictor","images/partnerships/aafc.jpg"
+"Plant Protein Research Collaboration","Jefo","Research collaboration on plant protein innovations.","2023-01-10","","true","https://jefo.ca","Contact Person","contact@jefo.ca","Pea Protein Analysis System","images/partnerships/jefo.jpg" 

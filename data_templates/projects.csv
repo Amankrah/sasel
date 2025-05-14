@@ -1,0 +1,4 @@
+title,description,start_date,end_date,is_active,website,github_repo,image,members
+"DISH Research Platform","A comprehensive suite of nutrition and environmental impact assessment tools for research.","2022-01-01","","true","https://research.ecodish365.com/","https://github.com/sasel-lab/dish","images/projects/dish.jpg","John Doe,Jane Smith"
+"Life Expectancy & Water Share Predictor","Advanced ML platform for predicting life expectancy and agricultural water share.","2021-06-15","","true","https://fsroas.com/","https://github.com/sasel-lab/fsroas","images/projects/fsroas.jpg","John Doe"
+"Pea Protein Analysis System","Advanced pea protein extraction analysis platform with technical, economic and environmental assessment.","2023-02-10","","true","https://proteinprocess.io","https://github.com/sasel-lab/ppas","images/projects/ppas.jpg","Jane Smith" 

@@ -1,0 +1,3 @@
+title,funding_agency,description,amount,currency,start_date,end_date,is_active,principal_investigators,co_investigators,projects,image
+"Sustainable Food Systems Research Grant","NSERC","Grant for researching sustainable food systems.","250000","CAD","2022-05-01","2025-04-30","true","John Doe","Jane Smith","DISH Research Platform,Life Expectancy & Water Share Predictor","images/grants/nserc.jpg"
+"Plant Protein Innovation Initiative","Mitacs","Funding for plant protein research and innovation.","175000","CAD","2023-02-01","2025-01-31","true","Jane Smith","John Doe","Pea Protein Analysis System","images/grants/mitacs.jpg" 
