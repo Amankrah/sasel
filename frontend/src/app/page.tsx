@@ -363,6 +363,168 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Technologies Showcase Section */}
+      <section className="py-12 md:py-16 bg-green-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-4 text-center">Our Technologies</h2>
+          <p className="text-lg text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+            Advanced platforms and tools developed by our lab to drive sustainable food systems research and innovation
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            {/* Project 1 - DISH Research Platform */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-blue-100 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-2xl font-bold text-blue-800">DISH</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">DISH Research Platform</h3>
+                <p className="text-gray-600 mb-4">
+                  A comprehensive suite of nutrition and environmental impact assessment tools for research, providing multiple calculators to help researchers make informed decisions.
+                </p>
+                <div className="mb-4">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Features</h4>
+                  <ul className="text-sm space-y-1 text-gray-600">
+                    <li>• Health Star Rating Calculator</li>
+                    <li>• Food Consumption Score Calculator</li>
+                    <li>• Health & Environmental Nutritional Index</li>
+                    <li>• Environmental Impact Calculator</li>
+                    <li>• Canadian Nutrient File Database Manager</li>
+                  </ul>
+                </div>
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">React</span>
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Material UI</span>
+                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Django</span>
+                    <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">PostgreSQL</span>
+                    <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">AWS</span>
+                  </div>
+                </div>
+                <a 
+                  href="https://research.ecodish365.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                >
+                  Visit DISH Platform
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Project 2 - FS-ROAS */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-green-100 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-2xl font-bold text-green-800">FS-ROAS</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Life Expectancy & Water Share Predictor</h3>
+                <p className="text-gray-600 mb-4">
+                  Advanced ML platform for predicting life expectancy and agricultural water share based on food system indicators with interactive scenario building capabilities.
+                </p>
+                <div className="mb-4">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Features</h4>
+                  <ul className="text-sm space-y-1 text-gray-600">
+                    <li>• Interactive life expectancy simulation</li>
+                    <li>• Agricultural water share prediction</li>
+                    <li>• Linear and exponential simulation capabilities</li>
+                    <li>• Customizable time intervals and baselines</li>
+                    <li>• Key feature impact visualization</li>
+                  </ul>
+                </div>
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Next.js</span>
+                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">TensorFlow</span>
+                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">LSTM</span>
+                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Django</span>
+                    <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">TypeScript</span>
+                  </div>
+                </div>
+                <a 
+                  href="https://fsroas.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+                >
+                  Try FS-ROAS Platform
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Project 3 - Pea Protein Analysis */}
+            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="h-48 bg-amber-100 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <h3 className="text-2xl font-bold text-amber-800">PPAS</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3">Pea Protein Analysis System</h3>
+                <p className="text-gray-600 mb-4">
+                  Advanced pea protein extraction analysis platform integrating technical process optimization, economic feasibility assessment, and environmental impact evaluation.
+                </p>
+                <div className="mb-4">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Features</h4>
+                  <ul className="text-sm space-y-1 text-gray-600">
+                    <li>• Protein recovery optimization</li>
+                    <li>• Monte Carlo simulation for profitability</li>
+                    <li>• Environmental impact assessment</li>
+                    <li>• Separation efficiency monitoring</li>
+                    <li>• Process performance tracking</li>
+                  </ul>
+                </div>
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">Rust</span>
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">React</span>
+                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Python</span>
+                    <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">TensorFlow</span>
+                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Scikit-learn</span>
+                  </div>
+                </div>
+                <a 
+                  href="https://proteinprocess.io" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition"
+                >
+                  Access PPAS Platform
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <Link 
+              href="/projects" 
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
+            >
+              Explore All Technologies
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Lab Members Section */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
