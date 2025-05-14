@@ -193,6 +193,176 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Partners and Sponsors Section */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-16 text-center">OUR SPONSORS & PARTNERS</h2>
+          
+          {/* Main sponsors */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 mb-20">
+            <a href="https://www.mitacs.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/mitacs.jpg" 
+                alt="Mitacs" 
+                width={200} 
+                height={80} 
+                className="object-contain h-16 md:h-20" 
+              />
+            </a>
+            <a href="https://www.nserc-crsng.gc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/nserc.jpg" 
+                alt="NSERC CRSNG" 
+                width={200} 
+                height={80} 
+                className="object-contain h-16 md:h-20" 
+              />
+            </a>
+            <a href="https://nrc.canada.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/canada-nrc.jpg" 
+                alt="Canada NRC CNRC" 
+                width={200} 
+                height={80} 
+                className="object-contain h-16 md:h-20" 
+              />
+            </a>
+            <a href="https://frq.gouv.qc.ca/en/nature-and-technologies/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/quebec.jpg" 
+                alt="Fonds de recherche Nature et technologies Québec" 
+                width={200} 
+                height={80} 
+                className="object-contain h-16 md:h-20" 
+              />
+            </a>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 mb-24">
+            <a href="https://www.danone.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/danone.png" 
+                alt="Danone" 
+                width={200} 
+                height={80} 
+                className="object-contain h-12 md:h-16" 
+              />
+            </a>
+            <a href="https://www.sshrc-crsh.gc.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/sshrc.png" 
+                alt="SSHRC CRSH" 
+                width={200} 
+                height={80} 
+                className="object-contain h-12 md:h-16" 
+              />
+            </a>
+            <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/horizon-europe.png" 
+                alt="Horizon Europe" 
+                width={200} 
+                height={80} 
+                className="object-contain h-12 md:h-16" 
+              />
+            </a>
+            <a href="https://www.sshrc-crsh.gc.ca/funding-financement/nfrf-fnfr/index-eng.aspx" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Image 
+                src="/images/partners/new-frontiers.jpg" 
+                alt="New Frontiers in Research Fund" 
+                width={200} 
+                height={80} 
+                className="object-contain h-12 md:h-16" 
+              />
+            </a>
+          </div>
+          
+          {/* Three categories */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Academic Collaborators */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-2xl font-bold mb-10 text-center uppercase border-b pb-4 border-gray-200">
+                Academic Collaborators
+              </h3>
+              <div className="space-y-8">
+                <a href="https://www.knust.edu.gh/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                  <Image 
+                    src="/images/partners/knust.jpg" 
+                    alt="Kwame Nkrumah University of Science & Technology" 
+                    width={180} 
+                    height={100} 
+                    className="object-contain h-20" 
+                  />
+                </a>
+                <a href="https://www.uark.edu/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                  <Image 
+                    src="/images/partners/university-arkansas.jpg" 
+                    alt="University of Arkansas" 
+                    width={180} 
+                    height={100} 
+                    className="object-contain h-20" 
+                  />
+                </a>
+              </div>
+            </div>
+            
+            {/* Government & Agencies */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-2xl font-bold mb-10 text-center uppercase border-b pb-4 border-gray-200">
+                Government & Agencies
+              </h3>
+              <div className="space-y-8">
+                <a href="https://www.ifpri.org/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                  <Image 
+                    src="/images/partners/ifpri.jpg" 
+                    alt="International Food Policy Research Institute" 
+                    width={180} 
+                    height={100} 
+                    className="object-contain h-20" 
+                  />
+                </a>
+                <a href="https://agriculture.canada.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                  <Image 
+                    src="/images/partners/agriculture-canada.png" 
+                    alt="Agriculture and Agri-Food Canada" 
+                    width={180} 
+                    height={100} 
+                    className="object-contain h-20" 
+                  />
+                </a>
+              </div>
+            </div>
+            
+            {/* Industry */}
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-2xl font-bold mb-10 text-center uppercase border-b pb-4 border-gray-200">
+                Industry
+              </h3>
+              <div className="space-y-8">
+                <a href="https://jefo.ca/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                  <Image 
+                    src="/images/partners/jefo.jpg" 
+                    alt="Jefo" 
+                    width={180} 
+                    height={100} 
+                    className="object-contain h-20" 
+                  />
+                </a>
+                <a href="https://www.ubuntoo.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                  <Image 
+                    src="/images/partners/ubuntoo.png" 
+                    alt="Ubuntoo" 
+                    width={180} 
+                    height={100} 
+                    className="object-contain h-20" 
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Lab Members Section */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">

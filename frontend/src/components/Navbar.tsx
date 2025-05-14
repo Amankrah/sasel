@@ -2,43 +2,52 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           {/* Logo and Desktop Navigation */}
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-2xl font-bold text-blue-600">
-                SASEL Lab
+              <Link href="/" className="flex items-center gap-2">
+                <div className="relative h-10 w-10 overflow-hidden">
+                  <Image 
+                    src="/images/logo.png" 
+                    alt="SASEL Logo" 
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-xl font-medium text-green-600">SASEL Lab</span>
               </Link>
             </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <div className="hidden sm:ml-8 sm:flex sm:space-x-8">
               <Link
                 href="/"
-                className="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-600 hover:border-green-500 hover:text-green-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
               >
                 Home
               </Link>
               <Link
                 href="/members"
-                className="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-600 hover:border-green-500 hover:text-green-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
               >
                 Members
               </Link>
               <Link
                 href="/projects"
-                className="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-600 hover:border-green-500 hover:text-green-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
               >
                 Projects
               </Link>
               <Link
                 href="/publications"
-                className="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-600 hover:border-green-500 hover:text-green-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
               >
                 Publications
               </Link>
@@ -49,7 +58,7 @@ const Navbar = () => {
           <div className="flex items-center sm:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-green-600 hover:bg-gray-100"
               aria-expanded="false"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -97,25 +106,25 @@ const Navbar = () => {
         <div className="pt-2 pb-3 space-y-1">
           <Link
             href="/"
-            className="text-gray-500 hover:bg-blue-50 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium"
+            className="text-gray-600 hover:bg-green-50 hover:text-green-600 block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
           >
             Home
           </Link>
           <Link
             href="/members"
-            className="text-gray-500 hover:bg-blue-50 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium"
+            className="text-gray-600 hover:bg-green-50 hover:text-green-600 block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
           >
             Members
           </Link>
           <Link
             href="/projects"
-            className="text-gray-500 hover:bg-blue-50 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium"
+            className="text-gray-600 hover:bg-green-50 hover:text-green-600 block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
           >
             Projects
           </Link>
           <Link
             href="/publications"
-            className="text-gray-500 hover:bg-blue-50 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium"
+            className="text-gray-600 hover:bg-green-50 hover:text-green-600 block pl-3 pr-4 py-2 text-base font-medium transition-colors duration-200"
           >
             Publications
           </Link>
