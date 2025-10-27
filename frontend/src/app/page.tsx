@@ -549,7 +549,7 @@ export default function Home() {
       </section>
 
       {/* Publications Showcase */}
-      <PublicationsShowcase publications={publications} />
+      <PublicationsShowcase />
     </div>
   );
 }
