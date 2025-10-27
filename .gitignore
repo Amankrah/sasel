@@ -177,6 +177,6 @@ coverage/
 # ================================
 # Deployment Files
 # ================================
-deploy.sh
+#deploy.sh
 DEPLOYMENT.md
 
