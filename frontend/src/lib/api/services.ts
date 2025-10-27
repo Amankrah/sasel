@@ -4,19 +4,27 @@ import type {
   Award, Publication, Partnership 
 } from './types';
 
+// Define paginated response type
+interface PaginatedResponse<T> {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+}
+
 // Generic function to get all items of a specific type
 const getAll = async <T>(endpoint: string): Promise<T[]> => {
   try {
     console.log(`Fetching data from /${endpoint}/`);
-    const response = await apiClient.get<T[]>(`/${endpoint}/`);
+    const response = await apiClient.get<T[] | PaginatedResponse<T>>(`/${endpoint}/`);
     console.log(`Response for ${endpoint}:`, response.data);
-    
+
     // Check if response has results property (DRF pagination)
     if (response.data && typeof response.data === 'object' && 'results' in response.data) {
       console.log(`Received paginated data for ${endpoint}`);
-      return response.data.results;
+      return (response.data as PaginatedResponse<T>).results;
     }
-    
+
     // Ensure we always return an array
     return Array.isArray(response.data) ? response.data : [];
   } catch (error) {
