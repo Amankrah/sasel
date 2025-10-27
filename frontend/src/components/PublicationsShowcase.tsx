@@ -18,7 +18,7 @@ interface PublicationsShowcaseProps {
   publications?: Publication[];
 }
 
-export default function PublicationsShowcase({ publications = [] }: PublicationsShowcaseProps) {
+export default function PublicationsShowcase() {
   // Scholar Metrics (from Google Scholar)
   const scholarMetrics = {
     totalCitations: 978,

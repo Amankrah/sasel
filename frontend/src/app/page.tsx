@@ -412,7 +412,7 @@ export default function Home() {
               <div className="p-6 relative z-10">
                 <h3 className="text-xl font-bold mb-3 text-gray-900">Environmental Nutrition Decision System</h3>
                 <p className="text-gray-700 mb-4">
-                  The world's first environmental nutrition decision system integrating 5,000+ food database with 150+ nutrition metrics and 18 environmental impact categories.
+                  The world&apos;s first environmental nutrition decision system integrating 5,000+ food database with 150+ nutrition metrics and 18 environmental impact categories.
                 </p>
                 <div className="mb-5">
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
