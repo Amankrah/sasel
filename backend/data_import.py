@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 import csv
 import os
-import django
 import sys
+import django
 from datetime import datetime
 from django.core.files import File
 from django.utils.text import slugify
 
+# Add the project directory to the Python path
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
+
 # Set up Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sasel_lab_site.settings')
 django.setup()
 
 # Import models after Django setup
@@ -17,7 +21,8 @@ from lab_content.models import (
     Award, Publication, Partnership
 )
 
-DATA_DIR = '../data_templates'
+# Path to data templates directory
+DATA_DIR = os.path.join(os.path.dirname(BASE_DIR), 'data_templates')
 
 def str_to_bool(value):
     return value.lower() in ('true', 'yes', '1')
@@ -430,16 +435,50 @@ def main():
     """Main function to import all data"""
     print("Starting data import...")
     
-    # Order is important due to relations between models
-    import_lab_members()
-    import_projects()
-    import_collaborations()
-    import_grants()
-    import_awards()
-    import_publications()
-    import_partnerships()
+    # Verify that the data directory exists
+    if not os.path.exists(DATA_DIR):
+        print(f"Error: Data directory not found at {DATA_DIR}")
+        print("Please check the path and make sure the data_templates folder exists.")
+        return
     
-    print("Data import completed!")
+    # Check that all required CSV files exist
+    required_files = [
+        'lab_members.csv', 
+        'projects.csv', 
+        'collaborations.csv', 
+        'grants.csv', 
+        'awards.csv', 
+        'publications.csv', 
+        'partnerships.csv'
+    ]
+    
+    missing_files = []
+    for file in required_files:
+        if not os.path.exists(os.path.join(DATA_DIR, file)):
+            missing_files.append(file)
+    
+    if missing_files:
+        print("Warning: The following template files were not found:")
+        for file in missing_files:
+            print(f"  - {file}")
+        print("Only the available templates will be processed.")
+        print()
+    
+    # Order is important due to relations between models
+    try:
+        import_lab_members()
+        import_projects()
+        import_collaborations()
+        import_grants()
+        import_awards()
+        import_publications()
+        import_partnerships()
+        print("Data import completed successfully!")
+    except Exception as e:
+        print(f"Error during import process: {e}")
+        print("Import process did not complete successfully.")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     main() 

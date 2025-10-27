@@ -72,6 +72,12 @@ export default function Home() {
     );
   }
 
+  // Debug output for API data
+  console.log("API Data Received:");
+  console.log("Lab Members:", labMembers);
+  console.log("Projects:", projects);
+  console.log("Publications:", publications);
+
   return (
     <div className="min-h-screen">
       {/* Carousel Banner */}
