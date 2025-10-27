@@ -1,3 +1,0 @@
-name,member_type,position,bio,email,website,joined_date,left_date,is_active,order,image
-"John Doe","PROF","Associate Professor","Bio text here...","john.doe@example.com","https://example.com/johndoe","2020-01-01","","true","1","images/members/john_doe.jpg"
-"Jane Smith","PHD","PhD Researcher","Bio text here...","jane.smith@example.com","https://example.com/janesmith","2021-03-15","","true","2","images/members/jane_smith.jpg" 
