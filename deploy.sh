@@ -208,10 +208,10 @@ npm run build
 
 print_status "Frontend build completed ✓"
 
-# 11. Nginx configuration
-print_status "Configuring Nginx..."
+# 11. Nginx configuration - HTTP only (SSL will be added after certbot)
+print_status "Configuring Nginx (HTTP only, SSL will be added next)..."
 
-# Create nginx configuration
+# Create initial HTTP-only nginx configuration
 sudo tee /etc/nginx/sites-available/sasellab.com > /dev/null << EOF
 # Upstream definitions
 upstream django_backend {
@@ -222,7 +222,7 @@ upstream nextjs_frontend {
     server 127.0.0.1:3000;
 }
 
-# HTTP server - redirect to HTTPS
+# HTTP server - temporary configuration for SSL setup
 server {
     listen 80;
     listen [::]:80;
@@ -233,30 +233,11 @@ server {
         root /var/www/html;
     }
 
-    # Redirect all other HTTP traffic to HTTPS
-    location / {
-        return 301 https://sasellab.com\$request_uri;
-    }
-}
-
-# HTTPS server with complete routing
-server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name sasellab.com www.sasellab.com;
-
-    # SSL configuration - will be managed by certbot
-    ssl_certificate /etc/letsencrypt/live/sasellab.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/sasellab.com/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-
     # Security headers
     add_header X-Frame-Options DENY always;
     add_header X-Content-Type-Options nosniff always;
     add_header X-XSS-Protection "1; mode=block" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
     # Client body size limit
     client_max_body_size 20M;
@@ -343,7 +324,7 @@ if ! sudo nginx -t; then
     exit 1
 fi
 
-print_status "Nginx configuration completed ✓"
+print_status "Nginx HTTP configuration completed ✓"
 
 # Create a simple error page
 sudo mkdir -p /var/www/html
@@ -399,24 +380,38 @@ print_status "Supervisor configuration completed ✓"
 # 13. SSL Certificate with Let's Encrypt
 print_status "Setting up SSL certificate with Let's Encrypt..."
 
-# Temporarily start nginx for Let's Encrypt challenge
+# Ensure required certbot files exist
+sudo mkdir -p /etc/letsencrypt
+if [ ! -f "/etc/letsencrypt/options-ssl-nginx.conf" ]; then
+    print_status "Downloading certbot SSL configuration files..."
+    sudo curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf -o /etc/letsencrypt/options-ssl-nginx.conf
+    sudo curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem -o /etc/letsencrypt/ssl-dhparams.pem
+fi
+
+# Start nginx for Let's Encrypt challenge
+print_status "Starting Nginx for SSL certificate verification..."
 sudo systemctl start nginx
 
 # Get SSL certificate
 print_status "Requesting SSL certificate from Let's Encrypt..."
-sudo certbot --nginx -d sasellab.com -d www.sasellab.com --non-interactive --agree-tos --email admin@sasellab.com --redirect
-
-# Verify SSL certificate was installed
-if [ -f "/etc/letsencrypt/live/sasellab.com/fullchain.pem" ]; then
+if sudo certbot --nginx -d sasellab.com -d www.sasellab.com --non-interactive --agree-tos --email admin@sasellab.com --redirect; then
     print_status "SSL certificate installed successfully ✓"
 
-    # Test configuration and reload
-    sudo nginx -t && sudo systemctl reload nginx
-    print_status "HTTPS configuration activated ✓"
+    # Verify SSL certificate was installed
+    if [ -f "/etc/letsencrypt/live/sasellab.com/fullchain.pem" ]; then
+        # Test configuration and reload
+        if sudo nginx -t; then
+            sudo systemctl reload nginx
+            print_status "HTTPS configuration activated ✓"
+        else
+            print_error "Nginx configuration test failed after SSL setup"
+        fi
+    fi
 else
     print_error "SSL certificate installation failed"
     print_warning "Continuing with HTTP-only configuration"
     print_warning "You can run 'sudo certbot --nginx -d sasellab.com -d www.sasellab.com' manually later"
+    print_warning "Make sure your domain DNS is properly configured and pointing to this server"
 fi
 
 # 14. Start services
