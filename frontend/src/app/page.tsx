@@ -4,6 +4,8 @@ import { useApi } from "@/lib/api/ApiContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import PIShowcase from "@/components/PIShowcase";
+import PublicationsShowcase from "@/components/PublicationsShowcase";
 
 export default function Home() {
   const { 
@@ -144,60 +146,67 @@ export default function Home() {
       </div>
 
       {/* About Section */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center">Our Mission</h2>
+      <section className="py-12 md:py-16 relative overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-green-50"></div>
+        <div className="absolute inset-0 backdrop-blur-3xl bg-white/40"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Our Mission</h2>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-blue-50 p-8 rounded-lg border-l-4 border-blue-600 shadow-md transform transition hover:shadow-lg">
+            <div className="backdrop-blur-md bg-white/40 border border-white/60 p-8 rounded-2xl border-l-4 border-blue-600 shadow-xl transform transition hover:shadow-2xl hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4 shadow-lg">
                   1
                 </div>
-                <h3 className="text-2xl font-semibold">Research Excellence</h3>
+                <h3 className="text-2xl font-semibold text-gray-900">Research Excellence</h3>
               </div>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-800 text-lg">
                 Pioneering world-class research in food system eco-efficiency and sustainable healthy diets through rigorous life cycle assessments and innovative technology development.
               </p>
             </div>
-            
-            <div className="bg-green-50 p-8 rounded-lg border-l-4 border-green-600 shadow-md transform transition hover:shadow-lg">
+
+            <div className="backdrop-blur-md bg-white/40 border border-white/60 p-8 rounded-2xl border-l-4 border-green-600 shadow-xl transform transition hover:shadow-2xl hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4 shadow-lg">
                   2
                 </div>
-                <h3 className="text-2xl font-semibold">Industry Solutions</h3>
+                <h3 className="text-2xl font-semibold text-gray-900">Industry Solutions</h3>
               </div>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-800 text-lg">
                 Delivering tailored, evidence-based sustainability solutions that create competitive advantages for organizations across the entire food value chain.
               </p>
             </div>
-            
-            <div className="bg-amber-50 p-8 rounded-lg border-l-4 border-amber-600 shadow-md transform transition hover:shadow-lg">
+
+            <div className="backdrop-blur-md bg-white/40 border border-white/60 p-8 rounded-2xl border-l-4 border-amber-600 shadow-xl transform transition hover:shadow-2xl hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4 shadow-lg">
                   3
                 </div>
-                <h3 className="text-2xl font-semibold">Strategic Partnerships</h3>
+                <h3 className="text-2xl font-semibold text-gray-900">Strategic Partnerships</h3>
               </div>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-800 text-lg">
                 Forging powerful collaborations with industry leaders, NGOs, and government agencies to transform sustainability challenges into competitive market opportunities.
               </p>
             </div>
-            
-            <div className="bg-purple-50 p-8 rounded-lg border-l-4 border-purple-600 shadow-md transform transition hover:shadow-lg">
+
+            <div className="backdrop-blur-md bg-white/40 border border-white/60 p-8 rounded-2xl border-l-4 border-purple-600 shadow-xl transform transition hover:shadow-2xl hover:scale-105">
               <div className="flex items-start mb-4">
-                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4 shadow-lg">
                   4
                 </div>
-                <h3 className="text-2xl font-semibold">Knowledge Transfer</h3>
+                <h3 className="text-2xl font-semibold text-gray-900">Knowledge Transfer</h3>
               </div>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-800 text-lg">
                 Equipping organizations with actionable insights and cutting-edge methodologies to implement effective, research-backed sustainability strategies with measurable impact.
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Principal Investigator Showcase */}
+      <PIShowcase />
 
       {/* Partners and Sponsors Section */}
       <section className="py-12 md:py-20 bg-gray-50">
@@ -370,53 +379,59 @@ export default function Home() {
       </section>
 
       {/* Technologies Showcase Section */}
-      <section className="py-12 md:py-16 bg-green-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-4 text-center">Our Technologies</h2>
-          <p className="text-lg text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+      <section className="py-12 md:py-16 relative overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-blue-50 to-emerald-50"></div>
+        <div className="absolute inset-0 backdrop-blur-3xl bg-white/30"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-4xl font-bold mb-4 text-center text-gray-900">Our Technologies</h2>
+          <p className="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">
             Advanced platforms and tools developed by our lab to drive sustainable food systems research and innovation
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {/* Project 1 - DISH Research Platform */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-blue-100 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-blue-800">DISH</h3>
+            {/* Project 1 - EcoDish365 */}
+            <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
+              {/* Glassmorphism overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 via-green-400/20 to-teal-400/20"></div>
+
+              <div className="h-48 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  {/* Nutrition & Environment Icon */}
+                  <div className="mb-3">
+                    <svg className="w-16 h-16 text-white drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">EcoDish365</h3>
+                  <span className="text-xs text-white/90 mt-1 font-medium">🌱 Nutrition • 🌍 Environment</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">DISH Research Platform</h3>
-                <p className="text-gray-600 mb-4">
-                  A comprehensive suite of nutrition and environmental impact assessment tools for research, providing multiple calculators to help researchers make informed decisions.
+              <div className="p-6 relative z-10">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Environmental Nutrition Decision System</h3>
+                <p className="text-gray-700 mb-4">
+                  The world's first environmental nutrition decision system integrating 5,000+ food database with 150+ nutrition metrics and 18 environmental impact categories.
                 </p>
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Features</h4>
-                  <ul className="text-sm space-y-1 text-gray-600">
-                    <li>• Health Star Rating Calculator</li>
-                    <li>• Food Consumption Score Calculator</li>
-                    <li>• Health & Environmental Nutritional Index</li>
-                    <li>• Environmental Impact Calculator</li>
-                    <li>• Canadian Nutrient File Database Manager</li>
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
+                  <ul className="text-sm space-y-1 text-gray-700">
+                    <li>📊 5,000+ Canadian Nutrient File food database</li>
+                    <li>💪 150+ nutrition and health metrics</li>
+                    <li>🌿 18 environmental impact categories</li>
+                    <li>⭐ Health Star Rating (HSR)</li>
+                    <li>🧭 Food Compass Score (FCS)</li>
+                    <li>🥗 Healthy Eating Food Index (HEFI)</li>
                   </ul>
                 </div>
-                <div className="mb-5">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">React</span>
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Material UI</span>
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Django</span>
-                    <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">PostgreSQL</span>
-                    <span className="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">AWS</span>
-                  </div>
-                </div>
-                <a 
-                  href="https://research.ecodish365.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                <a
+                  href="https://ecodish365.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all shadow-md hover:shadow-lg"
                 >
-                  Visit DISH Platform
+                  Visit EcoDish365
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -424,45 +439,46 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Project 2 - FS-ROAS */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-green-100 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-green-800">FS-ROAS</h3>
+            {/* Project 2 - Pea Protein Extraction */}
+            <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
+              {/* Glassmorphism overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 via-orange-400/20 to-yellow-400/20"></div>
+
+              <div className="h-48 bg-gradient-to-br from-amber-500 via-orange-500 to-yellow-600 relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  {/* Protein/Plant Icon */}
+                  <div className="mb-3">
+                    <svg className="w-16 h-16 text-white drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">ProteinProcess</h3>
+                  <span className="text-xs text-white/90 mt-1 font-medium">🧪 Analysis • ♻️ Sustainability</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">Life Expectancy & Water Share Predictor</h3>
-                <p className="text-gray-600 mb-4">
-                  Advanced ML platform for predicting life expectancy and agricultural water share based on food system indicators with interactive scenario building capabilities.
+              <div className="p-6 relative z-10">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Pea Protein Extraction Analysis</h3>
+                <p className="text-gray-700 mb-4">
+                  Comprehensive platform comparing three extraction methods with multi-dimensional technical, economic, and environmental analysis.
                 </p>
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Features</h4>
-                  <ul className="text-sm space-y-1 text-gray-600">
-                    <li>• Interactive life expectancy simulation</li>
-                    <li>• Agricultural water share prediction</li>
-                    <li>• Linear and exponential simulation capabilities</li>
-                    <li>• Customizable time intervals and baselines</li>
-                    <li>• Key feature impact visualization</li>
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
+                  <ul className="text-sm space-y-1 text-gray-700">
+                    <li>🌾 Baseline Dry Fractionation analysis</li>
+                    <li>⚡ RF & IR Pre-treatment comparison</li>
+                    <li>🔬 Protein recovery & purity metrics</li>
+                    <li>💰 Economic assessment (CAPEX, OPEX, NPV, ROI)</li>
+                    <li>🌍 Environmental LCA (GWP, toxicity, water)</li>
                   </ul>
                 </div>
-                <div className="mb-5">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Next.js</span>
-                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">TensorFlow</span>
-                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">LSTM</span>
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Django</span>
-                    <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">TypeScript</span>
-                  </div>
-                </div>
-                <a 
-                  href="https://fsroas.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+                <a
+                  href="https://proteinprocess.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-lg hover:from-amber-700 hover:to-orange-700 transition-all shadow-md hover:shadow-lg"
                 >
-                  Try FS-ROAS Platform
+                  Access ProteinProcess
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -470,45 +486,46 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Project 3 - Pea Protein Analysis */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-amber-100 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-amber-800">PPAS</h3>
+            {/* Project 3 - FSFVI */}
+            <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
+              {/* Glassmorphism overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 via-purple-400/20 to-blue-400/20"></div>
+
+              <div className="h-48 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  {/* AI/Data Analytics Icon */}
+                  <div className="mb-3">
+                    <svg className="w-16 h-16 text-white drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">FSFVI</h3>
+                  <span className="text-xs text-white/90 mt-1 font-medium">🤖 AI-Powered • 📈 Analytics</span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3">Pea Protein Analysis System</h3>
-                <p className="text-gray-600 mb-4">
-                  Advanced pea protein extraction analysis platform integrating technical process optimization, economic feasibility assessment, and environmental impact evaluation.
+              <div className="p-6 relative z-10">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">Food System Financing Vulnerability Index</h3>
+                <p className="text-gray-700 mb-4">
+                  AI-powered platform analyzing vulnerabilities across 8 food system components using the 3FS framework for optimal financial allocation.
                 </p>
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Key Features</h4>
-                  <ul className="text-sm space-y-1 text-gray-600">
-                    <li>• Protein recovery optimization</li>
-                    <li>• Monte Carlo simulation for profitability</li>
-                    <li>• Environmental impact assessment</li>
-                    <li>• Separation efficiency monitoring</li>
-                    <li>• Process performance tracking</li>
+                <div className="mb-5">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
+                  <ul className="text-sm space-y-1 text-gray-700">
+                    <li>🎯 8 food system component analysis</li>
+                    <li>🤖 AI-powered recommendations</li>
+                    <li>📊 Performance gap vs global benchmarks</li>
+                    <li>🗓️ Strategic multi-year planning</li>
+                    <li>🔒 Enterprise-grade security</li>
                   </ul>
                 </div>
-                <div className="mb-5">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Tech Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">Rust</span>
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">React</span>
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Python</span>
-                    <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">TensorFlow</span>
-                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Scikit-learn</span>
-                  </div>
-                </div>
-                <a 
-                  href="https://proteinprocess.io" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition"
+                <a
+                  href="https://fsfvi.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
                 >
-                  Access PPAS Platform
+                  Explore FSFVI
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -518,9 +535,9 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center">
-            <Link 
-              href="/projects" 
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
+            <Link
+              href="/projects"
+              className="inline-flex items-center justify-center px-8 py-4 backdrop-blur-md bg-white/40 border-2 border-green-600/50 text-green-700 font-semibold rounded-xl hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               Explore All Technologies
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -531,128 +548,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Lab Members Section */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center">Lab Members</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {Array.isArray(labMembers) && labMembers.length > 0 ? (
-              labMembers.map((member) => (
-                <div key={member.id} className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg">
-                  {member.image && (
-                    <div className="h-48 overflow-hidden relative">
-                      <Image 
-                        src={member.image} 
-                        alt={member.name} 
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className="p-4">
-                    <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                    <p className="text-gray-600 mb-2">{member.position}</p>
-                    <div className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                      {member.member_type}
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-8">
-                <p className="text-gray-500">No lab members found.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center">Current Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.isArray(projects) && projects.filter(p => p.is_active).length > 0 ? (
-              projects.filter(p => p.is_active).slice(0, 3).map((project) => (
-                <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-lg">
-                  {project.image && (
-                    <div className="h-52 overflow-hidden relative">
-                      <Image 
-                        src={project.image} 
-                        alt={project.title} 
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                      <h3 className="absolute bottom-0 left-0 right-0 text-xl font-semibold mb-4 px-4 text-white">{project.title}</h3>
-                    </div>
-                  )}
-                  <div className="p-4">
-                    <p className="text-gray-600 line-clamp-3">{project.description}</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-8">
-                <p className="text-gray-500">No active projects found.</p>
-              </div>
-            )}
-          </div>
-          <div className="text-center mt-8">
-            <Link 
-              href="/projects" 
-              className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              View All Projects
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Recent Publications */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center">Recent Publications</h2>
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {Array.isArray(publications) && publications.length > 0 ? (
-              publications.slice(0, 5).map((pub) => (
-                <div key={pub.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                  <h3 className="text-xl font-semibold mb-3">{pub.title}</h3>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {pub.journal && (
-                      <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                        {pub.journal}
-                      </span>
-                    )}
-                    {pub.conference && (
-                      <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
-                        {pub.conference}
-                      </span>
-                    )}
-                    <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
-                      {pub.year}{pub.month ? `, ${pub.month}` : ''}
-                    </span>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="text-center py-8">
-                <p className="text-gray-500">No publications found.</p>
-              </div>
-            )}
-          </div>
-          <div className="text-center mt-8">
-            <Link 
-              href="/publications" 
-              className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-            >
-              View All Publications
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Publications Showcase */}
+      <PublicationsShowcase publications={publications} />
     </div>
   );
 }

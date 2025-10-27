@@ -20,6 +20,7 @@ class LabMember(MediaMixin):
         ('MASTERS', 'Masters Student'),
         ('PHD', 'PhD Researcher'),
         ('POSTDOC', 'Postdoctoral Fellow'),
+        ('SOFTWARE_ENG', 'Software Engineer'),
         ('STAFF', 'Staff'),
         ('OTHER', 'Other'),
     ]

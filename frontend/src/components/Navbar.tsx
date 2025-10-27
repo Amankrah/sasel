@@ -8,7 +8,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-white/20 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           {/* Logo and Desktop Navigation */}
@@ -102,7 +102,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu, toggle based on menu state */}
-      <div className={`${mobileMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
+      <div className={`${mobileMenuOpen ? 'block' : 'hidden'} sm:hidden backdrop-blur-md bg-white/80`}>
         <div className="pt-2 pb-3 space-y-1">
           <Link
             href="/"
