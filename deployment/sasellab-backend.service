@@ -1,0 +1,24 @@
+[Unit]
+Description=Sasel Lab Django Backend
+After=network.target
+
+[Service]
+Type=notify
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/sasel_lab/backend
+Environment="PATH=/home/ubuntu/sasel_lab/backend/venv/bin"
+EnvironmentFile=/home/ubuntu/sasel_lab/backend/.env.production
+ExecStart=/home/ubuntu/sasel_lab/backend/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/home/ubuntu/sasel_lab/backend/sasellab.sock \
+    --timeout 120 \
+    --access-logfile /var/log/sasellab/access.log \
+    --error-logfile /var/log/sasellab/error.log \
+    sasel_lab_site.wsgi:application
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

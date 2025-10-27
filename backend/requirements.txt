@@ -4,4 +4,5 @@ Pillow==11.2.1  # For image handling
 django-cors-headers==4.3.1  # For handling cross-origin requests when working with Next.js
 python-decouple==3.8  # For environment variables
 whitenoise==6.6.0  # For serving static files
-django-filter==24.1  # For filtering in API 
+django-filter==24.1  # For filtering in API
+gunicorn==23.0.0  # WSGI HTTP Server for production 

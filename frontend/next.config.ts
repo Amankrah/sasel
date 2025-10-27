@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'sasellab.com', 'www.sasellab.com'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -19,8 +19,19 @@ const nextConfig: NextConfig = {
         port: '8000',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'sasellab.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.sasellab.com',
+        pathname: '/**',
+      },
     ],
   },
+  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
 };
 
 export default nextConfig;
