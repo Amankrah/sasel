@@ -174,3 +174,9 @@ coverage/
 *.temp
 .cache/
 
+# ================================
+# Deployment Files
+# ================================
+#deploy.sh
+DEPLOYMENT.md
+
