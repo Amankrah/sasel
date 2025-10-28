@@ -48,7 +48,7 @@ backend/db.sqlite3-journal
 # Static files
 staticfiles/
 backend/staticfiles/
-backend/media/
+#ackend/media/
 
 # Environment variables
 .env
