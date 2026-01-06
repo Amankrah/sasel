@@ -1,6 +1,76 @@
-# ================================
-# Python / Django (Backend)
-# ================================
+# =============================================================================
+# Sasel Lab - .gitignore
+# =============================================================================
+# This file prevents sensitive, generated, and unnecessary files from being
+# committed to the repository.
+# =============================================================================
+
+# =============================================================================
+# SECURITY - CRITICAL (Never commit these!)
+# =============================================================================
+
+# Environment variables and secrets
+.env
+.env.*
+.env.local
+.env.*.local
+!.env.example
+!.env.production.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# SSH Keys and Credentials
+*.pem
+*.key
+*.ppk
+*.crt
+*.csr
+*.pub
+id_rsa
+id_ed25519
+*.p12
+*.pfx
+sasel.pem
+sasel_key.pem
+
+# API Keys and Tokens
+secrets.json
+credentials.json
+config.secret.*
+*.secret
+
+# AWS Credentials
+.aws/
+aws-credentials*
+
+# Django secret key
+secret_key.txt
+
+# =============================================================================
+# MALWARE SIGNATURES (Block known malware patterns)
+# =============================================================================
+
+# Cryptominer artifacts
+**/xmrig*
+**/xmrig-auto/
+**/immunify360firewall*
+**/kdevtmpfsi*
+**/kinsing*
+cc.txt
+**/monero*
+**/.unix/
+**/.bin
+**/config.json.bak
+
+# Suspicious scripts
+r2.sh
+v.sh
+csf.txt
+
+# =============================================================================
+# PYTHON / DJANGO (Backend)
+# =============================================================================
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -37,6 +107,8 @@ ENV/
 env.bak/
 venv.bak/
 backend/venv/
+**/venv/
+**/.venv/
 
 # Django specific
 *.log
@@ -45,27 +117,23 @@ db.sqlite3-journal
 backend/db.sqlite3
 backend/db.sqlite3-journal
 
-# Static files
+# Static files (collected)
 staticfiles/
 backend/staticfiles/
-#ackend/media/
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Media files (user uploads) - uncomment if you don't want to track
+# backend/media/
 
-# Django secret key
-secret_key.txt
+# Migrations - uncomment if you want to ignore
+# **/migrations/
 
-# ================================
-# Node.js / Next.js (Frontend)
-# ================================
+# =============================================================================
+# NODE.JS / NEXT.JS (Frontend)
+# =============================================================================
 
 # Dependencies
 node_modules/
+**/node_modules/
 frontend/node_modules/
 
 # Next.js build output
@@ -78,21 +146,11 @@ frontend/out/
 build/
 dist/
 
-# Misc
-.DS_Store
-*.pem
-
-# Debug
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Local env files
-.env*.local
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
+lerna-debug.log*
 
 # Turbopack
 .turbo/
@@ -104,23 +162,37 @@ frontend/.env.production.local
 *.tsbuildinfo
 next-env.d.ts
 
-# ================================
-# Data Templates (User Requested)
-# ================================
+# Cache
+.npm/
+.eslintcache
+.cache/
+
+# =============================================================================
+# DATA AND TEMPLATES
+# =============================================================================
+
+# Data templates (user requested)
 data_templates/
 
-# ================================
-# IDEs and Editors
-# ================================
+# Database dumps
+*.sql
+*.dump
+
+# =============================================================================
+# IDEs AND EDITORS
+# =============================================================================
 
 # VSCode
 .vscode/
 *.code-workspace
+.history/
 
-# PyCharm
+# JetBrains (PyCharm, WebStorm, IntelliJ)
 .idea/
 *.iml
 *.iws
+*.ipr
+out/
 
 # Sublime Text
 *.sublime-project
@@ -129,14 +201,31 @@ data_templates/
 # Visual Studio
 .vs/
 
-# ================================
-# OS specific
-# ================================
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+# =============================================================================
+# OPERATING SYSTEMS
+# =============================================================================
 
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
+.Spotlight-V100
+.Trashes
 Icon
 
 # Windows
@@ -154,29 +243,85 @@ $RECYCLE.BIN/
 .directory
 .Trash-*
 
-# ================================
-# Testing
-# ================================
+# =============================================================================
+# TESTING
+# =============================================================================
+
+# Python testing
 .pytest_cache/
 .coverage
 htmlcov/
 *.cover
 .hypothesis/
-coverage/
+.tox/
+.nox/
 
-# ================================
-# Miscellaneous
-# ================================
-*.swp
-*.swo
-*.bak
+# JavaScript testing
+coverage/
+.nyc_output/
+
+# =============================================================================
+# LOGS AND TEMPORARY FILES
+# =============================================================================
+
+# Logs
+*.log
+logs/
+log/
+
+# Temporary files
+tmp/
+temp/
 *.tmp
 *.temp
-.cache/
+*.bak
+*.backup
 
-# ================================
-# Deployment Files
-# ================================
-#deploy.sh
-DEPLOYMENT.md
+# =============================================================================
+# DEPLOYMENT AND DOCUMENTATION
+# =============================================================================
 
+# Deployment files with sensitive info (optional - uncomment to ignore)
+# DEPLOYMENT.md
+
+# Local scripts
+*.bat
+*.ps1
+!scripts/*.ps1
+
+# =============================================================================
+# MISCELLANEOUS
+# =============================================================================
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Claude artifacts
+.claude/
+
+# Local configuration overrides
+local_settings.py
+settings_local.py
+
+# =============================================================================
+# KEEP THESE FILES (whitelist)
+# =============================================================================
+
+# Keep example environment files
+!.env.example
+!.env.sample
+!.env.template
+!.env.production.example
+!backend/.env.example
+!frontend/.env.example
+
+# Keep documentation
+!README.md
+!CONTRIBUTING.md
+!LICENSE
+!docs/**/*.md
+
+# Keep the deploy script
+!deploy.sh
