@@ -3,9 +3,6 @@
 import { useApi } from "@/lib/api/ApiContext";
 import MemberCard from "@/components/MemberCard";
 import Link from "next/link";
-import { UserIcon, CodeBracketIcon, AcademicCapIcon, UserGroupIcon, BeakerIcon, BriefcaseIcon } from '@heroicons/react/24/outline'; // Assuming we can use heroicons or fallback
-
-// Since we might not have heroicons installed, we'll use simple SVG icons inline to be safe and strictly follow "no emojis"
 
 export default function MembersPage() {
   const { labMembers, loading, error } = useApi();
@@ -126,6 +123,9 @@ export default function MembersPage() {
 
             if (membersOfType.length === 0) return null;
 
+            // Special layout for Principal Investigator (single person)
+            const isPrincipalInvestigator = memberType.key === 'PROF';
+
             return (
               <section key={memberType.key} className="mb-20">
                 {/* Section Header */}
@@ -136,14 +136,26 @@ export default function MembersPage() {
                   <p className="text-gray-500">{memberType.description}</p>
                 </div>
 
-                {/* Members Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                  {membersOfType.map(member => (
-                    <Link key={member.id} href={`/members/${member.slug}`}>
-                      <MemberCard member={member} />
-                    </Link>
-                  ))}
-                </div>
+                {/* Members Layout - Single centered card for PI, grid for others */}
+                {isPrincipalInvestigator ? (
+                  <div className="flex justify-center">
+                    <div className="w-full max-w-md">
+                      {membersOfType.map(member => (
+                        <Link key={member.id} href={`/members/${member.slug}`}>
+                          <MemberCard member={member} />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    {membersOfType.map(member => (
+                      <Link key={member.id} href={`/members/${member.slug}`}>
+                        <MemberCard member={member} />
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </section>
             );
           })
