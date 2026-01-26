@@ -14,6 +14,7 @@ export interface LabMember extends MediaFields {
   position: string;
   bio: string;
   email: string;
+  google_scholar_id: string;
   website: string;
   joined_date: string;
   left_date: string | null;
@@ -92,6 +93,8 @@ export interface Publication extends MediaFields {
   month: number | null;
   publisher: string;
   doi: string;
+  external_id: string;
+  raw_data: Record<string, unknown> | null;
   url: string;
   citation: string;
   projects: Project[] | number[];

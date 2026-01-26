@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ['localhost', 'sasellab.com', 'www.sasellab.com'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -27,6 +26,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'www.sasellab.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
         pathname: '/**',
       },
     ],

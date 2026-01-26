@@ -1,7 +1,7 @@
 import apiClient from './client';
-import type { 
-  LabMember, Project, Collaboration, Grant, 
-  Award, Publication, Partnership 
+import type {
+  LabMember, Project, Collaboration, Grant,
+  Award, Publication, Partnership
 } from './types';
 
 // Define paginated response type
@@ -71,4 +71,4 @@ export const getPublicationBySlug = (slug: string) => getBySlug<Publication>('pu
 
 // Partnerships
 export const getPartnerships = () => getAll<Partnership>('partnerships');
-export const getPartnershipBySlug = (slug: string) => getBySlug<Partnership>('partnerships', slug); 
+export const getPartnershipBySlug = (slug: string) => getBySlug<Partnership>('partnerships', slug);

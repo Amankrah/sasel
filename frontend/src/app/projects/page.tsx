@@ -1,33 +1,22 @@
-'use client';
+import { getProjects } from '@/sanity/lib/fetch'
+import type { SanityProject } from '@/sanity/lib/types'
+import ProjectCard from '@/components/ProjectCard'
 
-import { useApi } from "@/lib/api/ApiContext";
-import ProjectCard from "@/components/ProjectCard";
+export const metadata = {
+  title: 'Research Projects | SASEL Lab',
+  description: 'Explore our innovative research projects advancing sustainable agrifood systems and environmental solutions.',
+}
 
-export default function ProjectsPage() {
-  const { projects, loading, error } = useApi();
+export default async function ProjectsPage() {
+  const projects = await getProjects() as SanityProject[]
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
-      </div>
-    );
-  }
+  const activeProjects = projects?.filter(
+    (project) => project.status === 'ACTIVE' || project.status === 'UPCOMING'
+  ) || []
 
-  if (error) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
-        <p className="text-gray-700 mb-4">
-          There was an error loading the projects. Please try again later.
-        </p>
-        <p className="text-sm text-gray-500">{error.message}</p>
-      </div>
-    );
-  }
-
-  const activeProjects = Array.isArray(projects) ? projects.filter(project => project.is_active) : [];
-  const pastProjects = Array.isArray(projects) ? projects.filter(project => !project.is_active) : [];
+  const completedProjects = projects?.filter(
+    (project) => project.status === 'COMPLETED'
+  ) || []
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -59,7 +48,7 @@ export default function ProjectsPage() {
               </div>
               <div>
                 <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  {pastProjects.length}
+                  {completedProjects.length}
                 </div>
                 <div className="text-sm font-semibold text-gray-700 mt-1">Completed Projects</div>
               </div>
@@ -72,14 +61,14 @@ export default function ProjectsPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Active Projects */}
         <section className="mb-16 max-w-7xl mx-auto">
           <div className="backdrop-blur-md bg-white/50 border border-white/60 rounded-xl p-4 mb-8 shadow-lg">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold text-gray-900">
                 <span className="inline-flex items-center gap-2">
-                  🚀 Active Projects
+                  Active Projects
                   {activeProjects.length > 0 && (
                     <span className="text-lg font-semibold px-3 py-1 bg-green-100 text-green-800 rounded-full">
                       {activeProjects.length}
@@ -91,8 +80,8 @@ export default function ProjectsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeProjects.length > 0 ? (
-              activeProjects.map(project => (
-                <ProjectCard key={project.id} project={project} variant="compact" />
+              activeProjects.map((project) => (
+                <ProjectCard key={project._id} project={project} variant="compact" />
               ))
             ) : (
               <div className="col-span-full">
@@ -105,17 +94,17 @@ export default function ProjectsPage() {
             )}
           </div>
         </section>
-        
-        {/* Past Projects */}
+
+        {/* Completed Projects */}
         <section className="max-w-7xl mx-auto">
           <div className="backdrop-blur-md bg-white/50 border border-white/60 rounded-xl p-4 mb-8 shadow-lg">
             <div className="flex items-center justify-between">
               <h2 className="text-3xl font-bold text-gray-900">
                 <span className="inline-flex items-center gap-2">
-                  📚 Completed Projects
-                  {pastProjects.length > 0 && (
+                  Completed Projects
+                  {completedProjects.length > 0 && (
                     <span className="text-lg font-semibold px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
-                      {pastProjects.length}
+                      {completedProjects.length}
                     </span>
                   )}
                 </span>
@@ -123,9 +112,9 @@ export default function ProjectsPage() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pastProjects.length > 0 ? (
-              pastProjects.map(project => (
-                <ProjectCard key={project.id} project={project} variant="compact" />
+            {completedProjects.length > 0 ? (
+              completedProjects.map((project) => (
+                <ProjectCard key={project._id} project={project} variant="compact" />
               ))
             ) : (
               <div className="col-span-full">
@@ -140,5 +129,5 @@ export default function ProjectsPage() {
         </section>
       </div>
     </div>
-  );
-} 
+  )
+}
