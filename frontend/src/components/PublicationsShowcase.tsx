@@ -1,20 +1,11 @@
 'use client';
 
 import Link from "next/link";
-
-interface Publication {
-  id: number;
-  title: string;
-  authors: string;
-  journal?: string;
-  conference?: string;
-  year: number;
-  citations?: number;
-  url?: string;
-  doi?: string;
-}
+import { useApi } from "@/lib/api/ApiContext";
 
 export default function PublicationsShowcase() {
+  const { publications, loading } = useApi();
+  
   // Scholar Metrics (from Google Scholar)
   const scholarMetrics = {
     totalCitations: 978,
@@ -23,49 +14,35 @@ export default function PublicationsShowcase() {
     citationsSince2020: 852
   };
 
-  // Featured Publications from Google Scholar
-  const featuredPublications: Publication[] = [
-    {
-      id: 1,
-      title: "Water Scrubbing: A Better Option for Biogas Purification for Effective Storage",
-      authors: "C Ofori-Boateng, EM Kwofie",
-      journal: "World Applied Sciences Journal 5 (Special Issue for Environment), 122-125",
-      year: 2009,
-      citations: 82
-    },
-    {
-      id: 2,
-      title: "A review of rice parboiling systems, energy supply, and consumption",
-      authors: "EM Kwofie, M Ngadi",
-      journal: "Renewable and Sustainable Energy Reviews 72, 465-472",
-      year: 2017,
-      citations: 80
-    },
-    {
-      id: 3,
-      title: "Overview of single cell protein: Production pathway, sustainability outlook, and digital twin potentials",
-      authors: "R Aidoo, EM Kwofie, P Adewale, E Lam, M Ngadi",
-      journal: "Trends in Food Science & Technology 138, 577-598",
-      year: 2023,
-      citations: 57
-    },
-    {
-      id: 4,
-      title: "Advances in legume protein extraction technologies: A review",
-      authors: "CR Eze, EM Kwofie, P Adewale, E Lam, M Ngadi",
-      journal: "Innovative Food Science & Emerging Technologies 82, 103199",
-      year: 2022,
-      citations: 57
-    },
-    {
-      id: 5,
-      title: "Plant-based dietary shift: Current trends, barriers, and carriers",
-      authors: "V Abe-Inge, R Aidoo, MM de la Fuente, EM Kwofie",
-      journal: "Trends in Food Science & Technology 143, 104292",
-      year: 2024,
-      citations: 50
+  // Get featured publications from backend (top 5 most recent)
+  const featuredPublications = Array.isArray(publications) 
+    ? publications.slice(0, 5)
+    : [];
+  
+  // Format authors for display
+  const formatAuthors = (pub: any) => {
+    const labAuthors = Array.isArray(pub.authors) 
+      ? pub.authors.map((a: any) => a.name || a).join(', ')
+      : '';
+    const extAuthors = pub.external_authors || '';
+    
+    if (labAuthors && extAuthors) {
+      return `${labAuthors}, ${extAuthors}`;
     }
-  ];
+    return labAuthors || extAuthors || 'Unknown Authors';
+  };
+  
+  // Format venue (journal/conference)
+  const formatVenue = (pub: any) => {
+    if (pub.journal) {
+      let venue = pub.journal;
+      if (pub.volume) venue += ` ${pub.volume}`;
+      if (pub.issue) venue += ` (${pub.issue})`;
+      if (pub.pages) venue += `, ${pub.pages}`;
+      return venue;
+    }
+    return pub.conference || '';
+  };
 
   return (
     <section className="py-16 md:py-20 relative overflow-hidden">
@@ -169,8 +146,14 @@ export default function PublicationsShowcase() {
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
             Featured Publications
           </h3>
-          <div className="space-y-4">
-            {featuredPublications.map((pub) => (
+          
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-600"></div>
+            </div>
+          ) : featuredPublications.length > 0 ? (
+            <div className="space-y-4">
+              {featuredPublications.map((pub) => (
                 <div
                   key={pub.id}
                   className="backdrop-blur-md bg-white/50 border border-white/60 rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all hover:scale-[1.02]"
@@ -180,22 +163,32 @@ export default function PublicationsShowcase() {
                       <h4 className="text-lg font-semibold text-gray-900 mb-2 leading-tight">
                         {pub.title}
                       </h4>
-                      <p className="text-sm text-gray-600 mb-2">{pub.authors}</p>
+                      <p className="text-sm text-gray-600 mb-2">{formatAuthors(pub)}</p>
                       <div className="flex flex-wrap items-center gap-3 text-sm">
                         {pub.journal && (
                           <span className="text-gray-700 font-medium">
-                            📖 {pub.journal}
+                            📖 {formatVenue(pub)}
                           </span>
                         )}
-                        {pub.conference && (
+                        {pub.conference && !pub.journal && (
                           <span className="text-gray-700 font-medium">
                             🎤 {pub.conference}
                           </span>
                         )}
                         <span className="text-gray-600">📅 {pub.year}</span>
-                        {pub.citations !== undefined && (
-                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">
-                            📊 {pub.citations} citations
+                        {pub.publication_type && (
+                          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                            pub.publication_type === 'JOURNAL' ? 'bg-blue-100 text-blue-800' :
+                            pub.publication_type === 'CONF' ? 'bg-purple-100 text-purple-800' :
+                            pub.publication_type === 'BOOK' ? 'bg-green-100 text-green-800' :
+                            'bg-gray-100 text-gray-800'
+                          }`}>
+                            {pub.publication_type === 'JOURNAL' ? '📄 Journal' :
+                             pub.publication_type === 'CONF' ? '🎤 Conference' :
+                             pub.publication_type === 'BOOK' ? '📚 Book' :
+                             pub.publication_type === 'CHAPTER' ? '📖 Chapter' :
+                             pub.publication_type === 'THESIS' ? '🎓 Thesis' :
+                             pub.publication_type}
                           </span>
                         )}
                       </div>
@@ -225,7 +218,16 @@ export default function PublicationsShowcase() {
                   </div>
                 </div>
               ))}
-          </div>
+            </div>
+          ) : (
+            <div className="backdrop-blur-md bg-white/50 border border-white/60 rounded-xl shadow-lg p-12 text-center">
+              <div className="text-6xl mb-4">📚</div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">No Publications Yet</h4>
+              <p className="text-gray-600">
+                Publications will appear here once they are added to the database.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Call to Action Links */}

@@ -30,6 +30,9 @@ class AwardSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PublicationSerializer(serializers.ModelSerializer):
+    # Nested serializers for related objects
+    authors = LabMemberSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Publication
         fields = '__all__'
