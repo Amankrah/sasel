@@ -31,6 +31,7 @@ class LabMember(MediaMixin):
     position = models.CharField(max_length=255)
     bio = models.TextField(blank=True)
     email = models.EmailField(blank=True)
+    google_scholar_id = models.CharField(max_length=50, blank=True, help_text="User ID from Google Scholar URL")
     website = models.URLField(blank=True)
     joined_date = models.DateField()
     left_date = models.DateField(blank=True, null=True)
@@ -198,6 +199,8 @@ class Publication(MediaMixin):
     month = models.IntegerField(blank=True, null=True)
     publisher = models.CharField(max_length=255, blank=True)
     doi = models.CharField(max_length=255, blank=True)
+    external_id = models.CharField(max_length=255, blank=True, help_text="Unique ID from external API (e.g. SerpApi id)")
+    raw_data = models.JSONField(blank=True, null=True, help_text="Raw API response for debugging")
     url = models.URLField(blank=True)
     citation = models.TextField(blank=True)
     projects = models.ManyToManyField(

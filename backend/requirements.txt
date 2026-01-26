@@ -5,4 +5,5 @@ django-cors-headers==4.3.1  # For handling cross-origin requests when working wi
 python-decouple==3.8  # For environment variables
 whitenoise==6.6.0  # For serving static files
 django-filter==24.1  # For filtering in API
-gunicorn==23.0.0  # WSGI HTTP Server for production 
+gunicorn==23.0.0  # WSGI HTTP Server for production
+google-search-results==2.4.2  # For fetching Google Scholar data 
