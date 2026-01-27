@@ -44,7 +44,7 @@ export default function PublicationsPage() {
 
   // Get unique authors for filter
   const authors = Array.isArray(publications)
-    ? [...new Set(publications.flatMap(pub => Array.isArray(pub.authors) ? pub.authors.map((a: any) => a.name) : []))].sort()
+    ? [...new Set(publications.flatMap(pub => Array.isArray(pub.authors) ? pub.authors.map((a) => typeof a === 'number' ? '' : (a as LabMember).name).filter(Boolean) : []))].sort()
     : [];
 
   // Publication types for filter with colors
@@ -77,9 +77,9 @@ export default function PublicationsPage() {
   };
 
   // Format authors for display (lab members + external authors)
-  const formatAuthors = (pub: any) => {
+  const formatAuthors = (pub: Publication) => {
     const labAuthors = Array.isArray(pub.authors)
-      ? pub.authors.map((a: any) => a.name || a).join(', ')
+      ? pub.authors.map((a) => typeof a === 'number' ? '' : (a as LabMember).name).filter(Boolean).join(', ')
       : '';
     const extAuthors = pub.external_authors || '';
 
@@ -101,7 +101,7 @@ export default function PublicationsPage() {
       }
       if (filterAuthor !== null) {
         const hasAuthor = Array.isArray(pub.authors)
-          ? pub.authors.some((a: any) => a.name === filterAuthor)
+          ? pub.authors.some((a) => typeof a === 'number' ? false : (a as LabMember).name === filterAuthor)
           : false;
         matches = matches && hasAuthor;
       }
@@ -116,11 +116,13 @@ export default function PublicationsPage() {
     // If ANY of the lab authors on this paper has a joined_date <= pub.year, we consider it Priority.
     // Fallback: If no joined_date, treat as standard (not priority) or rely on secondary sort.
 
-    const isMcGill = (pub: any) => {
+    const isMcGill = (pub: Publication) => {
       if (!Array.isArray(pub.authors)) return false;
-      return pub.authors.some((author: any) => {
-        if (!author.joined_date) return false;
-        const joinedYear = new Date(author.joined_date).getFullYear();
+      return pub.authors.some((author) => {
+        if (typeof author === 'number') return false;
+        const labMember = author as LabMember;
+        if (!labMember.joined_date) return false;
+        const joinedYear = new Date(labMember.joined_date).getFullYear();
         return pub.year >= joinedYear;
       });
     };

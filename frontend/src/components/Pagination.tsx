@@ -9,13 +9,6 @@ interface PaginationProps {
 export default function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
     if (totalPages <= 1) return null;
 
-    const pages = [];
-    // Simple logic for now: show all pages logic or snippet logic?
-    // Let's keep it simple: Show all if < 7, otherwise show start, end, and current window.
-    // For now, let's just do a simple list of numbers or "Prev/Next" if too many.
-
-    // Implementation: Prev | 1 | ... | 4 | 5 | 6 | ... | 10 | Next
-
     const getPageNumbers = () => {
         const pageNumbers = [];
         const maxVisiblebox = 5;

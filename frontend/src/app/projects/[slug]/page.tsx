@@ -1,5 +1,4 @@
 import { getProjectBySlug, getProjects } from '@/sanity/lib/fetch'
-import type { SanityProject } from '@/sanity/lib/types'
 import { urlForImage } from '@/sanity/lib/image'
 import PortableText from '@/components/PortableText'
 import Image from 'next/image'
@@ -231,9 +230,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <div className="backdrop-blur-md bg-white/60 border border-white/80 rounded-xl shadow-lg p-6">
                 <h3 className="text-lg font-bold mb-4 text-gray-900">Team Members</h3>
                 <div className="space-y-2">
-                  {project.members.map((member, index) => (
+                  {project.members.map((member) => (
                     <Link
-                      key={index}
+                      key={member._id}
                       href={`/members/${member.slug?.current || '#'}`}
                       className="block text-blue-600 hover:text-blue-800 transition-colors"
                     >

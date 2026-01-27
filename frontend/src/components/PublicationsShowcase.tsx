@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useApi } from "@/lib/api/ApiContext";
+import type { Publication, LabMember } from "@/lib/api/types";
 
 export default function PublicationsShowcase() {
   const { publications, loading } = useApi();
@@ -20,20 +21,20 @@ export default function PublicationsShowcase() {
     : [];
   
   // Format authors for display
-  const formatAuthors = (pub: any) => {
-    const labAuthors = Array.isArray(pub.authors) 
-      ? pub.authors.map((a: any) => a.name || a).join(', ')
+  const formatAuthors = (pub: Publication) => {
+    const labAuthors = Array.isArray(pub.authors)
+      ? pub.authors.map((a) => typeof a === 'number' ? '' : (a as LabMember).name).filter(Boolean).join(', ')
       : '';
     const extAuthors = pub.external_authors || '';
-    
+
     if (labAuthors && extAuthors) {
       return `${labAuthors}, ${extAuthors}`;
     }
     return labAuthors || extAuthors || 'Unknown Authors';
   };
-  
+
   // Format venue (journal/conference)
-  const formatVenue = (pub: any) => {
+  const formatVenue = (pub: Publication) => {
     if (pub.journal) {
       let venue = pub.journal;
       if (pub.volume) venue += ` ${pub.volume}`;

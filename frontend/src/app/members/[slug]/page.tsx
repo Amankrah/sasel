@@ -28,7 +28,10 @@ export default function MemberProfilePage({ params }: { params: Promise<{ slug: 
                 // We verify by name since that's what we have available in the authors list usually
                 const pubs = publications.filter(pub => {
                     if (!Array.isArray(pub.authors)) return false;
-                    return pub.authors.some((author: any) => author.name === foundMember.name);
+                    return pub.authors.some((author) => {
+                        if (typeof author === 'number') return false;
+                        return (author as LabMember).name === foundMember.name;
+                    });
                 });
 
                 // Sort by year desc

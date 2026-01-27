@@ -4,6 +4,7 @@ import { FaLinkedin, FaResearchgate, FaMapMarkerAlt, FaPhone, FaEnvelope, FaArro
 import { SiGooglescholar } from 'react-icons/si';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -109,22 +110,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5">
               <li>
-                <a href="/" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">
+                <Link href="/" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">
                   <span className="w-1 h-1 bg-green-600 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/members" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">
+                <Link href="/members" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">
                   <span className="w-1 h-1 bg-green-600 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
                   Our Team
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/projects" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">
+                <Link href="/projects" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">
                   <span className="w-1 h-1 bg-green-600 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
                   Research Projects
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/publications" className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-green-600 transition-colors duration-200">

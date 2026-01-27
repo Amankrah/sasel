@@ -9,6 +9,15 @@ export interface SanityImage {
   caption?: string
 }
 
+export interface SanityProjectMember {
+  _id: string
+  _type: 'member'
+  name: string
+  slug?: {
+    current: string
+  }
+}
+
 export interface SanityProject {
   _id: string
   _type: 'project'
@@ -28,10 +37,7 @@ export interface SanityProject {
   outcomes?: PortableTextBlock[]
   website?: string
   githubRepo?: string
-  members?: Array<{
-    _ref: string
-    _type: 'reference'
-  }>
+  members?: SanityProjectMember[]
   collaborators?: Array<{
     name: string
     institution?: string
