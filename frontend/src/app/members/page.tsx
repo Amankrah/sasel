@@ -67,6 +67,11 @@ export default function MembersPage() {
       description: "Essential lab operations and support"
     },
     {
+      key: 'ALUMNI',
+      label: 'Alumni',
+      description: "Former members of our lab community"
+    },
+    {
       key: 'OTHER',
       label: 'Affiliates',
       description: "Collaborators and visiting scholars"
