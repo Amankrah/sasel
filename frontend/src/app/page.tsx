@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import PIShowcase from "@/components/PIShowcase";
 import PublicationsShowcase from "@/components/PublicationsShowcase";
+import NewsSection from "@/components/NewsSection";
 
 export default function Home() {
   const { 
@@ -729,6 +730,9 @@ export default function Home() {
 
       {/* Publications Showcase */}
       <PublicationsShowcase />
+
+      {/* News Section */}
+      <NewsSection />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { SanityProject } from "@/sanity/lib/types";
+import { urlForImage } from "@/sanity/lib/image";
 
 interface ProjectCardProps {
   project: SanityProject;
@@ -11,7 +12,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, variant = 'default' }: ProjectCardProps) {
   const isActive = project.status === 'ACTIVE' || project.status === 'UPCOMING';
-  const imageUrl = project.featuredImage?.asset?.url;
+  const imageUrl = project.featuredImage ? urlForImage(project.featuredImage).width(800).url() : null;
 
   if (variant === 'compact') {
     return (
@@ -59,7 +60,7 @@ export default function ProjectCard({ project, variant = 'default' }: ProjectCar
           </div>
         )}
         <div className="p-6">
-          <Link href={`/projects/${project.slug}`}>
+          <Link href={`/projects/${project.slug.current}`}>
             <h3 className="text-xl font-bold mb-3 text-gray-900 leading-tight hover:text-blue-600 transition-colors">
               {project.title}
             </h3>
@@ -157,7 +158,7 @@ export default function ProjectCard({ project, variant = 'default' }: ProjectCar
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 p-6">
-            <Link href={`/projects/${project.slug}`}>
+            <Link href={`/projects/${project.slug.current}`}>
               <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg hover:text-blue-200 transition-colors">
                 {project.title}
               </h3>
@@ -194,7 +195,7 @@ export default function ProjectCard({ project, variant = 'default' }: ProjectCar
 
       <div className="p-6">
         {!imageUrl && (
-          <Link href={`/projects/${project.slug}`}>
+          <Link href={`/projects/${project.slug.current}`}>
             <h3 className="text-2xl font-bold mb-3 text-gray-900 hover:text-blue-600 transition-colors">
               {project.title}
             </h3>
@@ -237,7 +238,7 @@ export default function ProjectCard({ project, variant = 'default' }: ProjectCar
 
           <div className="flex gap-3 pt-2 border-t border-gray-200">
             <Link
-              href={`/projects/${project.slug}`}
+              href={`/projects/${project.slug.current}`}
               className="flex-1 inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
             >
               Learn More

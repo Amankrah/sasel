@@ -38,7 +38,7 @@ export const newsType = defineType({
       group: 'content',
       rows: 3,
       description: 'Brief summary for news listings (max 200 characters)',
-      validation: (rule) => rule.max(250),
+      validation: (rule) => rule.max(200),
     }),
     defineField({
       name: 'body',

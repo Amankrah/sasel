@@ -322,7 +322,7 @@ settings_local.py
 !CONTRIBUTING.md
 !LICENSE
 !docs/**/*.md
-!DEPLOYMENT.md
+
 
 # Keep the deploy script
 !deploy.sh
