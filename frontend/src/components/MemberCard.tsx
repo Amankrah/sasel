@@ -13,19 +13,19 @@ export default function MemberCard({ member }: MemberCardProps) {
 
       {/* Member Image */}
       {member.image ? (
-        <div className="h-64 w-full overflow-hidden relative bg-gray-100">
+        <div className="w-full aspect-[3/4] overflow-hidden relative bg-gray-100">
           <Image
             src={member.image}
             alt={member.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-center"
+            className="object-cover object-top"
             priority={false}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
         </div>
       ) : (
-        <div className="h-64 bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-green-500/30 flex items-center justify-center backdrop-blur-sm">
+        <div className="w-full aspect-[3/4] bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-green-500/30 flex items-center justify-center backdrop-blur-sm">
           <svg
             className="w-32 h-32 text-white/70"
             fill="currentColor"
