@@ -13,13 +13,14 @@ export default function MemberCard({ member }: MemberCardProps) {
 
       {/* Member Image */}
       {member.image ? (
-        <div className="h-64 overflow-hidden relative">
+        <div className="h-64 w-full overflow-hidden relative bg-gray-100">
           <Image
             src={member.image}
             alt={member.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover"
+            className="object-cover object-center"
+            priority={false}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
         </div>
