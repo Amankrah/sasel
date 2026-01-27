@@ -3,6 +3,7 @@
 import { useApi } from "@/lib/api/ApiContext";
 import { useState, useEffect } from "react";
 import Pagination from "@/components/Pagination";
+import type { Publication, LabMember } from "@/lib/api/types";
 
 export default function PublicationsPage() {
   const { publications, loading, error } = useApi();
