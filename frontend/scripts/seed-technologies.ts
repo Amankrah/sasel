@@ -126,8 +126,80 @@ const ecodish365 = {
   ],
 }
 
+const greenMeansGo = {
+  _id: 'technology-green-means-go',
+  _type: 'technology',
+  title: 'Green Means Go',
+  slug: { _type: 'slug', current: 'green-means-go' },
+  tagline:
+    'Life Cycle Assessment built for African food systems — helping farms and processors measure impact and reach global markets.',
+  status: 'BETA',
+  isFeatured: true,
+  featuredOrder: 2,
+  accentColor: 'blue',
+  website: 'https://greenmeansgo.ai/',
+  githubRepo: 'https://github.com/Amankrah/green_means_go',
+  categories: [
+    'Life Cycle Assessment',
+    'Sustainability Assessment',
+    'Agricultural Technology',
+    'Supply Chain Analytics',
+    'Decision Support',
+  ],
+  techStack: [
+    'Next.js 15',
+    'React 19',
+    'TypeScript',
+    'Tailwind CSS 4',
+    'FastAPI',
+    'Python 3.8+',
+    'Rust',
+    'Pydantic',
+  ],
+  keyFeatures: [
+    '8 midpoint impact categories (climate, water, land, biodiversity, and more)',
+    '3 endpoint categories (human health, ecosystem quality, resource scarcity)',
+    'Farm-level assessments for cropping, soil, water, pest, and energy management',
+    'Processing facility assessments for energy, water, waste, and emissions',
+    'Country-specific impact factors with global fallbacks',
+    'Data quality scoring and regional benchmarking',
+    'Supports 9+ food categories and multiple facility types',
+    'Rust core delivers sub-100 ms calculations',
+    'Designed for EU CBAM, EUDR compliance, and AfCFTA alignment',
+  ],
+  targetUsers: [
+    'Smallholder and family farms',
+    'Commercial farms and agricultural cooperatives',
+    'Food processing facilities and manufacturers',
+    'Food distributors and exporters',
+    'Certification bodies and policymakers',
+  ],
+  description: [
+    para(
+      'Green Means Go is a Life Cycle Assessment platform built for the African agri-food value chain. It helps smallholder and commercial farms, processors, and exporters understand the environmental footprint of their operations — and use that evidence to reach global markets that increasingly require verified sustainability data.',
+    ),
+    para(
+      'The platform launches with country-specific support for Ghana and Nigeria, with expansion planned across the continent. Farm assessments complete in 15–20 minutes and processing assessments in 10–15 minutes, producing ISO 14040/14044-compliant results that align with EU CBAM, EUDR, and AfCFTA requirements.',
+    ),
+  ],
+  methodology: [
+    para('Life Cycle Assessment', 'h3'),
+    para(
+      'Assessments follow the ISO 14040 and ISO 14044 standards. Results are reported across eight midpoint impact categories — including climate (kg CO₂-equivalent), water use (m³), land use (m²-years), and biodiversity — and three endpoint categories: human health, ecosystem quality, and resource scarcity.',
+    ),
+    para('Africa-Specific Data', 'h3'),
+    para(
+      'Country-specific emission and resource factors are used wherever available, with transparent fallbacks to global datasets so users always get a result. Data-quality scoring surfaces how confident the assessment is and which inputs to improve next.',
+    ),
+    para('Three-Tier Architecture', 'h3'),
+    para(
+      'A Next.js frontend drives a FastAPI gateway that delegates calculations to a Rust core. The stateless API design supports horizontal scaling, and the Rust engine delivers sub-100 ms per-calculation performance even on complex farm or facility assessments.',
+    ),
+  ],
+}
+
 async function run() {
-  const docs = [ecodish365]
+  const docs = [ecodish365, greenMeansGo]
   for (const doc of docs) {
     try {
       const result = await client.createIfNotExists(doc)
