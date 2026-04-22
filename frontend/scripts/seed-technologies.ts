@@ -273,9 +273,87 @@ const proteinProcess = {
   ],
 }
 
+const soyaFlow = {
+  _id: 'technology-soyaflow',
+  _type: 'technology',
+  title: 'SoyaFlow',
+  slug: { _type: 'slug', current: 'soyaflow' },
+  tagline:
+    'AI-powered soybean meal distribution platform combining predictive reorder forecasting, real-time inventory tracking, and optimized route planning.',
+  status: 'LIVE',
+  isFeatured: true,
+  featuredOrder: 4,
+  accentColor: 'indigo',
+  website: 'https://soyaflow.com/en',
+  githubRepo: 'https://github.com/Amankrah/soya_excel',
+  categories: [
+    'Supply Chain Optimization',
+    'Machine Learning',
+    'Logistics',
+    'Route Planning',
+    'Agricultural Technology',
+  ],
+  techStack: [
+    'Next.js 14',
+    'TypeScript',
+    'Django 5.2',
+    'Django REST Framework',
+    'XGBoost',
+    'DBSCAN / KMeans clustering',
+    'Google Maps API',
+    'JWT auth',
+    'Tailwind CSS',
+    'Shadcn UI',
+  ],
+  keyFeatures: [
+    'XGBoost reorder-prediction model trained on 62 features, reaching 95% accuracy',
+    'Replaces expensive IoT bin sensors (over $110K per site) with ML forecasts',
+    'DBSCAN and KMeans clustering for delivery route optimization',
+    'Google Maps integration with GPS tracking and delivery scheduling',
+    'Client management with priority alerts and geocoding',
+    'Order workflow from pending to delivered, with batch and expedition tracking',
+    'Inventory control across product types (Trituro 44%, Dairy Trituro, Oil)',
+    'Weekly distribution planning cycle (Tuesday planning, Friday finalization)',
+    'KPI dashboards for efficiency, monthly usage trends, and low-stock alerts',
+    'Scope 3 emissions tracking across the distribution fleet',
+  ],
+  targetUsers: [
+    'Soya Excel distribution managers and planners',
+    'Delivery drivers and dispatch teams',
+    'Farmer clients receiving soybean meal shipments',
+    'Operations leadership tracking fleet and inventory KPIs',
+  ],
+  description: [
+    para(
+      'SoyaFlow is a unified distribution and logistics platform built for Soya Excel, spanning operations across Canada, the United States, and Spain. It combines machine learning, GIS, and a modern web interface to coordinate soybean meal supply from inventory to farmer delivery.',
+    ),
+    para(
+      'Instead of installing expensive IoT bin sensors at every customer site, SoyaFlow uses an XGBoost model trained on 62 historical and operational features to predict when each farmer will reorder. Managers get reorder alerts, drivers get optimized multi-stop routes, and leadership gets KPI dashboards that reveal fleet efficiency and demand trends.',
+    ),
+  ],
+  methodology: [
+    para('Predictive Reorder Modeling', 'h3'),
+    para(
+      'A gradient-boosted tree model (XGBoost) learns from 62 engineered features, including historical order cadence, seasonality, geography, product mix, and livestock-cycle signals. The model reaches roughly 95% accuracy on reorder prediction, giving the scheduling team a week of forward visibility without physical sensors.',
+    ),
+    para('Route Optimization', 'h3'),
+    para(
+      'Daily delivery routes are built by clustering farmer stops with DBSCAN and KMeans, then routed through Google Maps for drive-time and distance estimates. The system balances truck capacity, delivery windows, and clustering geometry to minimize empty miles.',
+    ),
+    para('Operational Workflow', 'h3'),
+    para(
+      'The platform runs a weekly cycle (Tuesday planning, Friday finalization) with role-scoped views for managers, drivers, and client-facing staff. Orders move through a pending-to-delivered workflow with batch and expedition tracking, while inventory and low-stock alerts keep production synced with demand.',
+    ),
+    para('Sustainability', 'h3'),
+    para(
+      'Scope 3 emissions tracking across the distribution fleet turns logistics data into a sustainability lens, supporting procurement and reporting requirements alongside operational efficiency.',
+    ),
+  ],
+}
+
 async function run() {
   const overwrite = process.argv.includes('--overwrite')
-  const docs = [ecodish365, greenMeansGo, proteinProcess]
+  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow]
   for (const doc of docs) {
     try {
       const result = overwrite
