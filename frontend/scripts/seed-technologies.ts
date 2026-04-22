@@ -507,9 +507,85 @@ const fsvc = {
   ],
 }
 
+const defenseFood = {
+  _id: 'technology-defensefood',
+  _type: 'technology',
+  title: 'DefenseFood',
+  slug: { _type: 'slug', current: 'defensefood' },
+  tagline:
+    'EU Food Fraud Vulnerability Intelligence System that detects supply-chain fraud risks using 43 quantitative models across commodity dependency, trade anomalies, hazard propagation, and network exposure.',
+  status: 'IN_DEVELOPMENT',
+  isFeatured: false,
+  featuredOrder: 7,
+  accentColor: 'indigo',
+  githubRepo: 'https://github.com/Amankrah/defensefood',
+  categories: [
+    'Food Fraud',
+    'Risk Intelligence',
+    'Trade Analytics',
+    'Network Analysis',
+    'Policy Support',
+  ],
+  techStack: [
+    'Next.js',
+    'React 19',
+    'TypeScript',
+    'FastAPI',
+    'Python 3.10+',
+    'Rust (PyO3 / Maturin)',
+    'Pandas',
+    'NumPy',
+    'Pydantic',
+  ],
+  keyFeatures: [
+    '43 quantitative formulas organized across 7 model groups',
+    'Commodity dependency metrics (IDR, OCS, BDI, HHI, SSR, SCI)',
+    'Hazard intensity modeling with time decay and RASFF integration (HIS, HDI, DGI)',
+    'Trade-flow anomaly detection (z-scores, mirror trade discrepancy)',
+    'Network exposure graph analysis (ORPS, ACEP)',
+    'Composite vulnerability scoring with weighted linear, geometric, or hybrid modes',
+    '638 scored trade corridors across 60 network nodes',
+    '1,746 RASFF notifications processed into the hazard layer',
+    '17 REST endpoints with live parameter reconfiguration',
+    '75 unit tests validating calculations against PDF worked examples',
+  ],
+  targetUsers: [
+    'EU food safety and trade regulators',
+    'National competent authorities and customs analysts',
+    'Food-fraud researchers and policy advisors',
+    'Commodity supply-chain risk managers',
+  ],
+  description: [
+    para(
+      'DefenseFood is a food-fraud vulnerability intelligence system built around a mathematical framework of 43 formulas across 7 model groups. It ingests bilateral trade flows from UN Comtrade, hazard notifications from RASFF, and production and consumption data from FAOSTAT and Eurostat, then scores European food trade corridors for fraud vulnerability.',
+    ),
+    para(
+      'The platform is in active development as a research deliverable, aimed at regulators and policy analysts who need defensible, reproducible risk scores rather than black-box intuition. Each formula is unit-tested against worked examples, and the scoring configuration can be adjusted live through the API without restarting the pipeline.',
+    ),
+  ],
+  methodology: [
+    para('Quantitative Risk Framework', 'h3'),
+    para(
+      'The Rust engine implements six computational modules: commodity dependency (IDR, OCS, BDI, HHI, SSR, SCI), consumption and demand (PCC, CRS, DIS), hazard intensity (HIS, HDI, DGI), trade-flow anomalies (z-scores, mirror trade discrepancy), network exposure (ORPS, ACEP), and composite scoring with normalization. Each module is exposed to Python through PyO3 bindings for low-latency recomputation.',
+    ),
+    para('Data Integration', 'h3'),
+    para(
+      'Ingestion pipelines pull bilateral trade flows from UN Comtrade, hazard notifications from the RASFF Window, and production and consumption series from FAOSTAT and Eurostat. A Python orchestration layer harmonizes identifiers, handles missing data, and prepares inputs for the Rust engine.',
+    ),
+    para('Corridor Scoring and Network View', 'h3'),
+    para(
+      'The system scores individual trade corridors (HS code, destination, origin) and rolls them up into a network view. Composite scoring supports weighted linear, geometric mean, or hybrid approaches, with time-decayed hazard intensity so recent notifications dominate the signal. 638 scored corridors across 60 nodes seed the initial European network.',
+    ),
+    para('Three-Tier Architecture', 'h3'),
+    para(
+      'The stack separates concerns: a Next.js and TypeScript dashboard on port 3000, a FastAPI service on port 8000 with 17 REST endpoints and 7 routers, and a Rust core (defensefood_core) compiled via Maturin. Scoring parameters can be updated through the API for live what-if analysis.',
+    ),
+  ],
+}
+
 async function run() {
   const overwrite = process.argv.includes('--overwrite')
-  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow, fsfiRwanda, fsvc]
+  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow, fsfiRwanda, fsvc, defenseFood]
   for (const doc of docs) {
     try {
       const result = overwrite
