@@ -6,13 +6,15 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:technologies": "tsx scripts/seed-technologies.ts",
+    "import:django": "tsx scripts/import-from-django.ts",
+    "sync:publications": "tsx scripts/sync-publications.ts"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",
     "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "^4.8.0",
-    "axios": "^1.8.4",
     "next": "^15.5.10",
     "next-sanity": "^11.0.0",
     "react": "^19.0.0",
@@ -23,13 +25,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4",
+    "tsx": "^4.19.0",
     "typescript": "^5"
   }
 }

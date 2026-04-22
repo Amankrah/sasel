@@ -1,5 +1,5 @@
 import type { StructureResolver } from 'sanity/structure'
-import { CogIcon, UserIcon, DocumentTextIcon, RocketIcon, BellIcon } from '@sanity/icons'
+import { CogIcon, UserIcon, DocumentTextIcon, RocketIcon, BellIcon, CodeBlockIcon, UsersIcon, TrolleyIcon, StarIcon, CaseIcon } from '@sanity/icons'
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -129,6 +129,100 @@ export const structure: StructureResolver = (S) =>
                     .title('Featured Projects')
                     .filter('_type == "project" && isFeatured == true')
                     .apiVersion('2024-01-01')
+                ),
+            ])
+        ),
+
+      // Technologies Section
+      S.listItem()
+        .title('Technologies')
+        .icon(CodeBlockIcon)
+        .child(
+          S.list()
+            .title('Technologies')
+            .items([
+              S.listItem()
+                .title('All Technologies')
+                .child(
+                  S.documentTypeList('technology')
+                    .title('All Technologies')
+                    .defaultOrdering([{ field: 'featuredOrder', direction: 'asc' }])
+                ),
+              S.divider(),
+              S.listItem()
+                .title('Live')
+                .child(
+                  S.documentList()
+                    .title('Live')
+                    .filter('_type == "technology" && status == "LIVE"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Beta')
+                .child(
+                  S.documentList()
+                    .title('Beta')
+                    .filter('_type == "technology" && status == "BETA"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('In Development')
+                .child(
+                  S.documentList()
+                    .title('In Development')
+                    .filter('_type == "technology" && status == "IN_DEVELOPMENT"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Featured')
+                .child(
+                  S.documentList()
+                    .title('Featured Technologies')
+                    .filter('_type == "technology" && isFeatured == true')
+                    .apiVersion('2024-01-01')
+                ),
+            ])
+        ),
+
+      // Grants, Awards, Collaborations, Partnerships
+      S.listItem()
+        .title('Grants & Partnerships')
+        .icon(TrolleyIcon)
+        .child(
+          S.list()
+            .title('Grants & Partnerships')
+            .items([
+              S.listItem()
+                .title('Grants')
+                .icon(TrolleyIcon)
+                .child(
+                  S.documentTypeList('grant')
+                    .title('Grants')
+                    .defaultOrdering([{ field: 'startDate', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('Awards')
+                .icon(StarIcon)
+                .child(
+                  S.documentTypeList('award')
+                    .title('Awards')
+                    .defaultOrdering([{ field: 'dateReceived', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('Collaborations')
+                .icon(UsersIcon)
+                .child(
+                  S.documentTypeList('collaboration')
+                    .title('Collaborations')
+                    .defaultOrdering([{ field: 'startDate', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('Partnerships')
+                .icon(CaseIcon)
+                .child(
+                  S.documentTypeList('partnership')
+                    .title('Partnerships')
+                    .defaultOrdering([{ field: 'startDate', direction: 'desc' }])
                 ),
             ])
         ),

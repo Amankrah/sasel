@@ -92,10 +92,23 @@ export const publicationType = defineType({
     }),
     defineField({
       name: 'journal',
-      title: 'Journal/Venue',
+      title: 'Journal',
       type: 'string',
       group: 'details',
-      description: 'Journal name, conference name, or publisher',
+      description: 'Journal name',
+    }),
+    defineField({
+      name: 'conference',
+      title: 'Conference',
+      type: 'string',
+      group: 'details',
+      description: 'Conference name (for conference papers)',
+    }),
+    defineField({
+      name: 'publisher',
+      title: 'Publisher',
+      type: 'string',
+      group: 'details',
     }),
     defineField({
       name: 'volume',
@@ -148,6 +161,23 @@ export const publicationType = defineType({
       rows: 3,
       description: 'Complete citation in preferred format (APA, MLA, etc.)',
     }),
+    defineField({
+      name: 'externalId',
+      title: 'External ID',
+      type: 'string',
+      group: 'details',
+      readOnly: true,
+      description: 'Unique ID from external source (SerpAPI citation_id). Managed by the sync job.',
+    }),
+    defineField({
+      name: 'rawData',
+      title: 'Raw API Data',
+      type: 'text',
+      group: 'details',
+      readOnly: true,
+      rows: 4,
+      description: 'JSON payload from last sync, for debugging.',
+    }),
 
     // Authors
     defineField({
@@ -188,6 +218,18 @@ export const publicationType = defineType({
         {
           type: 'reference',
           to: [{ type: 'project' }],
+        },
+      ],
+    }),
+    defineField({
+      name: 'relatedTechnologies',
+      title: 'Related Technologies',
+      type: 'array',
+      group: 'basic',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'technology' }],
         },
       ],
     }),

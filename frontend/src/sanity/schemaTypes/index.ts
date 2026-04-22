@@ -4,6 +4,11 @@ import { type SchemaTypeDefinition } from 'sanity'
 import { memberType } from './documents/memberType'
 import { publicationType } from './documents/publicationType'
 import { projectType } from './documents/projectType'
+import { technologyType } from './documents/technologyType'
+import { collaborationType } from './documents/collaborationType'
+import { grantType } from './documents/grantType'
+import { awardType } from './documents/awardType'
+import { partnershipType } from './documents/partnershipType'
 import { newsType } from './documents/newsType'
 import { settingsType } from './documents/settingsType'
 
@@ -18,6 +23,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     memberType,
     publicationType,
     projectType,
+    technologyType,
+    collaborationType,
+    grantType,
+    awardType,
+    partnershipType,
     newsType,
     settingsType,
     // Objects

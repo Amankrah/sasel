@@ -1,22 +1,24 @@
 import Image from "next/image";
-import { LabMember } from "@/lib/api/types";
+import type { SanityMember } from "@/sanity/lib/types";
+import { urlForImage } from "@/sanity/lib/image";
+import { PortableText } from "@portabletext/react";
 
 interface MemberCardProps {
-  member: LabMember;
+  member: SanityMember;
 }
 
 export default function MemberCard({ member }: MemberCardProps) {
+  const imageUrl = member.image ? urlForImage(member.image).width(600).url() : null;
+
   return (
     <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105 cursor-pointer">
-      {/* Glassmorphism overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-purple-400/10 to-green-400/10"></div>
 
-      {/* Member Image */}
-      {member.image ? (
+      {imageUrl ? (
         <div className="w-full aspect-[3/4] overflow-hidden relative bg-gray-100">
           <Image
-            src={member.image}
-            alt={member.name}
+            src={imageUrl}
+            alt={member.image?.alt || member.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             className="object-cover object-top"
@@ -40,18 +42,16 @@ export default function MemberCard({ member }: MemberCardProps) {
         </div>
       )}
 
-      {/* Member Info */}
       <div className="p-6 relative z-10">
         <h3 className="text-xl font-bold mb-2 text-gray-900">{member.name}</h3>
         <p className="text-gray-700 font-medium mb-3">{member.position}</p>
 
         {member.bio && (
-          <p className="text-gray-700 mb-4 line-clamp-3 text-sm leading-relaxed">
-            {member.bio}
-          </p>
+          <div className="text-gray-700 mb-4 line-clamp-3 text-sm leading-relaxed">
+            <PortableText value={member.bio} />
+          </div>
         )}
 
-        {/* Contact Links removed to prevent nested <a> tags since the whole card is a link */}
         <div className="mt-4 flex items-center text-blue-500 font-medium text-sm group-hover:text-blue-600">
           <span>View Profile</span>
           <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

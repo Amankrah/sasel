@@ -1,22 +1,14 @@
 'use client';
 
-import { useApi } from "@/lib/api/ApiContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import PIShowcase from "@/components/PIShowcase";
 import PublicationsShowcase from "@/components/PublicationsShowcase";
 import NewsSection from "@/components/NewsSection";
+import TechnologiesShowcase from "@/components/TechnologiesShowcase";
 
 export default function Home() {
-  const { 
-    labMembers, 
-    projects, 
-    publications,
-    loading, 
-    error 
-  } = useApi();
-
   // State for image carousel
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
@@ -54,62 +46,6 @@ export default function Home() {
     
     return () => clearInterval(interval);
   }, [carouselImages.length]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50"></div>
-        <div className="absolute inset-0 backdrop-blur-3xl bg-white/40"></div>
-        
-        <div className="relative z-10 backdrop-blur-md bg-white/60 border border-white/80 rounded-2xl shadow-xl p-12 text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-t-transparent border-b-transparent border-purple-600 mx-auto mb-6"></div>
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
-            Loading Lab Data
-          </h2>
-          <p className="text-gray-600">Please wait while we fetch the latest information...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50"></div>
-        <div className="absolute inset-0 backdrop-blur-3xl bg-white/40"></div>
-        
-        <div className="relative z-10 backdrop-blur-md bg-white/60 border border-white/80 rounded-2xl shadow-xl p-12 text-center max-w-lg">
-          <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Unable to Load Data</h1>
-          <p className="text-gray-700 mb-6">
-            There was an error loading the lab data. Please try refreshing the page or check back later.
-          </p>
-          <details className="text-left">
-            <summary className="text-sm text-gray-600 cursor-pointer hover:text-gray-900 font-medium mb-2">Technical Details</summary>
-            <p className="text-xs text-gray-500 bg-gray-100 p-3 rounded-lg font-mono">{error.message}</p>
-          </details>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg font-semibold"
-          >
-            Reload Page
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  // Debug output for API data
-  console.log("API Data Received:");
-  console.log("Lab Members:", labMembers);
-  console.log("Projects:", projects);
-  console.log("Publications:", publications);
 
   return (
     <div className="min-h-screen">
@@ -547,186 +483,7 @@ export default function Home() {
       </section>
 
       {/* Technologies Showcase Section */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-blue-50 to-emerald-50"></div>
-        <div className="absolute inset-0 backdrop-blur-3xl bg-white/30"></div>
-        
-        {/* Decorative background elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-500 to-teal-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
-              Our Technologies
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Advanced platforms and tools developed by our lab to drive sustainable food systems research and innovation
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-blue-600 mx-auto mt-4"></div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {/* Project 1 - EcoDish365 */}
-            <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-              {/* Glassmorphism overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 via-green-400/20 to-teal-400/20"></div>
-
-              <div className="h-48 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  {/* Nutrition & Environment Icon */}
-                  <div className="mb-3">
-                    <svg className="w-16 h-16 text-white drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">EcoDish365</h3>
-                  <span className="text-xs text-white/90 mt-1 font-medium">🌱 Nutrition • 🌍 Environment</span>
-                </div>
-              </div>
-              <div className="p-6 relative z-10">
-                <h3 className="text-xl font-bold mb-3 text-gray-900">Environmental Nutrition Decision System</h3>
-                <p className="text-gray-700 mb-4">
-                  The world&apos;s first environmental nutrition decision system integrating 5,000+ food database with 150+ nutrition metrics and 18 environmental impact categories.
-                </p>
-                <div className="mb-5">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
-                  <ul className="text-sm space-y-1 text-gray-700">
-                    <li>📊 5,000+ Canadian Nutrient File food database</li>
-                    <li>💪 150+ nutrition and health metrics</li>
-                    <li>🌿 18 environmental impact categories</li>
-                    <li>⭐ Health Star Rating (HSR)</li>
-                    <li>🧭 Food Compass Score (FCS)</li>
-                    <li>🥗 Healthy Eating Food Index (HEFI)</li>
-                  </ul>
-                </div>
-                <a
-                  href="https://ecodish365.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all shadow-md hover:shadow-lg"
-                >
-                  Visit EcoDish365
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Project 2 - Pea Protein Extraction */}
-            <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-              {/* Glassmorphism overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 via-orange-400/20 to-yellow-400/20"></div>
-
-              <div className="h-48 bg-gradient-to-br from-amber-500 via-orange-500 to-yellow-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  {/* Protein/Plant Icon */}
-                  <div className="mb-3">
-                    <svg className="w-16 h-16 text-white drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">ProteinProcess</h3>
-                  <span className="text-xs text-white/90 mt-1 font-medium">🧪 Analysis • ♻️ Sustainability</span>
-                </div>
-              </div>
-              <div className="p-6 relative z-10">
-                <h3 className="text-xl font-bold mb-3 text-gray-900">Pea Protein Extraction Analysis</h3>
-                <p className="text-gray-700 mb-4">
-                  Comprehensive platform comparing three extraction methods with multi-dimensional technical, economic, and environmental analysis.
-                </p>
-                <div className="mb-5">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
-                  <ul className="text-sm space-y-1 text-gray-700">
-                    <li>🌾 Baseline Dry Fractionation analysis</li>
-                    <li>⚡ RF & IR Pre-treatment comparison</li>
-                    <li>🔬 Protein recovery & purity metrics</li>
-                    <li>💰 Economic assessment (CAPEX, OPEX, NPV, ROI)</li>
-                    <li>🌍 Environmental LCA (GWP, toxicity, water)</li>
-                  </ul>
-                </div>
-                <a
-                  href="https://proteinprocess.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-lg hover:from-amber-700 hover:to-orange-700 transition-all shadow-md hover:shadow-lg"
-                >
-                  Access ProteinProcess
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Project 3 - FSFVI */}
-            <div className="group relative backdrop-blur-md bg-white/40 border border-white/60 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover:scale-105">
-              {/* Glassmorphism overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 via-purple-400/20 to-blue-400/20"></div>
-
-              <div className="h-48 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 relative overflow-hidden">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  {/* AI/Data Analytics Icon */}
-                  <div className="mb-3">
-                    <svg className="w-16 h-16 text-white drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">FSFVI</h3>
-                  <span className="text-xs text-white/90 mt-1 font-medium">🤖 AI-Powered • 📈 Analytics</span>
-                </div>
-              </div>
-              <div className="p-6 relative z-10">
-                <h3 className="text-xl font-bold mb-3 text-gray-900">Food System Financing Vulnerability Index</h3>
-                <p className="text-gray-700 mb-4">
-                  AI-powered platform analyzing vulnerabilities across 8 food system components using the 3FS framework for optimal financial allocation.
-                </p>
-                <div className="mb-5">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-600 mb-2">Key Features</h4>
-                  <ul className="text-sm space-y-1 text-gray-700">
-                    <li>🎯 8 food system component analysis</li>
-                    <li>🤖 AI-powered recommendations</li>
-                    <li>📊 Performance gap vs global benchmarks</li>
-                    <li>🗓️ Strategic multi-year planning</li>
-                    <li>🔒 Enterprise-grade security</li>
-                  </ul>
-                </div>
-                <a
-                  href="https://fsfvi.ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
-                >
-                  Explore FSFVI
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center mt-12">
-            <Link
-              href="/projects"
-              className="group inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              Explore All Technologies
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <TechnologiesShowcase />
 
       {/* Publications Showcase */}
       <PublicationsShowcase />

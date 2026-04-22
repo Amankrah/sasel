@@ -304,6 +304,9 @@ temp/
 # MISCELLANEOUS
 # =============================================================================
 
+# Local archive copies (not versioned)
+archive/
+
 # Backup files
 *.bak
 *.backup

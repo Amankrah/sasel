@@ -5,6 +5,7 @@ import { SiGooglescholar } from 'react-icons/si';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import FooterTechnologiesList from './FooterTechnologiesList';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -141,41 +142,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
               Our Technologies
             </h3>
-            <ul className="space-y-2.5">
-              <li>
-                <a 
-                  href="https://ecodish365.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-emerald-600 transition-colors duration-200"
-                >
-                  <span className="w-1 h-1 bg-emerald-600 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
-                  EcoDish365
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://proteinprocess.io/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-orange-600 transition-colors duration-200"
-                >
-                  <span className="w-1 h-1 bg-orange-600 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
-                  ProteinProcess
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://fsfvi.ai/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center text-sm text-gray-800 font-medium hover:text-purple-600 transition-colors duration-200"
-                >
-                  <span className="w-1 h-1 bg-purple-600 rounded-full mr-2 group-hover:w-2 transition-all duration-200"></span>
-                  FSFVI
-                </a>
-              </li>
-            </ul>
+            <FooterTechnologiesList />
           </div>
           
           {/* Contact Information */}

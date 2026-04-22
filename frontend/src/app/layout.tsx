@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ApiProvider } from "@/lib/api/ApiContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProgressBar from "@/components/ProgressBar";
@@ -29,20 +28,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload critical assets for faster loading */}
         <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased m-0 flex min-h-screen flex-col`}
       >
         <ProgressBar />
-        <ApiProvider>
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </ApiProvider>
+        <Navbar />
+        <main className="flex-grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );

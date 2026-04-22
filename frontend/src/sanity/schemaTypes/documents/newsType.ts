@@ -140,6 +140,18 @@ export const newsType = defineType({
       ],
     }),
     defineField({
+      name: 'relatedTechnologies',
+      title: 'Related Technologies',
+      type: 'array',
+      group: 'metadata',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'technology' }],
+        },
+      ],
+    }),
+    defineField({
       name: 'relatedPublications',
       title: 'Related Publications',
       type: 'array',
