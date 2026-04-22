@@ -109,6 +109,7 @@ export const technologyType = defineType({
           { title: 'Indigo / Purple (AI, analytics)', value: 'indigo' },
           { title: 'Blue / Teal (data, research)', value: 'blue' },
           { title: 'Rose / Pink', value: 'rose' },
+          { title: 'Slate / Dark (platforms, tooling)', value: 'slate' },
         ],
         layout: 'dropdown',
       },

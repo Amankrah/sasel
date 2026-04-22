@@ -46,6 +46,13 @@ const ACCENT_GRADIENTS: Record<TechnologyAccent, { header: string; cta: string; 
     dot: 'bg-rose-600',
     overlay: 'from-rose-400/20 via-pink-400/20 to-fuchsia-400/20',
   },
+  slate: {
+    header: 'from-slate-700 via-slate-600 to-zinc-700',
+    cta: 'from-slate-700 to-zinc-700',
+    ctaHover: 'hover:from-slate-800 hover:to-zinc-800',
+    dot: 'bg-slate-700',
+    overlay: 'from-slate-400/20 via-zinc-400/20 to-gray-400/20',
+  },
 };
 
 const STATUS_CONFIG: Record<TechnologyStatus, { label: string; classes: string }> = {

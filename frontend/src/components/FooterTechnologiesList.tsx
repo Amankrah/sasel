@@ -27,6 +27,7 @@ const DOT_COLORS: Record<TechnologyAccent, string> = {
   indigo: 'bg-purple-600',
   blue: 'bg-blue-600',
   rose: 'bg-rose-600',
+  slate: 'bg-slate-700',
 };
 
 const HOVER_COLORS: Record<TechnologyAccent, string> = {
@@ -35,6 +36,7 @@ const HOVER_COLORS: Record<TechnologyAccent, string> = {
   indigo: 'hover:text-purple-600',
   blue: 'hover:text-blue-600',
   rose: 'hover:text-rose-600',
+  slate: 'hover:text-slate-900',
 };
 
 export default function FooterTechnologiesList() {

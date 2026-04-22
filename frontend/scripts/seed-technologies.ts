@@ -423,9 +423,93 @@ const fsfiRwanda = {
   ],
 }
 
+const fsvc = {
+  _id: 'technology-fsvc',
+  _type: 'technology',
+  title: 'Food System Value Analytics (FSVC)',
+  slug: { _type: 'slug', current: 'fsvc' },
+  tagline:
+    'Production-ready data collection and analytics platform for food system research, value chain analysis, and agricultural surveys, with offline-first tablet data capture.',
+  status: 'LIVE',
+  isFeatured: true,
+  featuredOrder: 6,
+  accentColor: 'slate',
+  website: 'https://foodsystemsanalytics.com/',
+  githubRepo: 'https://github.com/Amankrah/fsvc',
+  documentationUrl: 'https://foodsystemsanalytics.com/app/',
+  categories: [
+    'Research Tool',
+    'Data Collection',
+    'Value Chain Analysis',
+    'Survey Platform',
+    'Analytics',
+  ],
+  techStack: [
+    'Django 5.0',
+    'Django REST Framework',
+    'FastAPI (analytics microservice)',
+    'PostgreSQL',
+    'Celery',
+    'Redis',
+    'React Native',
+    'Expo',
+    'TypeScript',
+    'Zustand',
+    'Pandas',
+    'NumPy',
+    'SciPy',
+    'Scikit-learn',
+  ],
+  keyFeatures: [
+    'Offline-first mobile data collection with background sync and timestamp-based conflict resolution',
+    '12+ question types including text, numeric, choice, rating, date, GPS location, and images',
+    'Auto-generated respondent IDs, real-time validation, and progress tracking',
+    'Project collaboration with 5 roles across 10 permissions and invitation tokens',
+    'Response quality scoring, respondent tracking, and device metadata capture',
+    'Analytics microservice providing descriptive, inferential, text, and qualitative analysis',
+    'Drag-and-drop form builder with conditional logic and validation rules',
+    'CSV export and data-visualization tools',
+    'Tablet-optimized React Native client for field teams on iOS, Android, and web',
+    'JWT authentication with encrypted token storage and automatic refresh',
+  ],
+  targetUsers: [
+    'Food-system and value-chain researchers',
+    'Universities and research institutes running field surveys',
+    'Agricultural economists and sustainability analysts',
+    'NGO and development-partner programme evaluators',
+    'Field enumerators collecting data offline in the field',
+  ],
+  description: [
+    para(
+      'Food System Value Analytics (FSVC) is a production-ready platform that combines structured data collection with built-in analytics for food-system research, value chain analysis, and agricultural surveys. Researchers design studies, invite field teams, collect responses offline on tablets, and run statistical analysis from a single tool.',
+    ),
+    para(
+      'The platform is built for real field conditions: poor connectivity, multi-enumerator teams, mixed question types including GPS and images, and the need to merge responses cleanly when devices reconnect. It ships with role-based project collaboration and a deployment-ready backend so research groups can stand up studies without engineering overhead.',
+    ),
+  ],
+  methodology: [
+    para('Offline-First Data Capture', 'h3'),
+    para(
+      'The React Native client stores responses locally and syncs in the background when connectivity returns. Timestamp-based conflict resolution reconciles edits across devices, so teams can work in the field without risking data loss or duplication.',
+    ),
+    para('Form Builder and Validation', 'h3'),
+    para(
+      'Researchers compose questionnaires using 12+ question types (text, numeric, single and multiple choice, rating scales, date and datetime, GPS location, images, and more), with drag-and-drop ordering, conditional logic, and validation rules. Auto-generated respondent IDs and real-time validation keep incoming data clean.',
+    ),
+    para('Analytics Microservice', 'h3'),
+    para(
+      'A dedicated FastAPI analytics service runs beside the Django core. It auto-detects variable types and suggests appropriate analyses, then runs descriptive statistics, inferential tests, text analysis (NLTK-backed), and visualizations, all without leaving the platform.',
+    ),
+    para('Collaboration and Security', 'h3'),
+    para(
+      'Projects use role-based access with five roles across ten permissions, plus expiring invitation tokens. Authentication is JWT with encrypted token storage on device and automatic refresh, following standard security practices for sensitive research data.',
+    ),
+  ],
+}
+
 async function run() {
   const overwrite = process.argv.includes('--overwrite')
-  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow, fsfiRwanda]
+  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow, fsfiRwanda, fsvc]
   for (const doc of docs) {
     try {
       const result = overwrite

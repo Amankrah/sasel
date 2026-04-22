@@ -209,7 +209,7 @@ export interface SanityPartnership {
 }
 
 export type TechnologyStatus = 'LIVE' | 'BETA' | 'IN_DEVELOPMENT' | 'DEPRECATED'
-export type TechnologyAccent = 'emerald' | 'amber' | 'indigo' | 'blue' | 'rose'
+export type TechnologyAccent = 'emerald' | 'amber' | 'indigo' | 'blue' | 'rose' | 'slate'
 
 export interface SanityTechnology {
   _id: string
