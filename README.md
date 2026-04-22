@@ -1,264 +1,169 @@
 # SASEL Lab Website
 
-> **Sustainable Agri-food Systems and Environment Lab**  
+> **Sustainable Agri-food Systems and Environment Lab**
 > McGill University
 
-A modern, full-stack web application for managing and showcasing research activities, publications, team members, and collaborations of the SASEL Lab at McGill University.
+A Next.js + Sanity CMS site showcasing the research, members, publications, and software platforms of the SASEL Lab at McGill University.
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## 🌟 Overview
+## Overview
 
-The SASEL Lab website is a comprehensive platform designed to:
-- Showcase ongoing and past research projects
-- Highlight lab members and their contributions
-- Display publications, grants, and awards
-- Manage collaborations and partnerships
-- Provide an easy-to-use content management system for lab administrators
+The site surfaces:
 
-## 🏗️ Technology Stack
+- Lab members (PI, postdocs, PhDs, Masters students, staff, alumni)
+- Research projects
+- Technologies — software platforms built by the lab (e.g. [EcoDish365](https://ecodish365.com/))
+- Publications — auto-synced from Google Scholar via SerpAPI
+- Grants, awards, collaborations, partnerships
+- News and announcements
 
-### Backend
-- **Framework**: Django 5.1.6
-- **API**: Django REST Framework 3.15.0
-- **Database**: SQLite (development), PostgreSQL-ready for production
-- **Media Handling**: Pillow 11.2.1
-- **CORS**: django-cors-headers 4.3.1
-- **Static Files**: WhiteNoise 6.6.0
+Content is authored in **Sanity Studio** (embedded at `/studio`). There is no separate backend — the site is a single Next.js app that reads from Sanity's managed CDN.
 
-### Frontend
-- **Framework**: Next.js 15.2.4 (App Router)
+## Technology stack
+
+- **Framework**: [Next.js 15](https://nextjs.org) (App Router, React 19, Turbopack)
 - **Language**: TypeScript 5
 - **Styling**: Tailwind CSS 4
-- **UI Components**: React 19
-- **HTTP Client**: Axios 1.8.4
-- **Icons**: React Icons 5.5.0
+- **CMS**: [Sanity](https://www.sanity.io/) (managed, embedded Studio at `/studio`)
+- **Publication sync**: [SerpAPI](https://serpapi.com/) Google Scholar Author endpoint, scheduled via Vercel Cron
+- **Hosting**: Vercel (frontend + Sanity CDN)
 
-## 📁 Project Structure
+## Project structure
 
 ```
 sasel_lab/
-├── backend/                    # Django backend application
-│   ├── lab_content/           # Main Django app for content management
-│   │   ├── models.py          # Database models
-│   │   ├── serializers.py     # API serializers
-│   │   ├── views.py           # API views
-│   │   └── urls.py            # API endpoints
-│   ├── sasel_lab_site/        # Django project settings
-│   ├── data_import.py         # CSV data import script
-│   ├── manage.py              # Django management script
-│   └── requirements.txt       # Python dependencies
-│
-├── frontend/                   # Next.js frontend application
+├── frontend/                              # Next.js app (single deployable)
 │   ├── src/
-│   │   ├── app/               # Next.js pages (App Router)
-│   │   │   ├── page.tsx       # Home page
-│   │   │   ├── members/       # Lab members page
-│   │   │   ├── projects/      # Projects page
-│   │   │   └── publications/  # Publications page
-│   │   ├── components/        # Reusable React components
-│   │   │   ├── Navbar.tsx     # Navigation bar
-│   │   │   └── Footer.tsx     # Footer component
-│   │   └── lib/api/           # API client and services
-│   ├── public/                # Static assets
-│   └── package.json           # Node dependencies
-│
-└── data_templates/             # CSV templates for data import (gitignored)
-    ├── lab_members.csv
-    ├── projects.csv
-    ├── publications.csv
-    ├── grants.csv
-    ├── awards.csv
-    ├── collaborations.csv
-    └── partnerships.csv
+│   │   ├── app/                           # App Router pages
+│   │   │   ├── page.tsx                   # Home
+│   │   │   ├── members/                   # /members and /members/[slug]
+│   │   │   ├── projects/                  # /projects and /projects/[slug]
+│   │   │   ├── technologies/              # /technologies and /technologies/[slug]
+│   │   │   ├── publications/              # /publications
+│   │   │   ├── news/                      # /news and /news/[slug]
+│   │   │   ├── studio/                    # Sanity Studio (embedded)
+│   │   │   └── api/cron/sync-publications # Vercel Cron route handler
+│   │   ├── components/                    # Reusable React components
+│   │   ├── lib/serpapi-sync.ts            # Google Scholar → Sanity sync logic
+│   │   └── sanity/
+│   │       ├── schemaTypes/               # member, project, technology, publication,
+│   │       │                              # grant, award, collaboration, partnership, news
+│   │       ├── lib/                       # Sanity client, GROQ queries, TS types
+│   │       └── structure.ts               # Studio navigation
+│   ├── scripts/
+│   │   ├── seed-technologies.ts           # One-off seed for Technology documents
+│   │   ├── import-from-django.ts          # Historical Django → Sanity migration
+│   │   └── sync-publications.ts           # Manual Scholar sync (mirror of the cron)
+│   ├── vercel.json                        # Vercel cron schedule
+│   ├── .env.example                       # Required env vars template
+│   └── package.json
+└── README.md
 ```
 
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
-- **Python 3.10+**
-- **Node.js 18.17.0+**
-- **npm** or **yarn**
-- **Git**
+- **Node.js** 18.17+
+- **npm**
+- A **Sanity** project (dataset id, project id, and an Editor-role API token)
 
-### Backend Setup
-
-1. **Navigate to the backend directory**:
-   ```bash
-   cd backend
-   ```
-
-2. **Create and activate a virtual environment**:
-   ```bash
-   # Windows
-   python -m venv venv
-   venv\Scripts\activate
-
-   # macOS/Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run migrations**:
-   ```bash
-   python manage.py migrate
-   ```
-
-5. **Create a superuser** (for admin access):
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. **Start the development server**:
-   ```bash
-   python manage.py runserver
-   ```
-
-   The backend API will be available at `http://localhost:8000`
-
-### Frontend Setup
-
-1. **Navigate to the frontend directory**:
-   ```bash
-   cd frontend
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Create environment file**:
-   Create a `.env.local` file in the frontend directory:
-   ```env
-   NEXT_PUBLIC_API_URL=http://localhost:8000/api
-   ```
-
-4. **Start the development server**:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-   The frontend will be available at `http://localhost:3000`
-
-## 📊 Features
-
-### Content Management
-- **Lab Members**: Manage profiles of professors, research assistants, students, and alumni
-- **Research Projects**: Showcase current and past research initiatives
-- **Publications**: Display academic papers, articles, and research outputs
-- **Grants**: Track research funding and grant information
-- **Awards**: Highlight achievements and recognitions
-- **Collaborations**: Manage partnerships with other institutions
-- **Partnerships**: Industry and academic partnerships
-
-### API Endpoints
-
-All API endpoints are available at `http://localhost:8000/api/`:
-
-| Endpoint | Description |
-|----------|-------------|
-| `/api/members/` | Lab members list and details |
-| `/api/projects/` | Research projects |
-| `/api/publications/` | Academic publications |
-| `/api/grants/` | Research grants |
-| `/api/awards/` | Awards and recognitions |
-| `/api/collaborations/` | Institutional collaborations |
-| `/api/partnerships/` | Industry/academic partnerships |
-
-### Admin Interface
-
-Access the Django admin panel at `http://localhost:8000/admin/` to manage all content through a user-friendly interface.
-
-## 📝 Data Import
-
-The project includes a data import script for bulk loading content from CSV templates:
+### Setup
 
 ```bash
-cd backend
-python data_import.py
+cd frontend
+cp .env.example .env.local   # then fill in the values
+npm install
+npm run dev
 ```
 
-**Note**: CSV templates are located in the `data_templates/` directory (gitignored for data privacy).
+The site runs at `http://localhost:3000`. The Sanity Studio is embedded at `http://localhost:3000/studio`.
 
-## 🎨 Frontend Features
+### Environment variables
 
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Modern UI**: Clean, professional interface with Tailwind CSS
-- **Type-Safe**: Full TypeScript implementation
-- **Image Carousel**: Dynamic content showcase on the homepage
-- **Partner Logos**: Automated partner logo display
-- **Smooth Navigation**: Intuitive menu and routing
+All defined in `frontend/.env.local` (see `frontend/.env.example`):
 
-## 🔧 Development
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Sanity project id |
+| `NEXT_PUBLIC_SANITY_DATASET` | `production` |
+| `NEXT_PUBLIC_SANITY_API_VERSION` | `2024-01-01` |
+| `SANITY_WRITE_TOKEN` | Editor-role token — needed for seed scripts and the publication sync |
+| `SERPAPI_KEY` | Required for the Google Scholar sync |
+| `CRON_SECRET` | Any random high-entropy string — used to authenticate Vercel Cron calls |
 
-### Backend Development
+## Authoring content
 
-- **Run migrations**: `python manage.py migrate`
-- **Create migrations**: `python manage.py makemigrations`
-- **Run tests**: `python manage.py test`
-- **Access shell**: `python manage.py shell`
+Open `/studio` in the running app (or the deployed URL) and sign in to Sanity. The Studio exposes:
 
-### Frontend Development
+- **Lab Members** — grouped by PI / Current / Alumni
+- **Publications** — filterable by type (journal, conference, book, etc.)
+- **Projects** — filterable by status (active, completed, upcoming)
+- **Technologies** — filterable by lifecycle (live, beta, in development, deprecated)
+- **Grants & Partnerships** — grants, awards, collaborations, partnerships
+- **News & Announcements**
+- **Site Settings** (singleton)
 
-- **Development server**: `npm run dev`
-- **Build for production**: `npm run build`
-- **Start production server**: `npm run start`
-- **Lint code**: `npm run lint`
+## Publication sync (Google Scholar → Sanity)
 
-## 🚢 Deployment
+Publications are kept in sync automatically via a **Vercel Cron** that fires the `/api/cron/sync-publications` route weekly (Mondays 03:00 UTC, configured in `frontend/vercel.json`).
 
-### Backend Deployment
+For each member in Sanity that has a `googleScholarId`, the route fetches their Scholar author page from SerpAPI and upserts publications into Sanity. The sync uses `setIfMissing` so any field you've curated in Studio is **never** overwritten.
 
-1. Set `DEBUG = False` in `settings.py`
-2. Configure environment variables:
-   - `SECRET_KEY`: Django secret key
-   - `DATABASE_URL`: Production database URL
-   - `ALLOWED_HOSTS`: Allowed domain names
-   - `CORS_ALLOWED_ORIGINS`: Frontend domain
-3. Use PostgreSQL for production database
-4. Set up Gunicorn + Nginx for serving
-5. Configure static file serving
+### Manual run (local)
 
-### Frontend Deployment
+```bash
+cd frontend
+npm run sync:publications
+```
 
-1. Set production API URL in environment variables
-2. Build the application: `npm run build`
-3. Deploy to Vercel, Netlify, or custom server
+### Manual run (production)
 
-## 🤝 Contributing
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" \
+  https://<your-site>/api/cron/sync-publications
+```
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature/your-feature`
-5. Open a Pull Request
+## One-off scripts
 
-## 📄 License
+| Script | Purpose |
+|---|---|
+| `npm run seed:technologies` | Create the EcoDish365 Technology document (idempotent) |
+| `npm run import:django` | Import data from a legacy Django export (no longer needed; retained for reference) |
+| `npm run sync:publications` | Trigger the Scholar sync locally |
 
-This project is licensed under the MIT License.
+All scripts require `SANITY_WRITE_TOKEN`; `sync:publications` also requires `SERPAPI_KEY`.
 
-## 👥 Team
+## Development
 
-**SASEL Lab** - Sustainable Agri-food Systems and Environment Lab  
-McGill University
+```bash
+npm run dev       # start with Turbopack at :3000
+npm run build     # production build
+npm run start     # serve the production build
+npm run lint      # ESLint
+```
 
-## 📧 Contact
+## Deployment
 
-For questions or support, please contact the SASEL Lab at McGill University.
+The site deploys to **Vercel** as a single Next.js app:
 
----
+1. Import the repo into Vercel.
+2. Set the project root to `frontend/`.
+3. Add environment variables (`NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `NEXT_PUBLIC_SANITY_API_VERSION`, `SANITY_WRITE_TOKEN`, `SERPAPI_KEY`, `CRON_SECRET`) in Project Settings → Environment Variables.
+4. Deploy. `frontend/vercel.json` registers the weekly Scholar sync cron automatically.
 
-**Built with ❤️ for sustainable agriculture research**
+## Contributing
 
+1. Branch: `git checkout -b feature/your-feature`
+2. Commit: `git commit -m "your change"`
+3. Push and open a Pull Request.
+
+## License
+
+MIT.
+
+## Contact
+
+SASEL Lab — Sustainable Agri-food Systems and Environment Lab, McGill University. For questions, contact the lab directly.

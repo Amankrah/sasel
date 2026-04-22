@@ -1,94 +1,69 @@
-# SASEL Lab Website - Frontend
+# SASEL Lab Website — Frontend
 
-This is the frontend application for the SASEL Lab website. It's built with Next.js 15 and communicates with a Django backend API.
+Next.js 15 app for the SASEL Lab site. Reads content from Sanity; authoring happens in the embedded Studio at `/studio`. No separate backend.
 
-## Features
+## Prerequisites
 
-- Modern UI built with Next.js 15 (App Router) and Tailwind CSS
-- TypeScript for type safety
-- API integration with Django backend
-- Responsive design for all devices
-- Sections for lab members, projects, publications, and more
+- Node.js 18.17+
+- A Sanity project (project id, dataset, Editor-role API token)
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18.17.0 or later
-- npm or yarn package manager
-- Backend API running (Django)
-
-### Installation
-
-1. Install dependencies:
+## Setup
 
 ```bash
+cp .env.example .env.local   # then fill in the values
 npm install
-# or
-yarn install
-```
-
-2. Create a `.env.local` file with the following variables:
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:8000/api
-```
-
-Adjust the URL if your backend runs on a different port or host.
-
-### Development
-
-Start the development server:
-
-```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
+Visit [http://localhost:3000](http://localhost:3000). Studio is at [http://localhost:3000/studio](http://localhost:3000/studio).
 
-### Building for Production
+## Environment variables
 
-Build the application for production:
+See `.env.example`. At minimum you need:
+
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET` (usually `production`)
+- `NEXT_PUBLIC_SANITY_API_VERSION` (e.g. `2024-01-01`)
+- `SANITY_WRITE_TOKEN` — only needed for seed scripts and the publication sync (Editor role)
+- `SERPAPI_KEY` — required for the Google Scholar sync
+- `CRON_SECRET` — any random high-entropy string used by the Vercel Cron route
+
+## Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Dev server (Turbopack) |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
+| `npm run seed:technologies` | Seed the EcoDish365 Technology document |
+| `npm run import:django` | Import a legacy Django export (historical) |
+| `npm run sync:publications` | Pull latest Google Scholar publications into Sanity |
+
+## Project structure
+
+- `src/app/` — App Router pages (members, projects, technologies, publications, news, studio, api/cron)
+- `src/components/` — Reusable React components
+- `src/sanity/` — Sanity schemas, client, GROQ queries, TS types, Studio structure
+- `src/lib/serpapi-sync.ts` — Shared logic for the Google Scholar sync (used by both the cron route and the CLI script)
+- `scripts/` — One-off Node scripts (`tsx`-run)
+- `vercel.json` — Weekly cron schedule for `/api/cron/sync-publications`
+
+## Publication sync
+
+`/api/cron/sync-publications` is a Route Handler fired weekly by Vercel Cron (Mondays 03:00 UTC). It authenticates via `Authorization: Bearer ${CRON_SECRET}`, fetches every member with a `googleScholarId` from Sanity, and upserts their publications via SerpAPI. It uses `setIfMissing`, so any fields you've edited in Studio are **never** overwritten.
+
+Trigger manually:
 
 ```bash
-npm run build
-# or
-yarn build
+# locally
+npm run sync:publications
+
+# on the deployed site
+curl -H "Authorization: Bearer $CRON_SECRET" \
+  https://<your-site>/api/cron/sync-publications
 ```
 
-You can then start the production server:
+## Deployment
 
-```bash
-npm run start
-# or
-yarn start
-```
-
-## Project Structure
-
-- `src/app/` - Next.js App Router pages and layouts
-- `src/components/` - Reusable React components
-- `src/lib/api/` - API client and services for backend communication
-- `public/` - Static files like images and icons
-
-## Backend API Integration
-
-The frontend connects to the Django backend API at the URL specified in the `.env.local` file. The API services are defined in `src/lib/api/services.ts` and use Axios for HTTP requests.
-
-The available API endpoints include:
-- `/api/members/` - Lab members
-- `/api/projects/` - Research projects
-- `/api/publications/` - Academic publications
-- `/api/grants/` - Research grants
-- `/api/awards/` - Awards
-- `/api/collaborations/` - Collaborations
-- `/api/partnerships/` - Partnerships
-
-## Contributing
-
-1. Create a feature branch (`git checkout -b feature/your-feature`)
-2. Commit your changes (`git commit -m 'Add some feature'`)
-3. Push to the branch (`git push origin feature/your-feature`)
-4. Open a Pull Request
+Deploy to Vercel with `frontend/` as the project root. Set all env vars in Project Settings → Environment Variables. `vercel.json` picks up the cron schedule automatically.
