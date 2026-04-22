@@ -351,9 +351,81 @@ const soyaFlow = {
   ],
 }
 
+const fsfiRwanda = {
+  _id: 'technology-fsfi-rwanda',
+  _type: 'technology',
+  title: 'FSFI (Rwanda)',
+  slug: { _type: 'slug', current: 'fsfi-rwanda' },
+  tagline:
+    'Food Systems Financing Intelligence platform helping the Government of Rwanda and its development partners allocate funds strategically across food systems using 37 indicators aligned with PSTA 5.',
+  status: 'LIVE',
+  isFeatured: true,
+  featuredOrder: 5,
+  accentColor: 'rose',
+  website: 'https://rwanda.fsfvi.ai/',
+  githubRepo: 'https://github.com/Amankrah/fsfvi',
+  categories: [
+    'Public Finance',
+    'Food Systems',
+    'Decision Support',
+    'Policy and Planning',
+    'Budget Analytics',
+  ],
+  techStack: [
+    'TypeScript',
+    'Next.js',
+    'Python',
+    'Rust',
+    'Django',
+  ],
+  keyFeatures: [
+    'Food System Financing Stress Index (FSFSI) computed from 37 national indicators across 8 components',
+    'National financing stress tracking for Crop Production, Animal Systems, Post-Harvest, Markets, Nutrition, Finance, Research, and Environment',
+    'Programme-linked spending analysis with multi-year budget tracing',
+    'Planning optimization and scenario stress-testing for policy trade-offs',
+    'Geographic and fiscal-year trend monitoring',
+    'Government credential authentication with role-scoped dashboards',
+    'Alignment with Rwanda Strategic Plan for Agriculture Transformation (PSTA 5)',
+    'Evidence base for donor coordination and alignment discussions',
+  ],
+  targetUsers: [
+    'Rwanda Ministry of Agriculture and Animal Resources',
+    'Other Rwandan government ministries and planning bodies',
+    'Development partners and donors engaged in Rwanda',
+    'International Food Policy Research Institute (IFPRI) and research partners',
+    'National statistical and budget analysts',
+  ],
+  description: [
+    para(
+      'FSFI (Food Systems Financing Intelligence) is a decision-support platform created for the Government of Rwanda, developed collaboratively with the Ministry of Agriculture and Animal Resources, AKADEMIYA2063, IFPRI, and McGill University. It helps leaders see how public and partner funding flows across the food system, where stress is building up, and which programmes are moving the needle on national strategy.',
+    ),
+    para(
+      'Food system budgets must cover many priorities at once. FSFI turns that complexity into clear answers: where money does the most good, how spending links to resilience, and how to explain trade-offs to development partners and the public.',
+    ),
+  ],
+  methodology: [
+    para('FSFSI Framework', 'h3'),
+    para(
+      'The platform computes the Food System Financing Stress Index (FSFSI), which aggregates 37 national indicators organized into 8 components: Crop Production, Animal Systems, Post-Harvest, Markets, Nutrition, Finance, Research, and Environment. Each component captures financing pressures and performance volatility relative to PSTA 5 targets.',
+    ),
+    para('Budget Mapping', 'h3'),
+    para(
+      'A budget-lines-to-indicators mapping traces every programme and budget line to the food-system indicators it influences, enabling multi-year spending analysis and scenario comparisons at both component and indicator level.',
+    ),
+    para('Scenario Stress-Testing', 'h3'),
+    para(
+      'Planning tools let users reallocate funds or adjust programme targets and see how the stress index shifts across components, supporting evidence-based budget negotiations and donor alignment.',
+    ),
+    para('Architecture', 'h3'),
+    para(
+      'The stack combines a Next.js and TypeScript frontend, a Python backend for pipelines and business logic, and a Rust computational layer for performance-critical index calculations. Government credential authentication and role-scoped dashboards keep sensitive budget data controlled.',
+    ),
+  ],
+}
+
 async function run() {
   const overwrite = process.argv.includes('--overwrite')
-  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow]
+  const docs = [ecodish365, greenMeansGo, proteinProcess, soyaFlow, fsfiRwanda]
   for (const doc of docs) {
     try {
       const result = overwrite
