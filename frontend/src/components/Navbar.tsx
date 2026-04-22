@@ -77,7 +77,7 @@ const Navbar = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="mailto:ebenezer.kwofie@mcgill.ca"
+              href="mailto:sasel@mcgill.ca"
               className="inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-teal-600 text-white text-sm font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,7 +146,7 @@ const Navbar = () => {
           {/* Mobile CTA */}
           <div className="pt-4 mt-4 border-t border-gray-200">
             <a
-              href="mailto:ebenezer.kwofie@mcgill.ca"
+              href="mailto:sasel@mcgill.ca"
               className="flex items-center justify-center px-4 py-3 rounded-lg bg-gradient-to-r from-green-600 to-teal-600 text-white text-base font-semibold hover:from-green-700 hover:to-teal-700 transition-all duration-200 shadow-md"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

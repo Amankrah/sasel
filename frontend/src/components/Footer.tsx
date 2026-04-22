@@ -177,10 +177,10 @@ const Footer = () => {
                   <FaEnvelope className="flex-shrink-0" size={14} />
                 </div>
                 <a 
-                  href="mailto:ebenezer.kwofie@mcgill.ca" 
+                  href="mailto:sasel@mcgill.ca" 
                   className="text-green-600 hover:text-green-800 transition-colors font-semibold"
                 >
-                  ebenezer.kwofie@mcgill.ca
+                  sasel@mcgill.ca
                 </a>
               </div>
             </address>
