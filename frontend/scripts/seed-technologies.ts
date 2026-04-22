@@ -198,8 +198,83 @@ const greenMeansGo = {
   ],
 }
 
+const proteinProcess = {
+  _id: 'technology-proteinprocess',
+  _type: 'technology',
+  title: 'ProteinProcessIO',
+  slug: { _type: 'slug', current: 'proteinprocess' },
+  tagline:
+    'Complete protein processing simulation — from raw seed to fractionated flour, with GPU-accelerated physics validated against NRC Canada experimental data.',
+  status: 'LIVE',
+  isFeatured: true,
+  featuredOrder: 3,
+  accentColor: 'amber',
+  website: 'https://proteinprocess.io/',
+  githubRepo: 'https://github.com/Amankrah/airclassifier',
+  documentationUrl: 'https://proteinprocess.io/docs',
+  categories: [
+    'Process Simulation',
+    'Plant Protein',
+    'Dry Fractionation',
+    'Computational Physics',
+    'Research Tool',
+  ],
+  techStack: [
+    'Python',
+    'NVIDIA Warp (GPU)',
+    'PySide6 / Qt6',
+    'PyVista (3D visualization)',
+    'NumPy / SciPy',
+    'Inno Setup (Windows installer)',
+  ],
+  keyFeatures: [
+    'Three coupled stages: RF pretreatment, hammer milling, and air classification',
+    'GP-15 RF dielectric heating with 9-step multiphysics solver',
+    'Hammer-mill simulation with energy-based comminution and real-time PSD (D10/D50/D90)',
+    'Multi-stage air classifier with Lagrangian particle tracking up to 5,000g',
+    'Validated against NRC Canada data (e.g., simulated D50 23.6 µm vs measured 23.7 µm)',
+    'Material presets for yellow pea, faba bean, and red lentil',
+    '40+ parametric 3D equipment components with interactive viewport',
+    'Full mass-balance tracking across the pipeline with multi-pass recirculation',
+    'VTK, CSV, JSON, and NumPy export; three cinematic camera modes',
+    'Free for research and academic use',
+  ],
+  targetUsers: [
+    'Academic researchers in agricultural and food process engineering',
+    'Plant protein scientists and formulators',
+    'Institutions studying dry fractionation',
+    'Industry partners exploring process optimization before physical trials',
+  ],
+  description: [
+    para(
+      'ProteinProcessIO is a physics-based desktop simulation platform for plant protein fractionation. It couples three processing stages — RF dielectric pretreatment, hammer milling, and multi-stage air classification — into a single pipeline, letting researchers run virtual experiments that would be expensive, slow, or simply unobservable on physical equipment.',
+    ),
+    para(
+      'The platform was developed at McGill University in partnership with the National Research Council Canada, with concept work starting in 2023 and a public release in 2025. It emphasizes scientific validation, GPU-accelerated performance, and accessibility — offered free for research and academic use.',
+    ),
+  ],
+  methodology: [
+    para('Coupled Multiphysics', 'h3'),
+    para(
+      'The pretreatment stage solves a 9-step physics loop: RF field evaluation at 27.12 MHz, volumetric dielectric heating, thermal conduction, Fickian moisture diffusion with temperature-dependent coefficients, evaporation kinetics, latent-heat release, and moisture-dependent thermal conductivity via the Luikov model. Adaptive PLC control tracks electrode gap, belt speed, temperature, and arc events.',
+    ),
+    para('Energy-Based Comminution', 'h3'),
+    para(
+      "The hammer mill uses calibrated selection and breakage functions with Rosin–Rammler daughter distributions, screen classification with (1-t)^4 passage taper, and real-time particle size distribution evolution. Thermal modeling of the 50 kg steel housing accounts for friction heating and convective cooling. Mass conservation is enforced throughout.",
+    ),
+    para('Lagrangian Air Classification', 'h3'),
+    para(
+      'The classifier tracks particles through venturi, zigzag preclassifier, wheel (up to 3,000 RPM), and a three-stage cyclone system. Drag uses Schiller–Naumann for spherical particles and Haider–Levenspiel for non-spherical shapes. Gravity, buoyancy, inelastic wall collisions, bag-filter exhaust cleaning, and configurable bypass ratios are all modeled. GPU-accelerated solvers (NVIDIA Warp) deliver interactive performance.',
+    ),
+    para('Validation', 'h3'),
+    para(
+      'Models are calibrated against NRC Canada experimental data — PLC logs, temperature measurements, NIR moisture analysis, and measured particle-size distributions — so simulation results track physical equipment closely.',
+    ),
+  ],
+}
+
 async function run() {
-  const docs = [ecodish365, greenMeansGo]
+  const docs = [ecodish365, greenMeansGo, proteinProcess]
   for (const doc of docs) {
     try {
       const result = await client.createIfNotExists(doc)
