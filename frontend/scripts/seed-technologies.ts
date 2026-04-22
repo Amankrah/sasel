@@ -64,7 +64,7 @@ const ecodish365 = {
   title: 'EcoDish365',
   slug: { _type: 'slug', current: 'ecodish365' },
   tagline:
-    "The world's first environmental nutrition decision system — uniting nutrition science, environmental impact, and health outcomes.",
+    "The world's first environmental nutrition decision system, uniting nutrition science, environmental impact, and health outcomes.",
   status: 'LIVE',
   isFeatured: true,
   featuredOrder: 1,
@@ -89,9 +89,9 @@ const ecodish365 = {
     '150+ nutrition and health metrics',
     '18 environmental impact categories',
     'Health Star Rating (HSR)',
-    'Food Compass Score (FCS) — 9 domains, 54 attributes',
-    'Healthy Eating Food Index (HEFI) — 10 components',
-    'Health & Nutritional Impact (HENI) — DALY-based',
+    'Food Compass Score (FCS): 9 domains, 54 attributes',
+    'Healthy Eating Food Index (HEFI): 10 components',
+    'Health & Nutritional Impact (HENI): DALY-based',
     'ReCiPe 2016 midpoint LCA with Canadian regionalization',
     'Environmental monetization in CAD',
     'Custom meal planning with instant scoring',
@@ -132,7 +132,7 @@ const greenMeansGo = {
   title: 'Green Means Go',
   slug: { _type: 'slug', current: 'green-means-go' },
   tagline:
-    'Life Cycle Assessment built for African food systems — helping farms and processors measure impact and reach global markets.',
+    'Life Cycle Assessment built for African food systems, helping farms and processors measure impact and reach global markets.',
   status: 'BETA',
   isFeatured: true,
   featuredOrder: 2,
@@ -176,7 +176,7 @@ const greenMeansGo = {
   ],
   description: [
     para(
-      'Green Means Go is a Life Cycle Assessment platform built for the African agri-food value chain. It helps smallholder and commercial farms, processors, and exporters understand the environmental footprint of their operations — and use that evidence to reach global markets that increasingly require verified sustainability data.',
+      'Green Means Go is a Life Cycle Assessment platform built for the African agri-food value chain. It helps smallholder and commercial farms, processors, and exporters understand the environmental footprint of their operations, and use that evidence to reach global markets that increasingly require verified sustainability data.',
     ),
     para(
       'The platform launches with country-specific support for Ghana and Nigeria, with expansion planned across the continent. Farm assessments complete in 15–20 minutes and processing assessments in 10–15 minutes, producing ISO 14040/14044-compliant results that align with EU CBAM, EUDR, and AfCFTA requirements.',
@@ -185,7 +185,7 @@ const greenMeansGo = {
   methodology: [
     para('Life Cycle Assessment', 'h3'),
     para(
-      'Assessments follow the ISO 14040 and ISO 14044 standards. Results are reported across eight midpoint impact categories — including climate (kg CO₂-equivalent), water use (m³), land use (m²-years), and biodiversity — and three endpoint categories: human health, ecosystem quality, and resource scarcity.',
+      'Assessments follow the ISO 14040 and ISO 14044 standards. Results are reported across eight midpoint impact categories (including climate in kg CO₂-equivalent, water use in m³, land use in m²-years, and biodiversity) and three endpoint categories: human health, ecosystem quality, and resource scarcity.',
     ),
     para('Africa-Specific Data', 'h3'),
     para(
@@ -204,7 +204,7 @@ const proteinProcess = {
   title: 'ProteinProcessIO',
   slug: { _type: 'slug', current: 'proteinprocess' },
   tagline:
-    'Complete protein processing simulation — from raw seed to fractionated flour, with GPU-accelerated physics validated against NRC Canada experimental data.',
+    'Complete protein processing simulation, from raw seed to fractionated flour, with GPU-accelerated physics validated against NRC Canada experimental data.',
   status: 'LIVE',
   isFeatured: true,
   featuredOrder: 3,
@@ -247,10 +247,10 @@ const proteinProcess = {
   ],
   description: [
     para(
-      'ProteinProcessIO is a physics-based desktop simulation platform for plant protein fractionation. It couples three processing stages — RF dielectric pretreatment, hammer milling, and multi-stage air classification — into a single pipeline, letting researchers run virtual experiments that would be expensive, slow, or simply unobservable on physical equipment.',
+      'ProteinProcessIO is a physics-based desktop simulation platform for plant protein fractionation. It couples three processing stages (RF dielectric pretreatment, hammer milling, and multi-stage air classification) into a single pipeline, letting researchers run virtual experiments that would be expensive, slow, or simply unobservable on physical equipment.',
     ),
     para(
-      'The platform was developed at McGill University in partnership with the National Research Council Canada, with concept work starting in 2023 and a public release in 2025. It emphasizes scientific validation, GPU-accelerated performance, and accessibility — offered free for research and academic use.',
+      'The platform was developed at McGill University in partnership with the National Research Council Canada, with concept work starting in 2023 and a public release in 2025. It emphasizes scientific validation, GPU-accelerated performance, and accessibility, and is offered free for research and academic use.',
     ),
   ],
   methodology: [
@@ -268,17 +268,20 @@ const proteinProcess = {
     ),
     para('Validation', 'h3'),
     para(
-      'Models are calibrated against NRC Canada experimental data — PLC logs, temperature measurements, NIR moisture analysis, and measured particle-size distributions — so simulation results track physical equipment closely.',
+      'Models are calibrated against NRC Canada experimental data (PLC logs, temperature measurements, NIR moisture analysis, and measured particle-size distributions), so simulation results track physical equipment closely.',
     ),
   ],
 }
 
 async function run() {
+  const overwrite = process.argv.includes('--overwrite')
   const docs = [ecodish365, greenMeansGo, proteinProcess]
   for (const doc of docs) {
     try {
-      const result = await client.createIfNotExists(doc)
-      console.log(`✔ ${doc.title} (${result._id})`)
+      const result = overwrite
+        ? await client.createOrReplace(doc)
+        : await client.createIfNotExists(doc)
+      console.log(`✔ ${doc.title} (${result._id})${overwrite ? ' [overwritten]' : ''}`)
     } catch (err) {
       console.error(`✖ Failed to seed ${doc.title}:`, err)
       process.exitCode = 1

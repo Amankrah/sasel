@@ -6,7 +6,7 @@ import { syncPublications } from '@/lib/serpapi-sync'
 // Also accessible via manual GET with the Authorization header for testing.
 
 export const runtime = 'nodejs'
-export const maxDuration = 300 // 5 minutes — SerpAPI round-trips per member can be slow.
+export const maxDuration = 300 // 5 minutes; SerpAPI round-trips per member can be slow.
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {

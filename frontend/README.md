@@ -1,4 +1,4 @@
-# SASEL Lab Website — Frontend
+# SASEL Lab Website (Frontend)
 
 Next.js 15 app for the SASEL Lab site. Reads content from Sanity; authoring happens in the embedded Studio at `/studio`. No separate backend.
 
@@ -24,9 +24,9 @@ See `.env.example`. At minimum you need:
 - `NEXT_PUBLIC_SANITY_PROJECT_ID`
 - `NEXT_PUBLIC_SANITY_DATASET` (usually `production`)
 - `NEXT_PUBLIC_SANITY_API_VERSION` (e.g. `2024-01-01`)
-- `SANITY_WRITE_TOKEN` — only needed for seed scripts and the publication sync (Editor role)
-- `SERPAPI_KEY` — required for the Google Scholar sync
-- `CRON_SECRET` — any random high-entropy string used by the Vercel Cron route
+- `SANITY_WRITE_TOKEN`, only needed for seed scripts and the publication sync (Editor role)
+- `SERPAPI_KEY`, required for the Google Scholar sync
+- `CRON_SECRET`, any random high-entropy string used by the Vercel Cron route
 
 ## Scripts
 
@@ -42,12 +42,12 @@ See `.env.example`. At minimum you need:
 
 ## Project structure
 
-- `src/app/` — App Router pages (members, projects, technologies, publications, news, studio, api/cron)
-- `src/components/` — Reusable React components
-- `src/sanity/` — Sanity schemas, client, GROQ queries, TS types, Studio structure
-- `src/lib/serpapi-sync.ts` — Shared logic for the Google Scholar sync (used by both the cron route and the CLI script)
-- `scripts/` — One-off Node scripts (`tsx`-run)
-- `vercel.json` — Weekly cron schedule for `/api/cron/sync-publications`
+- `src/app/`, App Router pages (members, projects, technologies, publications, news, studio, api/cron)
+- `src/components/`, Reusable React components
+- `src/sanity/`, Sanity schemas, client, GROQ queries, TS types, Studio structure
+- `src/lib/serpapi-sync.ts`, Shared logic for the Google Scholar sync (used by both the cron route and the CLI script)
+- `scripts/`, One-off Node scripts (`tsx`-run)
+- `vercel.json`, Weekly cron schedule for `/api/cron/sync-publications`
 
 ## Publication sync
 

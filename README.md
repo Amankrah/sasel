@@ -14,12 +14,12 @@ The site surfaces:
 
 - Lab members (PI, postdocs, PhDs, Masters students, staff, alumni)
 - Research projects
-- Technologies — software platforms built by the lab (e.g. [EcoDish365](https://ecodish365.com/))
-- Publications — auto-synced from Google Scholar via SerpAPI
+- Technologies, software platforms built by the lab (e.g. [EcoDish365](https://ecodish365.com/))
+- Publications, auto-synced from Google Scholar via SerpAPI
 - Grants, awards, collaborations, partnerships
 - News and announcements
 
-Content is authored in **Sanity Studio** (embedded at `/studio`). There is no separate backend — the site is a single Next.js app that reads from Sanity's managed CDN.
+Content is authored in **Sanity Studio** (embedded at `/studio`). There is no separate backend, the site is a single Next.js app that reads from Sanity's managed CDN.
 
 ## Technology stack
 
@@ -90,19 +90,19 @@ All defined in `frontend/.env.local` (see `frontend/.env.example`):
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Sanity project id |
 | `NEXT_PUBLIC_SANITY_DATASET` | `production` |
 | `NEXT_PUBLIC_SANITY_API_VERSION` | `2024-01-01` |
-| `SANITY_WRITE_TOKEN` | Editor-role token — needed for seed scripts and the publication sync |
+| `SANITY_WRITE_TOKEN` | Editor-role token, needed for seed scripts and the publication sync |
 | `SERPAPI_KEY` | Required for the Google Scholar sync |
-| `CRON_SECRET` | Any random high-entropy string — used to authenticate Vercel Cron calls |
+| `CRON_SECRET` | Any random high-entropy string, used to authenticate Vercel Cron calls |
 
 ## Authoring content
 
 Open `/studio` in the running app (or the deployed URL) and sign in to Sanity. The Studio exposes:
 
-- **Lab Members** — grouped by PI / Current / Alumni
-- **Publications** — filterable by type (journal, conference, book, etc.)
-- **Projects** — filterable by status (active, completed, upcoming)
-- **Technologies** — filterable by lifecycle (live, beta, in development, deprecated)
-- **Grants & Partnerships** — grants, awards, collaborations, partnerships
+- **Lab Members**, grouped by PI / Current / Alumni
+- **Publications**, filterable by type (journal, conference, book, etc.)
+- **Projects**, filterable by status (active, completed, upcoming)
+- **Technologies**, filterable by lifecycle (live, beta, in development, deprecated)
+- **Grants & Partnerships**, grants, awards, collaborations, partnerships
 - **News & Announcements**
 - **Site Settings** (singleton)
 
@@ -166,4 +166,4 @@ MIT.
 
 ## Contact
 
-SASEL Lab — Sustainable Agri-food Systems and Environment Lab, McGill University. For questions, contact the lab directly.
+SASEL Lab, Sustainable Agri-food Systems and Environment Lab, McGill University. For questions, contact the lab directly.
