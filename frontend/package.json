@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed:technologies": "tsx scripts/seed-technologies.ts",
+    "seed:projects": "tsx scripts/seed-projects.ts",
     "import:django": "tsx scripts/import-from-django.ts",
     "sync:publications": "tsx scripts/sync-publications.ts"
   },
