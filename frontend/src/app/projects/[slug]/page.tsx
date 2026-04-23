@@ -95,13 +95,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
         {/* Featured Image */}
         {imageUrl && (
-          <div className="mb-8 rounded-xl overflow-hidden shadow-2xl">
+          <div className="mb-8 rounded-xl overflow-hidden shadow-2xl bg-white">
             <div className="relative w-full aspect-video">
               <Image
                 src={imageUrl}
                 alt={project.featuredImage?.alt || project.title}
                 fill
-                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-contain p-6"
                 priority
               />
             </div>

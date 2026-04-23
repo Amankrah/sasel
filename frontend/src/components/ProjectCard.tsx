@@ -18,15 +18,14 @@ export default function ProjectCard({ project, variant = 'default' }: ProjectCar
     return (
       <div className={`backdrop-blur-md bg-white/60 border border-white/80 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] ${!isActive ? 'opacity-90' : ''}`}>
         {imageUrl ? (
-          <div className="h-48 overflow-hidden relative">
+          <div className="h-48 overflow-hidden relative bg-white">
             <Image
               src={imageUrl}
               alt={project.featuredImage?.alt || project.title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover"
+              className="object-contain p-4"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
             {/* Status Badge on Image */}
             <div className="absolute top-3 right-3">
               {isActive ? (
