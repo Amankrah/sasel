@@ -14,7 +14,6 @@ const CATEGORY_ORDER: PartnerCategory[] = [
   'ACADEMIC',
   'GOVERNMENT',
   'INDUSTRY',
-  'ADVISORY',
 ];
 
 const CATEGORY_META: Record<
@@ -47,13 +46,6 @@ const CATEGORY_META: Record<
       'Companies, NGOs, and sector associations that co-develop and deploy our technologies.',
     accent: 'from-purple-500 to-fuchsia-600',
     dot: 'bg-purple-500',
-  },
-  ADVISORY: {
-    label: 'Advisory Boards',
-    description:
-      'External advisory bodies providing strategic, scientific, ethical, and security oversight.',
-    accent: 'from-rose-500 to-pink-600',
-    dot: 'bg-rose-500',
   },
 };
 
@@ -111,7 +103,6 @@ export default async function PartnersPage() {
     ACADEMIC: [],
     GOVERNMENT: [],
     INDUSTRY: [],
-    ADVISORY: [],
   };
   for (const p of partners) {
     grouped[p.category]?.push(p);

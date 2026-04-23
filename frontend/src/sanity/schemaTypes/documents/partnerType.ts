@@ -37,7 +37,6 @@ export const partnerType = defineType({
           { title: 'Academic / Research', value: 'ACADEMIC' },
           { title: 'Government / Agency', value: 'GOVERNMENT' },
           { title: 'Industry / NGO', value: 'INDUSTRY' },
-          { title: 'Advisory Board', value: 'ADVISORY' },
         ],
         layout: 'radio',
       },

@@ -229,7 +229,7 @@ export interface SanityPartnership {
   image?: SanityImage
 }
 
-export type PartnerCategory = 'FUNDER' | 'ACADEMIC' | 'GOVERNMENT' | 'INDUSTRY' | 'ADVISORY'
+export type PartnerCategory = 'FUNDER' | 'ACADEMIC' | 'GOVERNMENT' | 'INDUSTRY'
 
 export interface SanityPartner {
   _id: string

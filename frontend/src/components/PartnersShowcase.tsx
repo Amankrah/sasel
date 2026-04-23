@@ -51,21 +51,9 @@ const CATEGORY_META: Record<PartnerCategory, { label: string; accent: string; ri
     iconColor: 'text-purple-600',
     dot: 'bg-purple-500',
   },
-  ADVISORY: {
-    label: 'Advisory Boards',
-    accent: 'from-rose-500 to-pink-600',
-    ring: 'hover:border-rose-300/60',
-    iconColor: 'text-rose-600',
-    dot: 'bg-rose-500',
-  },
 };
 
-const DISPLAY_ORDER: PartnerCategory[] = [
-  'ACADEMIC',
-  'GOVERNMENT',
-  'INDUSTRY',
-  'ADVISORY',
-];
+const DISPLAY_ORDER: PartnerCategory[] = ['ACADEMIC', 'GOVERNMENT', 'INDUSTRY'];
 
 function PartnerTile({ partner }: { partner: SanityPartner }) {
   const logoUrl = partner.logo ? urlForImage(partner.logo).width(320).url() : null;
@@ -152,7 +140,6 @@ export default function PartnersShowcase() {
     ACADEMIC: false,
     GOVERNMENT: false,
     INDUSTRY: false,
-    ADVISORY: false,
   });
 
   useEffect(() => {
@@ -177,7 +164,6 @@ export default function PartnersShowcase() {
       ACADEMIC: [],
       GOVERNMENT: [],
       INDUSTRY: [],
-      ADVISORY: [],
     };
     for (const p of partners) {
       byCategory[p.category]?.push(p);
@@ -228,7 +214,7 @@ export default function PartnersShowcase() {
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {detailCategories.map((category) => {
                 const meta = CATEGORY_META[category];
                 const items = grouped[category];

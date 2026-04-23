@@ -62,7 +62,7 @@ async function uploadLogo(
   }
 }
 
-type Category = 'FUNDER' | 'ACADEMIC' | 'GOVERNMENT' | 'INDUSTRY' | 'ADVISORY'
+type Category = 'FUNDER' | 'ACADEMIC' | 'GOVERNMENT' | 'INDUSTRY'
 
 interface PartnerInput {
   slug: string
@@ -134,12 +134,6 @@ const partners: PartnerInput[] = [
   { slug: 'dolphin-data', name: 'Dolphin Data Development', category: 'INDUSTRY', country: 'Canada', featuredOrder: 110 },
   { slug: 'scjs-europe', name: 'Sustainable Criminal Justice Solutions Europe (SCJS)', category: 'INDUSTRY', country: 'Belgium', featuredOrder: 120, description: 'DEFENSEFOOD project coordinator.' },
   { slug: 'jefo', name: 'JEFO', category: 'INDUSTRY', country: 'Canada', website: 'https://jefo.ca/', logoFile: 'jefo.jpg', featuredOrder: 130 },
-
-  // ----- Advisory Boards (DEFENSEFOOD external advisory) -----
-  { slug: 'efsa', name: 'European Food Safety Authority (EFSA)', category: 'ADVISORY', country: 'European Union', website: 'https://www.efsa.europa.eu/', featuredOrder: 10 },
-  { slug: 'europol', name: 'Europol', category: 'ADVISORY', country: 'European Union', website: 'https://www.europol.europa.eu/', featuredOrder: 20 },
-  { slug: 'opcw', name: 'Organisation for the Prohibition of Chemical Weapons (OPCW)', category: 'ADVISORY', country: 'The Hague', website: 'https://www.opcw.org/', featuredOrder: 30 },
-  { slug: 'iaea', name: 'International Atomic Energy Agency (IAEA)', category: 'ADVISORY', country: 'Vienna', website: 'https://www.iaea.org/', featuredOrder: 40 },
 ]
 
 async function findReferrers(id: string) {

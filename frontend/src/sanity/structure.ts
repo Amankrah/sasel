@@ -280,14 +280,6 @@ export const structure: StructureResolver = (S) =>
                     .apiVersion('2024-01-01')
                 ),
               S.listItem()
-                .title('Advisory Board')
-                .child(
-                  S.documentList()
-                    .title('Advisory Board')
-                    .filter('_type == "partner" && category == "ADVISORY"')
-                    .apiVersion('2024-01-01')
-                ),
-              S.listItem()
                 .title('Featured Sponsors')
                 .child(
                   S.documentList()
