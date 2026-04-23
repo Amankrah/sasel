@@ -271,6 +271,170 @@ const fci4africa = {
 }
 
 // ---------------------------------------------------------------------------
+// DEFENSEFOOD
+// ---------------------------------------------------------------------------
+
+const defensefood = {
+  _id: 'project-defensefood',
+  _type: 'project',
+  title: 'DEFENSEFOOD',
+  slug: { _type: 'slug', current: 'defensefood' },
+  shortDescription:
+    'A Horizon Europe project building a resilient European food chain against intentional and accidental chemical, biological, and radiological contamination through AI, advanced detection, and multi-stakeholder collaboration. McGill leads two WP5 tasks on knowledge management and adaptive training.',
+  status: 'ACTIVE',
+  isFeatured: true,
+  researchAreas: [
+    'Food Safety',
+    'Food Defense',
+    'CBR Threats',
+    'AI Knowledge Platform',
+    'Food Systems Resilience',
+    'Horizon Europe',
+    'Biosecurity',
+    'Large Language Models',
+    'Adaptive Training',
+    'Food Threat Blueprint',
+    'HACCP',
+    'TACCP',
+    'VACCP',
+    'Horizon Scanning',
+    'Cereals',
+    'Shellfish',
+    'Water Safety',
+  ],
+  description: [
+    para('Overview', 'h2'),
+    para(
+      'DEFENSEFOOD is a Horizon Europe project that addresses one of the most under-examined threats to European public health and critical infrastructure: the intentional and accidental contamination of the food supply chain with chemical, biological, and radiological (CBR) agents. The World Health Organization ranks food-system contamination among the primary global public health threats of the 21st century, and recent geopolitical developments, including hybrid warfare activity and climate-driven shifts in food systems, have sharpened the urgency.',
+    ),
+    para(
+      'The project moves European food safety practice from a reactive posture to a proactive and preventive one. It integrates AI-driven horizon scanning, Earth observation, advanced laboratory detection, simulation-based decision support, behavioural science, and cross-border capacity building into a single resilience framework. The framework is tested on three high-vulnerability supply chains: cereals, shellfish, and water.',
+    ),
+    para(
+      'The consortium brings together 13 partners across 9 countries, including national food safety authorities, research institutes, a defence university, and industry federations, with an External Expert Advisory Board that includes EFSA, Europol, OPCW, and IAEA.',
+    ),
+
+    para('Project Objectives', 'h2'),
+    bullet('Develop an AI-driven horizon scanning dashboard for anticipating food system shocks.'),
+    bullet('Develop rapid targeted and untargeted detection methods for CBR agents.'),
+    bullet('Develop and test methodologies for reducing the impact of CBR threats and accelerating recovery.'),
+    bullet('Enhance coordination among EU and international security authorities.'),
+    bullet('Create knowledge management and decision-support tools for stakeholders across the chain.'),
+    bullet('Improve awareness and preparedness of food system actors through training and capacity building.'),
+
+    para('Resilience Framework', 'h2'),
+    para(
+      'DEFENSEFOOD is built around three measurable dimensions of food chain resilience: the time factors (incubation, detection, recovery), the degree of impact of a shock, and the degree of recovery. The project operationalises these dimensions across six thematic work packages that trace the full arc of a contamination event, from anticipation through detection, impact reduction, learning, and knowledge management.',
+    ),
+
+    para('Use Cases', 'h2'),
+    para(
+      'Three supply chains were selected for their distinct vulnerability profiles and combined reach across the wider food system.',
+    ),
+    bullet(
+      'Cereals: staple crops with global food security implications, vulnerable to biological threats (including climate-exacerbated mycotoxin risk) and radiological contamination.',
+    ),
+    bullet(
+      'Shellfish: filter feeders that concentrate waterborne chemical toxins and biological agents, often consumed raw or minimally processed.',
+    ),
+    bullet(
+      'Water: a cross-cutting medium that can propagate contamination rapidly across multiple food chains and is increasingly stressed by climate change.',
+    ),
+
+    para('Why This Matters for the Lab', 'h2'),
+    para(
+      'DEFENSEFOOD extends the lab\u2019s ongoing work on AI-enabled decision support for food systems, linking directly to our programs on food systems financing intelligence, digital tools for agri-food traceability, and capacity building in food safety. The blueprint and training tool developed under DEFENSEFOOD will be reusable beyond the CBR context, applicable to broader food safety and food security challenges that the lab addresses across European and African contexts.',
+    ),
+    para(
+      'Several consortium partners are already collaborators of the lab through related Horizon Europe projects, including FCI4Africa and FS4Africa (with WR, RFF, Ubuntoo, and UniBw Munich), providing strong foundations for cross-project synergy.',
+    ),
+
+    para('Project Metadata', 'h2'),
+    bullet('Full title: Detection and Enhanced Food Safety and Security through Efficient Networks for Supply Chain Enhancement.'),
+    bullet('Funding programme: Horizon Europe, Cluster 3 (Civil Security for Society, Disaster-Resilient Society for Europe).'),
+    bullet('Call: HORIZON-CL3-2024-DRS-01-01.'),
+    bullet('Duration: 48 months.'),
+    bullet('Coordinator: Sustainable Criminal Justice Solutions Europe (SCJS), Belgium.'),
+    bullet('Scientific coordinator: Syreon Research Institute, Hungary.'),
+    bullet('Consortium size: 13 partners across 9 countries.'),
+    bullet('McGill role: Work Package 5 task leader on Knowledge Management.'),
+    bullet('McGill effort: 19 person-months (17.75 PM in WP5, 1.25 PM in WP6).'),
+  ],
+  methodology: [
+    para('McGill Contribution', 'h2'),
+    para(
+      'McGill University leads two tasks in Work Package 5 (Knowledge Management) and contributes to three additional tasks across WP4, WP5, and WP6. The work sits at the intersection of systems thinking, AI-enabled knowledge synthesis, and adaptive capacity building, translating the scientific outputs of the consortium into usable tools for food system actors.',
+    ),
+
+    para('Lead Roles', 'h2'),
+    para('T5.2 Food Threat Management Blueprint (M1 to M20).', 'h3'),
+    para(
+      'McGill leads the development of a comprehensive Food Threat Management Blueprint that synthesises knowledge and insights from the literature, the three use cases, and consortium-wide stakeholder consultation. The blueprint uses systems thinking and process mapping to create a holistic framework covering the key components, processes, and interventions needed for effective food threat anticipation, detection, response, and mitigation. Development proceeds through two stages: knowledge synthesis from the curated platform and stakeholder inputs, followed by expert-tuned consolidation into an augmented, operational blueprint.',
+    ),
+    para('T5.4 Food Threat Capability and Training Tool (M20 to M42).', 'h3'),
+    para(
+      'McGill leads the design and development of an adaptive learning tool that assesses organisational and individual capabilities in food threat management and delivers personalised training paths. The tool is built as three integrated components:',
+    ),
+    bullet(
+      'Expert-curated training module documentation, based on a knowledge and competency mapping procedure, yielding scenario-based training material.',
+    ),
+    bullet(
+      'An AI and LLM-powered interactive training dashboard that processes user competency profiles, experience data, knowledge gaps, and interests to generate personalised learning paths, with gamification features for retention.',
+    ),
+    bullet(
+      'A training recommendation system that integrates, ethically and with proper API governance, relevant modules from trusted external platforms.',
+    ),
+    para(
+      'The tool is designed to interface directly with the Knowledge Platform and Solution Engine (T5.1) and serves stakeholders across industry, policy, emergency response, academia, technology providers, and the public.',
+    ),
+
+    para('Contributing Roles', 'h2'),
+    bullet(
+      'T5.1 Knowledge Platform and Solution Engine: contributing to the design of the AI-enabled, expert-curated knowledge hub led by Ubuntoo.',
+    ),
+    bullet(
+      'T5.3 Blueprint validation and iterative refinement: contributing to scenario-based stress testing and iterative validation of the blueprint.',
+    ),
+    bullet(
+      'T4.1 Strategic Security Options: contributing to the analysis of strategic responses to intentional food threats, led by UniBw Munich.',
+    ),
+    bullet('T6.1 Dissemination, Exploitation and Communication: standard consortium-wide contribution.'),
+
+    para('External Expert Advisory Board', 'h2'),
+    para(
+      'EFSA, Europol, OPCW, IAEA, and independent experts provide strategic, scientific, ethical, and security oversight.',
+    ),
+  ],
+  outcomes: [
+    para('McGill-led Deliverables', 'h2'),
+    bullet('D5.2 Comprehensive Blueprint Document and Implementation Tool Kit (M20).'),
+    bullet('D5.4 Interactive Training Platform with Skill Assessment and Certification (M42).'),
+  ],
+  collaborators: [
+    { name: 'Sustainable Criminal Justice Solutions Europe (SCJS)', institution: 'Belgium (Coordinator)' },
+    { name: 'Syreon Research Institute', institution: 'Hungary (Scientific Coordinator)' },
+    { name: 'Stichting Wageningen Research (WFSR / WECR)', institution: 'Netherlands' },
+    { name: 'Rijksinstituut voor Volksgezondheid en Milieu (RIVM)', institution: 'Netherlands' },
+    { name: 'Ubuntoo BV', institution: 'Netherlands' },
+    { name: 'Reframe Food (RFF)', institution: 'Greece' },
+    { name: 'Sciensano', institution: 'Belgium' },
+    { name: 'Universität der Bundeswehr München', institution: 'Germany' },
+    { name: 'Consiglio Nazionale delle Ricerche (CNR)', institution: 'Italy' },
+    { name: 'Federación Española de Industrias de la Alimentación y Bebidas (FIAB)', institution: 'Spain' },
+    { name: 'Fraunhofer IGD', institution: 'Germany' },
+    { name: 'National Food Chain Safety Office (Nebih)', institution: 'Hungary' },
+  ].map((c) => ({ ...c, _key: mkKey() })),
+  funding: [
+    {
+      _key: mkKey(),
+      agency: 'European Commission, Horizon Europe (Cluster 3, Civil Security for Society)',
+      grantNumber: 'HORIZON-CL3-2024-DRS-01-01',
+      currency: 'EUR',
+    },
+  ],
+}
+
+// ---------------------------------------------------------------------------
 // Runner
 // ---------------------------------------------------------------------------
 
@@ -313,7 +477,7 @@ async function run() {
     console.log(`  Removed ${existing.length} project document(s).`)
   }
 
-  const docs = [fci4africa]
+  const docs = [fci4africa, defensefood]
   for (const doc of docs) {
     try {
       const result =
