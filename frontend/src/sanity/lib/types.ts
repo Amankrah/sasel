@@ -229,6 +229,22 @@ export interface SanityPartnership {
   image?: SanityImage
 }
 
+export type PartnerCategory = 'FUNDER' | 'ACADEMIC' | 'GOVERNMENT' | 'INDUSTRY' | 'ADVISORY'
+
+export interface SanityPartner {
+  _id: string
+  _type: 'partner'
+  name: string
+  slug: { current: string }
+  category: PartnerCategory
+  country?: string
+  website?: string
+  logo?: SanityImage
+  description?: string
+  isFeatured?: boolean
+  featuredOrder?: number
+}
+
 export type TechnologyStatus = 'LIVE' | 'BETA' | 'IN_DEVELOPMENT' | 'DEPRECATED'
 export type TechnologyAccent = 'emerald' | 'amber' | 'indigo' | 'blue' | 'rose' | 'slate'
 

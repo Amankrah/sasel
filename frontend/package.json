@@ -9,6 +9,7 @@
     "lint": "next lint",
     "seed:technologies": "tsx scripts/seed-technologies.ts",
     "seed:projects": "tsx scripts/seed-projects.ts",
+    "seed:partners": "tsx scripts/seed-partners.ts",
     "import:django": "tsx scripts/import-from-django.ts",
     "sync:publications": "tsx scripts/sync-publications.ts"
   },

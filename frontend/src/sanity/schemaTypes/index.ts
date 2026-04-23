@@ -9,6 +9,7 @@ import { collaborationType } from './documents/collaborationType'
 import { grantType } from './documents/grantType'
 import { awardType } from './documents/awardType'
 import { partnershipType } from './documents/partnershipType'
+import { partnerType } from './documents/partnerType'
 import { newsType } from './documents/newsType'
 import { settingsType } from './documents/settingsType'
 
@@ -28,6 +29,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     grantType,
     awardType,
     partnershipType,
+    partnerType,
     newsType,
     settingsType,
     // Objects

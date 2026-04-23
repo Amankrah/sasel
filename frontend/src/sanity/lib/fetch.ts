@@ -9,6 +9,7 @@ import type {
   SanityAward,
   SanityCollaboration,
   SanityPartnership,
+  SanityPartner,
 } from './types'
 
 const PROJECT_FIELDS = `
@@ -368,6 +369,15 @@ export async function getCollaborations(): Promise<SanityCollaboration[]> {
       startDate, endDate, isActive, website,
       relatedProjects[]-> { _id, title, slug },
       image { asset, alt }
+    }`,
+  )
+}
+
+export async function getPartners(): Promise<SanityPartner[]> {
+  return client.fetch<SanityPartner[]>(
+    `*[_type == "partner"] | order(category asc, featuredOrder asc, name asc) {
+      _id, _type, name, slug, category, country, website,
+      logo { asset, alt }, description, isFeatured, featuredOrder
     }`,
   )
 }

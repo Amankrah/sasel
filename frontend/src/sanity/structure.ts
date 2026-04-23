@@ -227,6 +227,77 @@ export const structure: StructureResolver = (S) =>
             ])
         ),
 
+      // Partners & Sponsors
+      S.listItem()
+        .title('Partners & Sponsors')
+        .icon(UsersIcon)
+        .child(
+          S.list()
+            .title('Partners & Sponsors')
+            .items([
+              S.listItem()
+                .title('All Partners')
+                .child(
+                  S.documentTypeList('partner')
+                    .title('All Partners')
+                    .defaultOrdering([
+                      { field: 'category', direction: 'asc' },
+                      { field: 'featuredOrder', direction: 'asc' },
+                      { field: 'name', direction: 'asc' },
+                    ])
+                ),
+              S.divider(),
+              S.listItem()
+                .title('Funders / Sponsors')
+                .child(
+                  S.documentList()
+                    .title('Funders / Sponsors')
+                    .filter('_type == "partner" && category == "FUNDER"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Academic / Research')
+                .child(
+                  S.documentList()
+                    .title('Academic / Research')
+                    .filter('_type == "partner" && category == "ACADEMIC"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Government / Agency')
+                .child(
+                  S.documentList()
+                    .title('Government / Agency')
+                    .filter('_type == "partner" && category == "GOVERNMENT"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Industry / NGO')
+                .child(
+                  S.documentList()
+                    .title('Industry / NGO')
+                    .filter('_type == "partner" && category == "INDUSTRY"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Advisory Board')
+                .child(
+                  S.documentList()
+                    .title('Advisory Board')
+                    .filter('_type == "partner" && category == "ADVISORY"')
+                    .apiVersion('2024-01-01')
+                ),
+              S.listItem()
+                .title('Featured Sponsors')
+                .child(
+                  S.documentList()
+                    .title('Featured Sponsors')
+                    .filter('_type == "partner" && isFeatured == true')
+                    .apiVersion('2024-01-01')
+                ),
+            ])
+        ),
+
       // News Section
       S.listItem()
         .title('News & Announcements')
