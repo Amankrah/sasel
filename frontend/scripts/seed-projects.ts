@@ -435,6 +435,175 @@ const defensefood = {
 }
 
 // ---------------------------------------------------------------------------
+// FCI-Africa Network
+// ---------------------------------------------------------------------------
+
+const fciAfricaNetwork = {
+  _id: 'project-fci-africa-network',
+  _type: 'project',
+  title: 'Food Convergence Innovation Africa Network (FCI-Africa)',
+  slug: { _type: 'slug', current: 'fci-africa-network' },
+  shortDescription:
+    'A five-year science diplomacy research chair program bridging scientific research, policy making, and international collaboration to accelerate sustainable agrifood system transformation across Africa. The SSL Lab leads Work Package 1, the data and analytics backbone of the program.',
+  status: 'ACTIVE',
+  isFeatured: true,
+  researchAreas: [
+    'Food Systems',
+    'Science Diplomacy',
+    'Policy Analytics',
+    'Africa',
+    'AI and Data Infrastructure',
+    'Convergence Innovation',
+    'CAADP',
+    'Kampala Declaration',
+    'Decision Analytics',
+    'AfCFTA',
+    'Transboundary Resource Management',
+    'Environmental Nutrition',
+    'Regional FCI Hubs',
+    'Science Diplomacy Fellowship',
+  ],
+  description: [
+    para('Overview', 'h2'),
+    para(
+      'The Food Convergence Innovation Africa Network (FCI-Africa) responds directly to the Kampala Declaration and the African Union\u2019s shift from an agricultural development focus to a food systems approach under the Comprehensive African Agricultural Development Programme (CAADP) 2026 to 2036 agenda. The program positions science diplomacy as the interface between rigorous evidence, public policy, and cross-border collaboration on food security, nutrition, climate resilience, and inclusive prosperity.',
+    ),
+    para(
+      'The initiative is anchored in the FCI framework developed by Dubé and collaborators, which integrates technological, behavioural, social, and political economy perspectives around concrete real-world solutions. It builds on an established network of partners in Africa, North America, and Europe, and is organized around three complementary work packages covering data and analytics for policy outcomes (WP1), regional FCI hubs and capacity building (WP2), and environmental nutrition metrics and transnational policy dialogues (WP3).',
+    ),
+    para(
+      'By combining North-South collaboration with data infrastructure, decision analytics, and inclusive capacity building, FCI-Africa aims to transform research into action and support resilient, equitable food systems across the continent while strengthening Quebec\u2019s leadership in international science diplomacy.',
+    ),
+
+    para('Program Objectives', 'h2'),
+    bullet(
+      'Leverage data and analytics for evidence-based, impactful policy outcomes in the African agrifood sector, aligned with the Kampala Agenda 2026 to 2036.',
+    ),
+    bullet(
+      'Build stakeholder capacity through regional FCI hubs, technical working groups, and a science diplomacy fellowship.',
+    ),
+    bullet(
+      'Improve African agrifood systems by integrating environmental nutrition metrics into science-policy dialogue.',
+    ),
+
+    para('Timeline', 'h2'),
+    bullet('Years 1 to 2: WP1 data readiness assessment and simulator prototyping. Initial FCI hub scoping.'),
+    bullet('Years 2 to 3: Simulator validation with partner countries. Regional FCI hubs launched. Fellowship program begins.'),
+    bullet('Years 3 to 4: Environmental nutrition and policy metrics designed on the simulator architecture.'),
+    bullet(
+      'Years 4 to 5: Transnational science diplomacy dialogues, policy briefs, and consolidation of the African Science Diplomacy Network for food systems.',
+    ),
+
+    para('Project Metadata', 'h2'),
+    bullet(
+      'Funding programme: Fonds de Recherche du Québec (FRQ), Science Diplomacy Research Chairs Program (CDS), 2025 to 2026 competition.',
+    ),
+    bullet('Duration: 5 years.'),
+    bullet('McGill role: Work Package 1 Lead (Data and Analytics for Evidence-Based Agrifood Policy).'),
+  ],
+  methodology: [
+    para('Our Role: Work Package 1 Lead', 'h2'),
+    para(
+      'The McGill SSL Lab (Department of Bioresource Engineering, McGill University), under the leadership of Dr. Ebenezer Kwofie, leads Work Package 1 (WP1): Data and Analytics for Evidence-Based Agrifood Policy. WP1 provides the analytical foundation that the rest of the program relies on. The regional FCI hubs under WP2 apply the tools built in WP1, and the environmental nutrition metrics under WP3 extend the WP1 simulator architecture. In this way, WP1 functions as the digital and methodological backbone of FCI-Africa.',
+    ),
+    para(
+      'Our contribution draws on the lab\u2019s track record in food systems financing intelligence, policy dashboard development, GPU-accelerated simulation, and AI-enabled decision support for agrifood systems.',
+    ),
+
+    para('WP1 Activities Led by the SSL Lab', 'h2'),
+    para('Activity 1.1: Comparative study on data gaps and analytics readiness in African agrifood policy systems.', 'h3'),
+    para(
+      'We will conduct a cross-country assessment of data infrastructure, availability, and utilization in agrifood system policymaking across selected African nations. The assessment will:',
+    ),
+    bullet('Map the current state of national and regional agrifood data ecosystems.'),
+    bullet('Identify systemic gaps in data coverage, timeliness, and interoperability.'),
+    bullet('Evaluate national capacities for data governance and analytics applications.'),
+    bullet(
+      'Produce a readiness index and a comparative report that will guide the design of Activity 1.2 and inform downstream WP2 and WP3 activities.',
+    ),
+
+    para('Activity 1.2: Design and validation of an AI-driven agrifood policy impact simulator.', 'h3'),
+    para(
+      'We will design, build, and empirically validate a modular simulation platform that models the socioeconomic and environmental impacts of policy changes across diverse agri-ecological zones in Africa. Core features include:',
+    ),
+    bullet(
+      'Integration of heterogeneous data sources including climate forecasts, market prices, trade data, and household survey data.',
+    ),
+    bullet('Scenario modules for regional trade agreements such as AfCFTA and transboundary resource management.'),
+    bullet('Identification of win-win policy options and flagging of inequity and risk hotspots.'),
+    bullet(
+      'Science communication layer that translates model outputs into accessible policy briefs and visualizations for non-technical audiences.',
+    ),
+    para(
+      'The simulator will be co-developed with stakeholders, validated through partner country case studies, and deployed as a shared infrastructure for the regional FCI hubs in WP2 and for the environmental nutrition metrics work in WP3.',
+    ),
+
+    para('Methodological Approach (WP1)', 'h2'),
+    para(
+      'Our methods combine policy mapping and stakeholder analysis, scenario planning and foresight, participatory co-design, and multilevel governance analysis. Technical implementation draws on AI and machine learning for simulation, modular data pipeline architectures, and interoperable dashboard design informed by prior work on platforms such as FSFI.',
+    ),
+
+    para('Team', 'h2'),
+    para('WP1 Lead (McGill SSL Lab):', 'h3'),
+    bullet('Dr. Ebenezer Kwofie, Department of Bioresource Engineering, McGill University.'),
+    bullet('Emmanuel Amankrah Kwofie, Research Associate, McGill University.'),
+    para('Co-Chairs:', 'h3'),
+    bullet(
+      'Dr. Rose Omari, Senior Research Scientist, CSIR Science and Technology Policy Research Institute, Ghana.',
+    ),
+    bullet('Prof. Lise Kosten, DSI-NRF Centre of Excellence in Food Security, University of Pretoria, South Africa.'),
+    bullet('Dr. John Ulimwengu, Senior Research Fellow, IFPRI Development Strategies and Governance Unit.'),
+    para('Collaborators:', 'h3'),
+    bullet('Dr. Fadel Ndiame, CEO, Food Systems Transformation Solutions, Dakar, Senegal.'),
+    bullet('Dr. Sandra Schillo, Telfer School of Management, University of Ottawa.'),
+  ],
+  outcomes: [
+    para('Expected Outcomes', 'h2'),
+    bullet(
+      'A validated, interoperable agrifood policy impact simulator serving as shared analytical infrastructure across the African continent.',
+    ),
+    bullet('A regional analytics readiness report and open dataset informing continental data governance.'),
+    bullet('Policy briefs co-authored with African partners and aligned with CAADP and Kampala priorities.'),
+    bullet(
+      'Capacity building for a new generation of researchers, policy actors, and science diplomats through the Science Diplomacy for Food Systems Fellowship.',
+    ),
+    bullet(
+      'Strengthened Quebec-Africa science diplomacy ties and visibility of the SSL Lab as a hub for data-driven food systems transformation.',
+    ),
+  ],
+  collaborators: [
+    {
+      name: 'CSIR Science and Technology Policy Research Institute',
+      institution: 'Ghana (Co-Chair: Dr. Rose Omari)',
+    },
+    {
+      name: 'DSI-NRF Centre of Excellence in Food Security, University of Pretoria',
+      institution: 'South Africa (Co-Chair: Prof. Lise Kosten)',
+    },
+    {
+      name: 'International Food Policy Research Institute (IFPRI)',
+      institution: 'Development Strategies and Governance Unit (Co-Chair: Dr. John Ulimwengu)',
+    },
+    {
+      name: 'Food Systems Transformation Solutions',
+      institution: 'Dakar, Senegal (Dr. Fadel Ndiame)',
+    },
+    {
+      name: 'Telfer School of Management, University of Ottawa',
+      institution: 'Canada (Dr. Sandra Schillo)',
+    },
+  ].map((c) => ({ ...c, _key: mkKey() })),
+  funding: [
+    {
+      _key: mkKey(),
+      agency: 'Fonds de Recherche du Québec (FRQ), Science Diplomacy Research Chairs Program (CDS)',
+      grantNumber: '2025 to 2026 competition',
+      currency: 'CAD',
+    },
+  ],
+}
+
+// ---------------------------------------------------------------------------
 // Runner
 // ---------------------------------------------------------------------------
 
@@ -477,7 +646,7 @@ async function run() {
     console.log(`  Removed ${existing.length} project document(s).`)
   }
 
-  const docs = [fci4africa, defensefood]
+  const docs = [fci4africa, defensefood, fciAfricaNetwork]
   for (const doc of docs) {
     try {
       const result =
