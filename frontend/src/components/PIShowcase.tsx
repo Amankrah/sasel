@@ -41,12 +41,16 @@ export default function PIShowcase() {
               {/* Quick Stats */}
               <div className="w-full space-y-4 mb-6">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+                  <div className="text-3xl font-bold">🤝</div>
+                  <p className="text-sm mt-2">FRQ Science Diplomacy Research Chair, 2025</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                   <div className="text-3xl font-bold">🏆</div>
-                  <p className="text-sm mt-2">Distinguished Young Alumni Award 2021</p>
+                  <p className="text-sm mt-2">Distinguished Young Alumni Award, 2021</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                   <div className="text-3xl font-bold">🌍</div>
-                  <p className="text-sm mt-2">International Projects across 5+ Countries</p>
+                  <p className="text-sm mt-2">Active programs across 20+ countries on three continents</p>
                 </div>
               </div>
 
@@ -174,9 +178,15 @@ export default function PIShowcase() {
               <div className="mb-8">
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">Awards & Recognition</h4>
                 <div className="space-y-3">
+                  <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r-lg">
+                    <p className="font-semibold text-gray-900">Science Diplomacy Research Chair</p>
+                    <p className="text-sm text-gray-600">
+                      Fonds de Recherche du Québec (FRQ), Science Diplomacy Research Chairs Program (CDS), 2025
+                    </p>
+                  </div>
                   <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
                     <p className="font-semibold text-gray-900">Distinguished Young Alumni Award</p>
-                    <p className="text-sm text-gray-600">Macdonald Campus, McGill University - 2021</p>
+                    <p className="text-sm text-gray-600">Macdonald Campus, McGill University, 2021</p>
                   </div>
                   <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
                     <p className="font-semibold text-gray-900">CIBC Fellowship Award</p>
@@ -189,28 +199,95 @@ export default function PIShowcase() {
                 </div>
               </div>
 
-              {/* Professional Experience Highlight */}
+              {/* International Impact */}
               <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl">
                 <h4 className="text-xl font-bold text-gray-900 mb-3">International Impact</h4>
-                <p className="text-gray-700 mb-3">
-                  Dr. Kwofie has managed International Food Systems Development projects across multiple continents (2016-2020), working in:
+                <p className="text-gray-700 mb-4">
+                  Dr. Kwofie leads and co-leads research programs that span three continents, from the FRQ Science Diplomacy Research Chair and the Mastercard-funded Nkabom Collaborative in Ghana, to Horizon Europe projects on food systems transformation (FCI4Africa) and food chain resilience against CBR threats (DEFENSEFOOD), to technology deployments with Canadian industry, the National Research Council of Canada, and the Government of Rwanda.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
-                    🇿🇲 Zambia
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
-                    🇲🇼 Malawi
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
-                    🇪🇹 Ethiopia
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
-                    🇧🇴 Bolivia
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
-                    🇭🇳 Honduras
-                  </span>
+
+                <div className="mb-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
+                    Africa
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇬🇭 Ghana
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇳🇬 Nigeria
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇰🇪 Kenya
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇸🇳 Senegal
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇿🇦 South Africa
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇷🇼 Rwanda
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇿🇲 Zambia
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇲🇼 Malawi
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇪🇹 Ethiopia
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
+                    Europe
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇧🇪 Belgium
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇳🇱 Netherlands
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇩🇪 Germany
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇮🇹 Italy
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇪🇸 Spain
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇭🇺 Hungary
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇬🇷 Greece
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
+                    Americas
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇨🇦 Canada
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇺🇸 United States
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇧🇴 Bolivia
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-700 shadow-sm">
+                      🇭🇳 Honduras
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
