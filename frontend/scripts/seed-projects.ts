@@ -761,6 +761,212 @@ const digitalTwinPulse = {
 }
 
 // ---------------------------------------------------------------------------
+// McGill Contribution to the Nkabom Collaborative
+// ---------------------------------------------------------------------------
+
+const nkabomCollaborative = {
+  _id: 'project-mcgill-nkabom-collaborative',
+  _type: 'project',
+  title: 'McGill Contribution to the Nkabom Collaborative',
+  slug: { _type: 'slug', current: 'mcgill-nkabom-collaborative' },
+  shortDescription:
+    'McGill\u2019s contribution to the Nkabom Collaborative applies the Food Convergence Innovation (FCI) approach to support youth-led transformation of Ghana\u2019s agri-food and nutrition systems. Four interlinked initiatives in sustainability assessment, digital nutrition intelligence, lean processing support, and science diplomacy translate research into practical tools for SMEs, policymakers, and artisanal processors.',
+  status: 'ACTIVE',
+  isFeatured: true,
+  startDate: '2024-01-01',
+  endDate: '2034-12-31',
+  researchAreas: [
+    'Food Convergence Innovation',
+    'Ghana',
+    'Food Systems',
+    'Sustainability Assessment',
+    'Life Cycle Assessment',
+    'Social Organizational LCA',
+    'Nutrition',
+    'Digital Platforms',
+    'Post-Harvest Loss',
+    'Artisanal Processing',
+    'Science Diplomacy',
+    'Youth-Led Transformation',
+    'Capacity Building',
+    'Mastercard Foundation',
+    'Nkabom',
+    'DISH Platform',
+    'LAPS System',
+  ],
+  website: 'https://www.mcgill.ca/africa-agrifood-collaborative/',
+  description: [
+    para('Overview', 'h2'),
+    para(
+      'The Nkabom Collaborative is a 10-year (2024 to 2034) multi-stakeholder initiative committed to youth-led transformation of agri-food and nutrition systems in Ghana. "Nkabom" means togetherness in Akan. The Collaborative brings together seven Ghanaian academic institutions, a non-profit, and McGill University, with its Secretariat hosted at McGill and the initiative closely aligned with the Mastercard Foundation\u2019s Young Africa Works strategy and the African Union\u2019s Comprehensive Africa Agriculture Development Program. Its work is organized around three strategic pillars: Education, Access and Success, and Entrepreneurship.',
+    ),
+    para(
+      'Within this collaborative, McGill\u2019s contribution is anchored in the Food Convergence Innovation (FCI) approach. FCI combines digital intelligence, multi-actor co-creation, and evidence-based decision support to move beyond traditional economic modes toward a 4th-industrial-revolution convergence economy. The focus is on bridging the gap between scientific knowledge and real-world practice, driving systems-wide transitions in sustainability, nutrition, and processing efficiency.',
+    ),
+    para(
+      'McGill\u2019s participation is structured around four initiatives mapped directly to Nkabom\u2019s strategic pillars, each designed to deliver a specific digital or decision-support capability to Ghanaian partners, SMEs, and policymakers.',
+    ),
+
+    para('Strategic Pillars Alignment', 'h2'),
+    bullet('Education and Entrepreneurship: Sustainability Assessment Training and Deployment.'),
+    bullet('Access and Success: National Environmental-Nutritional Platform (DISH).'),
+    bullet('Entrepreneurship (Post-Harvest Loss Reduction): Lean Agri-food Processing Support (LAPS) Systems.'),
+    bullet('Policy Engagement and Institutional Strengthening: Science Diplomacy Hub.'),
+
+    para('Project Metadata', 'h2'),
+    bullet('Parent programme: Nkabom Collaborative (Nutrition and Sustainable Agri-Food Collaborative).'),
+    bullet('Funder: Mastercard Foundation, Young Africa Works strategy.'),
+    bullet('Duration: 10 years (2024 to 2034).'),
+    bullet(
+      'Lead unit at McGill: Food Convergence Innovation (FCI) network, Department of Bioresource Engineering, Faculty of Agricultural and Environmental Sciences.',
+    ),
+    bullet('Geographic focus: Ghana (primary), Sub-Saharan Africa (broader).'),
+  ],
+  methodology: [
+    para('Component 1: Sustainability Assessment Training and Deployment', 'h2'),
+    para('Pillar: Education and Entrepreneurship.'),
+    para(
+      'This initiative applies the FCI principle of precision convergence to environmental management. Moving beyond theoretical sustainability, the project introduces Life Cycle Assessment (LCA) and Social Organizational Life Cycle Assessment (SO-LCA) methodologies tailored to the Ghanaian context. The goal is to standardize how sustainability is measured in Ghanaian agribusiness, giving local SMEs a competitive edge in export markets that increasingly require environmental certification.',
+    ),
+    para('Execution Strategy', 'h3'),
+    bullet(
+      'Co-develop a 3 to 4 week module with KNUST and other partners for graduate students, focused on collecting primary data for industry-level gate-to-gate sustainability assessment covering energy audit, material flow, and resource utilization.',
+    ),
+    bullet(
+      'Train students on McGill\u2019s proprietary food systems sustainability assessment digital technology, developed specifically for African-based sustainability assessment and ISO-standard report generation for SMEs. The tool identifies hotspots such as energy waste and surfaces cost-saving opportunities, supporting SMEs to reach the convergence sweet spot where commercial advantage meets environmental responsibility.',
+    ),
+    bullet(
+      'Establish a student internship program deploying Nkabom fellows to selected Association of Ghana Industries (AGI) member companies to conduct free sustainability audits using the tool. Each engagement focuses on one of: energy audit, resource-use eco-efficiency, or a complete LCA.',
+    ),
+    para('Target users: graduate students, SMEs, AGI member companies, export-oriented agribusinesses.'),
+
+    para('Component 2: National Environmental-Nutritional Platform (DISH)', 'h2'),
+    para('Pillar: Access and Success.'),
+    para(
+      'This component collates and integrates a national nutrition food database into DISH (Dashboard for Improving Sustainable Healthy food choices), McGill\u2019s environmental-nutrition platform. DISH promotes consumer health, advances sustainability objectives, and enables ex-ante simulation of nutrition interventions for a selected geographical region. The platform uses behavioural features, traffic-light labels, and nudges to communicate the nutritional-health performance and environmental impact of meals to end-users. The Collaborative will support the development of a national database to power the platform.',
+    ),
+    para('Four-Tier API System', 'h3'),
+    bullet(
+      'Tier 1 Research: complete nutritional and environmental impact assessment for policy research and product-development simulation.',
+    ),
+    bullet('Tier 2 Institutional: specialized decision support for restaurants, cafeterias, and clinics.'),
+    bullet(
+      'Tier 3 Citizen-Centric: a consumer-facing app using traffic-light labels and behavioural nudges to empower everyday healthy choices.',
+    ),
+    bullet(
+      'Tier 4 Government and Policy: a dashboard for national and regional nutrition-policy impact simulation, with aggregation of population-level nutrition and sustainability metrics, policy simulation tools to model intervention impacts before implementation, benchmarking against national dietary guidelines and SDG targets, and budget-allocation optimization for nutrition programs.',
+    ),
+    para('Execution Strategy', 'h3'),
+    bullet(
+      'Form a team comprising the University of Ghana, KNUST, and UHAS to work with McGill on collating existing data on local foods, recipes, and processing methods.',
+    ),
+    bullet('Partner with Ashesi University on API development across the four tiers above.'),
+    bullet('Conduct multi-institutional testing and validation of the app.'),
+    para(
+      'Target users: researchers, restaurants, cafeterias, clinics, consumers, and national and regional policymakers.',
+    ),
+
+    para('Component 3: Lean Agri-food Processing Support (LAPS) Systems', 'h2'),
+    para('Pillar: Entrepreneurship (Reducing Post-Harvest Loss).'),
+    para(
+      'The LAPS System is the digital backbone for artisanal processors, particularly women, who dominate the mid-stream value chain. Moving beyond generic advice, it offers evidence-based algorithmic decision support, using Intelligence Augmentation to deliver expert-level guidance to small-scale entrepreneurs. The goal is to reduce post-harvest loss and increase value-added production by answering concrete operational questions such as "What products can be made from these commodities given my current processing setup?" or "What is the optimal moisture content to prevent storage mold?"',
+    ),
+    para('Execution Strategy', 'h3'),
+    bullet(
+      'Develop computational simulations based on common artisanal processing units (for example, gari roasters and palm-oil presses) to model efficiency improvements.',
+    ),
+    bullet(
+      'Implement offline capabilities with cloud sync when internet is available, recognizing rural connectivity constraints. Core advisory alerts (such as "Stop drying now to maximize weight and safety") can be delivered via basic phones.',
+    ),
+    bullet(
+      'Launch initially on high-impact commodities (to be confirmed) where post-harvest losses currently compromise farmer income and regional food safety.',
+    ),
+    para(
+      'Target users: artisanal processors (with a focus on women entrepreneurs), smallholder farmers, and small and medium-scale agri-food businesses.',
+    ),
+
+    para('Component 4: Science Diplomacy Hub', 'h2'),
+    para('Pillar: Policy Engagement and Institutional Strengthening.'),
+    para(
+      'The Science Diplomacy Hub is the translation engine of the Collaborative. Valuable research often remains in academic silos; this Hub professionalizes the interface between Nkabom researchers and stakeholders including the Government of Ghana, ensuring that evidence generated by the Collaborative directly informs national policy.',
+    ),
+    para('Execution Strategy', 'h3'),
+    bullet(
+      'Establish a Science Diplomacy Hub at a partnering institution to train students and early-career researchers (including postdocs) in (a) science communication for non-scientific decision-makers, (b) FCI frameworks and their application to local and regional science-policy cycles, and (c) quarterly capacity-building activities.',
+    ),
+    bullet(
+      'Run a Science Diplomacy seminar series and a policy-focused Hackathon to convert complex research papers into concise Action Briefs for policymakers. The Hackathon is an interactive, problem-solving workshop where participants translate scientific findings into actionable policy documents.',
+    ),
+    bullet(
+      'Host an annual roundtable bringing together Nkabom researchers and food-systems technocrats (MoFA, Ministry of Health, CSIR, and others) to co-define national research priorities.',
+    ),
+    para(
+      'Target users: graduate students, postdocs, government technocrats, ministries, and research institutes.',
+    ),
+
+    para('Frameworks and Technologies', 'h2'),
+    bullet('Food Convergence Innovation (FCI) and precision convergence.'),
+    bullet('Life Cycle Assessment (LCA) and Social Organizational LCA (SO-LCA).'),
+    bullet('Intelligence Augmentation for decision support.'),
+    bullet('Science diplomacy training and policy translation.'),
+    bullet('McGill\u2019s proprietary food systems sustainability assessment platform (ISO-standard reporting for SMEs).'),
+    bullet('DISH (Dashboard for Improving Sustainable Healthy food choices).'),
+    bullet('LAPS (Lean Agri-food Processing Support), offline-capable and basic-phone compatible.'),
+    bullet('Algorithmic decision-support engines for artisanal processing.'),
+  ],
+  outcomes: [
+    para('Expected Outcomes', 'h2'),
+    bullet('Standardized, ISO-aligned sustainability assessment practice across Ghanaian SMEs.'),
+    bullet('A national food-composition and environmental-impact database integrated into DISH.'),
+    bullet('A four-tier digital platform serving researchers, institutions, citizens, and policymakers.'),
+    bullet('Reduced post-harvest loss and increased value-added production through LAPS.'),
+    bullet('A cohort of early-career researchers trained in science communication and policy translation.'),
+    bullet('Action Briefs and an annual policy roundtable informing Ghana\u2019s food-systems agenda.'),
+  ],
+  collaborators: [
+    {
+      name: 'McGill University',
+      institution: 'Canada (Lead, FCI framework, digital tools, Secretariat host)',
+      website: 'https://www.mcgill.ca/africa-agrifood-collaborative/',
+    },
+    {
+      name: 'University of Ghana (UG)',
+      institution: 'Ghana (national nutrition database, platform co-development)',
+      website: 'https://nkabom.ug.edu.gh/',
+    },
+    {
+      name: 'Kwame Nkrumah University of Science and Technology (KNUST)',
+      institution: 'Ghana (sustainability module co-development, Agri-Food Centre of Excellence)',
+      website: 'https://nkabom.knust.edu.gh/',
+    },
+    {
+      name: 'Ashesi University',
+      institution: 'Ghana (API and platform engineering)',
+    },
+    {
+      name: 'University of Health and Allied Sciences (UHAS)',
+      institution: 'Ghana (food data, nutrition expertise)',
+    },
+    {
+      name: 'Association of Ghana Industries (AGI)',
+      institution: 'Ghana (industry access for SME audits)',
+    },
+    {
+      name: 'Ministry of Food and Agriculture (MoFA), Ministry of Health, CSIR',
+      institution: 'Ghana (policy engagement stakeholders)',
+    },
+  ].map((c) => ({ ...c, _key: mkKey() })),
+  funding: [
+    {
+      _key: mkKey(),
+      agency: 'Mastercard Foundation (Young Africa Works strategy)',
+      grantNumber: '',
+      currency: 'CAD',
+    },
+  ],
+}
+
+// ---------------------------------------------------------------------------
 // Runner
 // ---------------------------------------------------------------------------
 
@@ -816,7 +1022,13 @@ async function run() {
     console.log(`  · removed stale doc ${staleId}`)
   }
 
-  const docs = [fci4africa, defensefood, scienceDiplomacy, digitalTwinPulse]
+  const docs = [
+    fci4africa,
+    defensefood,
+    scienceDiplomacy,
+    digitalTwinPulse,
+    nkabomCollaborative,
+  ]
   for (const doc of docs) {
     try {
       const result =
