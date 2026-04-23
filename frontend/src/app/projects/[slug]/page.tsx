@@ -242,6 +242,67 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 </div>
               </div>
             )}
+
+            {/* Related Technologies */}
+            {project.relatedTechnologies && project.relatedTechnologies.length > 0 && (
+              <div className="backdrop-blur-md bg-white/60 border border-white/80 rounded-xl shadow-lg p-6">
+                <h3 className="text-lg font-bold mb-4 text-gray-900">Technologies</h3>
+                <div className="space-y-3">
+                  {project.relatedTechnologies.map((tech) => (
+                    <Link
+                      key={tech._id}
+                      href={`/technologies/${tech.slug.current}`}
+                      className="block group"
+                    >
+                      <div className="font-semibold text-blue-600 group-hover:text-blue-800 transition-colors">
+                        {tech.title}
+                      </div>
+                      {tech.tagline && (
+                        <p className="text-xs text-gray-600 mt-1 line-clamp-2">{tech.tagline}</p>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Related Publications */}
+            {project.relatedPublications && project.relatedPublications.length > 0 && (
+              <div className="backdrop-blur-md bg-white/60 border border-white/80 rounded-xl shadow-lg p-6">
+                <h3 className="text-lg font-bold mb-4 text-gray-900">Publications</h3>
+                <div className="space-y-4">
+                  {project.relatedPublications.map((pub) => {
+                    const href = pub.doi
+                      ? `https://doi.org/${pub.doi}`
+                      : pub.url || (pub.slug ? `/publications#${pub.slug.current}` : undefined)
+                    const external = Boolean(pub.doi || pub.url)
+                    const titleBlock = (
+                      <>
+                        <div className="font-semibold text-sm text-blue-600 group-hover:text-blue-800 transition-colors leading-snug">
+                          {pub.title}
+                        </div>
+                        <p className="text-xs text-gray-600 mt-1">
+                          {[pub.journal || pub.conference, pub.year].filter(Boolean).join(' | ')}
+                        </p>
+                      </>
+                    )
+                    return href ? (
+                      <a
+                        key={pub._id}
+                        href={href}
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noopener noreferrer' : undefined}
+                        className="block group"
+                      >
+                        {titleBlock}
+                      </a>
+                    ) : (
+                      <div key={pub._id}>{titleBlock}</div>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

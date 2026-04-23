@@ -6,7 +6,7 @@ import TechnologyCard from '@/components/TechnologyCard';
 import { client } from '@/sanity/lib/client';
 import type { SanityTechnology } from '@/sanity/lib/types';
 
-const FEATURED_QUERY = `*[_type == "technology" && isFeatured == true] | order(featuredOrder asc) {
+const FEATURED_QUERY = `*[_type == "technology" && isFeatured == true] | order(featuredOrder asc) [0...3] {
   _id,
   _type,
   title,

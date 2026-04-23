@@ -84,8 +84,16 @@ export const projectType = defineType({
       title: 'Featured Project',
       type: 'boolean',
       group: 'basic',
-      description: 'Show this project prominently on the homepage',
+      description: 'Show this project on the homepage (top 3 by Featured Order will appear)',
       initialValue: false,
+    }),
+    defineField({
+      name: 'featuredOrder',
+      title: 'Homepage Order',
+      type: 'number',
+      group: 'basic',
+      description: 'Order on homepage (ascending). Only used when Featured is on. Only the top 3 are shown.',
+      initialValue: 100,
     }),
 
     // Details
@@ -148,6 +156,22 @@ export const projectType = defineType({
           to: [{ type: 'member' }],
         },
       ],
+    }),
+    defineField({
+      name: 'relatedTechnologies',
+      title: 'Related Technologies',
+      type: 'array',
+      group: 'team',
+      of: [{ type: 'reference', to: [{ type: 'technology' }] }],
+      description: 'Lab-built technologies used in or produced by this project',
+    }),
+    defineField({
+      name: 'relatedPublications',
+      title: 'Related Publications',
+      type: 'array',
+      group: 'team',
+      of: [{ type: 'reference', to: [{ type: 'publication' }] }],
+      description: 'Publications that came out of this project',
     }),
     defineField({
       name: 'collaborators',

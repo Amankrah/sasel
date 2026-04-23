@@ -30,6 +30,7 @@ export interface SanityProject {
   featuredImage?: SanityImage
   status: 'ACTIVE' | 'COMPLETED' | 'ON_HOLD' | 'UPCOMING'
   isFeatured?: boolean
+  featuredOrder?: number
   startDate?: string
   endDate?: string
   researchAreas?: string[]
@@ -38,6 +39,26 @@ export interface SanityProject {
   website?: string
   githubRepo?: string
   members?: SanityProjectMember[]
+  relatedTechnologies?: Array<{
+    _id: string
+    _type: 'technology'
+    title: string
+    slug: { current: string }
+    tagline?: string
+    accentColor?: string
+    status?: string
+  }>
+  relatedPublications?: Array<{
+    _id: string
+    _type: 'publication'
+    title: string
+    slug?: { current: string }
+    year?: number
+    journal?: string
+    conference?: string
+    doi?: string
+    url?: string
+  }>
   collaborators?: Array<{
     name: string
     institution?: string

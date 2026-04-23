@@ -7,6 +7,7 @@ import PIShowcase from "@/components/PIShowcase";
 import PublicationsShowcase from "@/components/PublicationsShowcase";
 import NewsSection from "@/components/NewsSection";
 import TechnologiesShowcase from "@/components/TechnologiesShowcase";
+import ProjectsShowcase from "@/components/ProjectsShowcase";
 
 export default function Home() {
   // State for image carousel
@@ -484,6 +485,9 @@ export default function Home() {
 
       {/* Technologies Showcase Section */}
       <TechnologiesShowcase />
+
+      {/* Featured Research Projects */}
+      <ProjectsShowcase />
 
       {/* Publications Showcase */}
       <PublicationsShowcase />

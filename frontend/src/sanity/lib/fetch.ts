@@ -11,54 +11,17 @@ import type {
   SanityPartnership,
 } from './types'
 
-const PROJECTS_QUERY = `*[_type == "project"] | order(startDate desc) {
+const PROJECT_FIELDS = `
   _id,
   _type,
   title,
   slug,
   shortDescription,
   description,
-  featuredImage {
-    asset,
-    alt
-  },
+  featuredImage { asset, alt },
   status,
   isFeatured,
-  startDate,
-  endDate,
-  researchAreas,
-  methodology,
-  outcomes,
-  website,
-  githubRepo,
-  members[]-> {
-    _id,
-    _type,
-    name
-  },
-  collaborators,
-  funding,
-  gallery[] {
-    asset,
-    alt,
-    caption
-  },
-  videos
-}`
-
-const PROJECT_BY_SLUG_QUERY = `*[_type == "project" && slug.current == $slug][0] {
-  _id,
-  _type,
-  title,
-  slug,
-  shortDescription,
-  description,
-  featuredImage {
-    asset,
-    alt
-  },
-  status,
-  isFeatured,
+  featuredOrder,
   startDate,
   endDate,
   researchAreas,
@@ -72,18 +35,44 @@ const PROJECT_BY_SLUG_QUERY = `*[_type == "project" && slug.current == $slug][0]
     name,
     slug
   },
+  relatedTechnologies[]-> {
+    _id,
+    _type,
+    title,
+    slug,
+    tagline,
+    accentColor,
+    status
+  },
+  relatedPublications[]-> {
+    _id,
+    _type,
+    title,
+    slug,
+    year,
+    journal,
+    conference,
+    doi,
+    url
+  },
   collaborators,
   funding,
-  gallery[] {
-    asset,
-    alt,
-    caption
-  },
+  gallery[] { asset, alt, caption },
   videos
-}`
+`
+
+const PROJECTS_QUERY = `*[_type == "project"] | order(startDate desc) { ${PROJECT_FIELDS} }`
+
+const FEATURED_PROJECTS_QUERY = `*[_type == "project" && isFeatured == true] | order(featuredOrder asc, startDate desc) [0...3] { ${PROJECT_FIELDS} }`
+
+const PROJECT_BY_SLUG_QUERY = `*[_type == "project" && slug.current == $slug][0] { ${PROJECT_FIELDS} }`
 
 export async function getProjects(): Promise<SanityProject[]> {
   return client.fetch<SanityProject[]>(PROJECTS_QUERY)
+}
+
+export async function getFeaturedProjects(): Promise<SanityProject[]> {
+  return client.fetch<SanityProject[]>(FEATURED_PROJECTS_QUERY)
 }
 
 export async function getProjectBySlug(slug: string): Promise<SanityProject | null> {
