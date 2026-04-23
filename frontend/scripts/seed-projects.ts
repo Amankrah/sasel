@@ -614,8 +614,8 @@ const digitalTwinPulse = {
     'Leveraging Digital Twin for Process Eco-Efficiency and Optimization of Pulse Protein Fractionation',
   slug: { _type: 'slug', current: 'digital-twin-pulse-protein-fractionation' },
   shortDescription:
-    'A digital twin platform for pilot-scale pea and faba bean protein fractionation, built to optimize quality, cost, and environmental performance in a single loop. Delivers an interactive decision-support dashboard for Canadian processors.',
-  status: 'ACTIVE',
+    'An NRC-funded digital twin platform for pilot-scale pea and faba bean protein fractionation, built to optimize quality, cost, and environmental performance in a single loop. Delivered an interactive decision-support dashboard for Canadian processors. Completed March 2026.',
+  status: 'COMPLETED',
   isFeatured: true,
   startDate: '2024-03-30',
   endDate: '2026-03-31',
@@ -660,9 +660,11 @@ const digitalTwinPulse = {
     ),
 
     para('Project Metadata', 'h2'),
-    bullet('Funding programme: Canadian Sustainable Transformation Innovation Program (CSTIP).'),
-    bullet('Duration: 24 months (March 2024 to March 2026).'),
-    bullet('Current TRL: 2; target TRL: 4.'),
+    bullet(
+      'Funder: National Research Council of Canada (NRC), Canadian Sustainable Transformation Innovation Program (CSTIP).',
+    ),
+    bullet('Duration: 24 months (March 2024 to March 2026). Status: completed.'),
+    bullet('Starting TRL: 2; ending TRL: 4.'),
     bullet('Lead partner: National Research Council of Canada, Saskatoon (Dr. Anusha Samaranayaka).'),
   ],
   methodology: [
@@ -750,7 +752,8 @@ const digitalTwinPulse = {
   funding: [
     {
       _key: mkKey(),
-      agency: 'Canadian Sustainable Transformation Innovation Program (CSTIP)',
+      agency:
+        'National Research Council of Canada (NRC), Canadian Sustainable Transformation Innovation Program (CSTIP)',
       grantNumber: '',
       currency: 'CAD',
     },
