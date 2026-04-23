@@ -102,6 +102,9 @@ MANIFEST
 
 # Exception: Allow Sanity lib directory in frontend
 !frontend/src/sanity/lib/
+# Exception: Allow the Next.js app lib directory (shared TS utilities)
+!frontend/src/lib/
+!frontend/src/lib/**
 
 # Virtual environments
 venv/
