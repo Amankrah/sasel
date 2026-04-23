@@ -309,6 +309,7 @@ export default function PIShowcase() {
             <ul className="space-y-2">
               <li className="text-gray-800">📚 BREE 205: Engineering Design 1</li>
               <li className="text-gray-800">🔧 BREE 216: Bioresource Engineering Materials</li>
+              <li className="text-gray-800">♻️ BREE 505: Life Cycle Assessment for Sustainable Agrifood Systems</li>
               <li className="text-gray-800">🌍 AGRI 493: International Project Management</li>
             </ul>
           </div>
