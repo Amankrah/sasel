@@ -2,9 +2,12 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
 import type { PartnerCategory, SanityPartner } from '@/sanity/lib/types';
+
+const INITIAL_PER_CATEGORY = 5;
 
 const QUERY = `*[_type == "partner"] | order(category asc, featuredOrder asc, name asc) {
   _id,
@@ -144,6 +147,13 @@ function FunderLogo({ partner }: { partner: SanityPartner }) {
 export default function PartnersShowcase() {
   const [partners, setPartners] = useState<SanityPartner[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expanded, setExpanded] = useState<Record<PartnerCategory, boolean>>({
+    FUNDER: false,
+    ACADEMIC: false,
+    GOVERNMENT: false,
+    INDUSTRY: false,
+    ADVISORY: false,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -218,14 +228,17 @@ export default function PartnersShowcase() {
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
               {detailCategories.map((category) => {
                 const meta = CATEGORY_META[category];
                 const items = grouped[category];
+                const isExpanded = expanded[category];
+                const visible = isExpanded ? items : items.slice(0, INITIAL_PER_CATEGORY);
+                const hiddenCount = items.length - visible.length;
                 return (
                   <div
                     key={category}
-                    className="backdrop-blur-sm bg-white/90 border border-gray-200/60 p-6 rounded-2xl shadow-xl"
+                    className="backdrop-blur-sm bg-white/90 border border-gray-200/60 p-6 rounded-2xl shadow-xl flex flex-col"
                   >
                     <div className="mb-4">
                       <div className="flex items-center gap-2">
@@ -239,14 +252,37 @@ export default function PartnersShowcase() {
                       </div>
                       <div className={`w-16 h-0.5 bg-gradient-to-r ${meta.accent} mt-2`}></div>
                     </div>
-                    <div className="grid grid-cols-1 gap-2">
-                      {items.map((partner) => (
+                    <div className="grid grid-cols-1 gap-2 flex-1">
+                      {visible.map((partner) => (
                         <PartnerTile key={partner._id} partner={partner} />
                       ))}
                     </div>
+                    {items.length > INITIAL_PER_CATEGORY && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpanded((prev) => ({ ...prev, [category]: !prev[category] }))
+                        }
+                        className="mt-3 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors self-start"
+                      >
+                        {isExpanded ? 'Show fewer' : `Show ${hiddenCount} more`}
+                      </button>
+                    )}
                   </div>
                 );
               })}
+            </div>
+
+            <div className="flex justify-center">
+              <Link
+                href="/partners"
+                className="group inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              >
+                View all {partners.length} partners
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </Link>
             </div>
 
             {partners.length === 0 && (
