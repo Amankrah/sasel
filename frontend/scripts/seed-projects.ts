@@ -438,13 +438,13 @@ const defensefood = {
 // FCI-Africa Network
 // ---------------------------------------------------------------------------
 
-const fciAfricaNetwork = {
-  _id: 'project-fci-africa-network',
+const scienceDiplomacy = {
+  _id: 'project-science-diplomacy',
   _type: 'project',
-  title: 'Food Convergence Innovation Africa Network (FCI-Africa)',
-  slug: { _type: 'slug', current: 'fci-africa-network' },
+  title: 'Science Diplomacy',
+  slug: { _type: 'slug', current: 'science-diplomacy' },
   shortDescription:
-    'A five-year science diplomacy research chair program bridging scientific research, policy making, and international collaboration to accelerate sustainable agrifood system transformation across Africa. The SSL Lab leads Work Package 1, the data and analytics backbone of the program.',
+    'A five-year FRQ Science Diplomacy Research Chair program, delivered through the Food Convergence Innovation Africa Network (FCI-Africa), that bridges scientific research, policy making, and international collaboration to accelerate sustainable agrifood system transformation across Africa. The SSL Lab leads Work Package 1, the data and analytics backbone of the program.',
   status: 'ACTIVE',
   isFeatured: true,
   researchAreas: [
@@ -646,7 +646,20 @@ async function run() {
     console.log(`  Removed ${existing.length} project document(s).`)
   }
 
-  const docs = [fci4africa, defensefood, fciAfricaNetwork]
+  // One-off cleanup: the Science Diplomacy project was initially seeded
+  // under the slug fci-africa-network. Remove the stale document so a rename
+  // of id/slug is clean.
+  const staleId = 'project-fci-africa-network'
+  const stale = await client.fetch<{ _id: string } | null>(
+    `*[_id == $id][0]{ _id }`,
+    { id: staleId },
+  )
+  if (stale) {
+    await client.delete(staleId)
+    console.log(`  · removed stale doc ${staleId}`)
+  }
+
+  const docs = [fci4africa, defensefood, scienceDiplomacy]
   for (const doc of docs) {
     try {
       const result =
