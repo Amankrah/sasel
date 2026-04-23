@@ -604,6 +604,160 @@ const scienceDiplomacy = {
 }
 
 // ---------------------------------------------------------------------------
+// Digital Twin for Pulse Protein Fractionation
+// ---------------------------------------------------------------------------
+
+const digitalTwinPulse = {
+  _id: 'project-digital-twin-pulse-protein-fractionation',
+  _type: 'project',
+  title:
+    'Leveraging Digital Twin for Process Eco-Efficiency and Optimization of Pulse Protein Fractionation',
+  slug: { _type: 'slug', current: 'digital-twin-pulse-protein-fractionation' },
+  shortDescription:
+    'A digital twin platform for pilot-scale pea and faba bean protein fractionation, built to optimize quality, cost, and environmental performance in a single loop. Delivers an interactive decision-support dashboard for Canadian processors.',
+  status: 'ACTIVE',
+  isFeatured: true,
+  startDate: '2024-03-30',
+  endDate: '2026-03-31',
+  researchAreas: [
+    'Digital Twin',
+    'Pulse Proteins',
+    'Yellow Pea',
+    'Faba Bean',
+    'Radio Frequency Treatment',
+    'Air Classification',
+    'Dry Fractionation',
+    'Multi-Objective Optimization',
+    'Eco-Efficiency',
+    'Techno-Economic Assessment',
+    'COMSOL Multiphysics',
+    'Machine Learning',
+    'Decision Support System',
+    'Canadian Bioeconomy',
+    'Food Process Engineering',
+    'Sustainable Food Systems',
+    'Bioresource Engineering',
+  ],
+  description: [
+    para('Overview', 'h2'),
+    para(
+      'This project develops a digital twin simulation platform for dry fractionation of yellow pea and faba bean proteins. By combining multiphysics models with pilot-scale experimental data and machine learning, the platform enables multi-objective optimization across product quality, resource use, economic return, and environmental footprint. The outcome is an interactive decision support dashboard that helps Canadian processors select operating conditions that balance purity, safety, profitability, and sustainability.',
+    ),
+
+    para('The Opportunity', 'h2'),
+    para(
+      "Pulse proteins, particularly yellow peas and faba beans, have attracted significant investment across the Canadian Prairies, including the world's largest pea protein production plant in Manitoba with a processing capacity of 250,000 tonnes per year. Alongside this growth, the industry generates 60 to 70 percent of feedstock mass as co-products such as starch, fiber, micronutrients, phytochemicals, and lipids. Efficient and sustainable fractionation is therefore central to the Canadian bioeconomy.",
+    ),
+
+    para('The Challenge', 'h2'),
+    para(
+      'Radio Frequency (RF) pre-treatment of pulses prior to protein extraction has been shown to improve fractionation efficiency and protein concentrate functionality. Full industrial adoption, however, requires process configurations that simultaneously maximize product quality, resource use, and economic return while minimizing environmental impact and addressing food safety. Experimental optimization alone is limited: it can only vary a small number of conditions at a time, it is time-consuming, and it produces models that rarely extrapolate beyond the tested range. Generic computational models, meanwhile, do not capture the physical and biochemical realities of pulse protein extraction.',
+    ),
+
+    para('Our Approach', 'h2'),
+    para(
+      'This project addresses that gap by building a digital twin of pilot-scale pea and faba bean flour and protein fractionation. The model integrates physics-based simulation with real-time pilot data and machine learning so it can reflect, predict, and optimize process behavior. Stakeholders will be able to explore scenarios, identify optimal operating conditions, and quantify the trade-offs among product quality, cost, and environmental performance. The results will be delivered through an interactive decision support dashboard designed for industrial processors and research partners.',
+    ),
+
+    para('Project Metadata', 'h2'),
+    bullet('Funding programme: Canadian Sustainable Transformation Innovation Program (CSTIP).'),
+    bullet('Duration: 24 months (March 2024 to March 2026).'),
+    bullet('Current TRL: 2; target TRL: 4.'),
+    bullet('Lead partner: National Research Council of Canada, Saskatoon (Dr. Anusha Samaranayaka).'),
+  ],
+  methodology: [
+    para('Objectives', 'h2'),
+    para('Objective 1: Multi-objective optimization of RF pre-treatment.', 'h3'),
+    para(
+      'Use a digital twin approach to optimize Radio Frequency pre-treatment of pea and faba beans, improving flavour, reducing microbial load and anti-nutrient levels, and enhancing nutritional quality and functionality of the resulting flours.',
+    ),
+    para('Objective 2: Eco-efficiency assessment of dry fractionation.', 'h3'),
+    para(
+      'Leverage digital twin simulation models to develop a product-quality based eco-efficiency assessment for pilot-scale air classification, supporting optimized production of pea and faba bean protein concentrates.',
+    ),
+    para('Objective 3: Decision support system for sustainable fractionation.', 'h3'),
+    para(
+      'Build a digital twin based decision support dashboard that guides sustainable protein fractionation, informs operational choices, and helps resolve supply chain challenges.',
+    ),
+
+    para('Work Packages', 'h2'),
+    para('WP1: RF Pre-treatment Digital Twin (12 months).', 'h3'),
+    para(
+      'Covers development of baseline multiphysics models in COMSOL, pilot-scale experimental trials in collaboration with NRC Saskatoon, training of the digital twin using regression neural networks, and characterization of physicochemical and techno-functional properties at optimized conditions.',
+    ),
+    para('WP2: Air Classification Digital Twin (17 months).', 'h3'),
+    para(
+      'Combines Discrete Element Method simulation of particle behaviour in the air classifier with pilot-scale sensor-enabled testing and machine learning to create a digital twin of the dry fractionation process. The model is then used for multi-objective optimization across protein yield, purity, cost, and environmental impact.',
+    ),
+    para('WP3: Decision Support Platform (15 months).', 'h3'),
+    para(
+      'Structures data pipelines and builds a scalable ingestion, storage, and analytics stack using Apache Sedona, a NoSQL database, and Kibana. Delivers interactive dashboards built with modern web technologies. The platform is tested at pilot-scale and extended to pea protein supply chain scenarios.',
+    ),
+
+    para('Key Milestones', 'h2'),
+    bullet('Sep 2024: Multiphysics models for RF treatment developed.'),
+    bullet('Sep 2024: Pilot-scale RF treatment set up for preliminary modelling.'),
+    bullet('Dec 2024: Multiphysics models for air classification developed.'),
+    bullet('Dec 2024: Pilot-scale air classification installed with sensors and network infrastructure.'),
+    bullet('Mar 2025: Digital twin model for RF treatment completed.'),
+    bullet('Mar 2025: Digital twin model for air classification developed.'),
+    bullet('Mar 2025: Flavour, microbial load, and anti-nutrient levels optimized for pea and faba bean flours.'),
+    bullet('Jul 2025: Data source pipeline for decision support system created.'),
+    bullet('Sep 2025: Air classification optimized for pea and faba bean protein concentrates.'),
+    bullet('Dec 2025: Technological ecosystem for the digital twin dashboard established.'),
+    bullet('Mar 2026: Digital twin based decision support system built and tested.'),
+  ],
+  outcomes: [
+    para('Anticipated Outcomes', 'h2'),
+    bullet('Realistic, high-confidence digital models for air classification of pea and faba bean flours.'),
+    bullet(
+      'Optimized dry fractionation configuration that maximizes product purity, separation efficiency, techno-economic return, and environmental performance.',
+    ),
+    bullet(
+      'Optimized RF treatment process that enhances flavour and functionality while reducing microbial load and anti-nutrient levels in ready-for-market flours.',
+    ),
+    bullet(
+      'Interactive digital twin decision support system for short and mid-term sustainability assessment of protein extraction.',
+    ),
+
+    para('Deliverables', 'h2'),
+    bullet(
+      'Digital twin models of pilot-scale RF pre-treatment of pea and faba beans that improve flavour, microbial safety, and functionality while reducing anti-nutrient levels.',
+    ),
+    bullet('An optimized air classification process for pea and faba bean protein concentrates, informed by multiphysics-based digital twin models.'),
+    bullet('Multiphysics-based digital twin models of pilot-scale air classification for protein concentrate production.'),
+    bullet(
+      'A novel digital twin based eco-efficiency dashboard including the data source, technological ecosystem, and platform design considerations.',
+    ),
+
+    para('Expected Outputs', 'h2'),
+    bullet('4 peer-reviewed publications.'),
+    bullet('4 conference presentations and posters.'),
+    bullet('3 Highly Qualified Personnel (HQP) trained.'),
+    bullet('2 researchers engaged.'),
+    bullet('Intellectual property generated.'),
+  ],
+  collaborators: [
+    {
+      name: 'National Research Council of Canada, Saskatoon',
+      institution: 'Collaborator: Dr. Anusha Samaranayaka',
+    },
+    {
+      name: 'Canadian pulse processing industry',
+      institution: 'Pilot validation and uptake',
+    },
+  ].map((c) => ({ ...c, _key: mkKey() })),
+  funding: [
+    {
+      _key: mkKey(),
+      agency: 'Canadian Sustainable Transformation Innovation Program (CSTIP)',
+      grantNumber: '',
+      currency: 'CAD',
+    },
+  ],
+}
+
+// ---------------------------------------------------------------------------
 // Runner
 // ---------------------------------------------------------------------------
 
@@ -659,7 +813,7 @@ async function run() {
     console.log(`  · removed stale doc ${staleId}`)
   }
 
-  const docs = [fci4africa, defensefood, scienceDiplomacy]
+  const docs = [fci4africa, defensefood, scienceDiplomacy, digitalTwinPulse]
   for (const doc of docs) {
     try {
       const result =
