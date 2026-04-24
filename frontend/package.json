@@ -11,7 +11,8 @@
     "seed:projects": "tsx scripts/seed-projects.ts",
     "seed:partners": "tsx scripts/seed-partners.ts",
     "import:django": "tsx scripts/import-from-django.ts",
-    "sync:publications": "tsx scripts/sync-publications.ts"
+    "sync:publications": "tsx scripts/sync-publications.ts",
+    "dedupe:publications": "tsx scripts/dedupe-publications.ts"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",
