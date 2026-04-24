@@ -16,6 +16,7 @@ import path from 'node:path'
 import { createClient } from 'next-sanity'
 import { loadEnvConfig } from '@next/env'
 import { syncPublications } from '../src/lib/serpapi-sync'
+import { dedupePublications } from '../src/lib/dedupe-publications'
 
 const projectDir = path.resolve(__dirname, '..')
 loadEnvConfig(projectDir)
@@ -48,9 +49,14 @@ const client = createClient({
 
 async function run() {
   console.log('Syncing Google Scholar publications → Sanity…')
-  const result = await syncPublications({ serpApiKey: serpApiKey!, client })
-  console.log(JSON.stringify(result, null, 2))
-  if (result.errors.length > 0) process.exitCode = 1
+  const sync = await syncPublications({ serpApiKey: serpApiKey!, client })
+  console.log('Sync:', JSON.stringify(sync, null, 2))
+
+  console.log('\nDeduping…')
+  const dedupe = await dedupePublications({ client, apply: true })
+  console.log('Dedupe:', JSON.stringify(dedupe, null, 2))
+
+  if (sync.errors.length > 0) process.exitCode = 1
 }
 
 run().catch((err) => {

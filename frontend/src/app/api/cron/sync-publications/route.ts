@@ -1,9 +1,17 @@
 import { NextResponse } from 'next/server'
 import { createClient } from 'next-sanity'
 import { syncPublications } from '@/lib/serpapi-sync'
+import { dedupePublications } from '@/lib/dedupe-publications'
 
 // Vercel Cron hits this endpoint on the schedule defined in vercel.json.
 // Also accessible via manual GET with the Authorization header for testing.
+//
+// Pipeline:
+//   1. Pull fresh Google Scholar results via SerpAPI and upsert into Sanity
+//      (setIfMissing so manual Studio edits are preserved).
+//   2. Dedupe by externalId || normalized title: merge any duplicates the
+//      sync produced back into their canonical doc, repointing references
+//      from projects / news / technologies / awards / grants.
 
 export const runtime = 'nodejs'
 export const maxDuration = 300 // 5 minutes; SerpAPI round-trips per member can be slow.
@@ -45,8 +53,9 @@ export async function GET(request: Request) {
   })
 
   try {
-    const result = await syncPublications({ serpApiKey, client })
-    return NextResponse.json(result)
+    const sync = await syncPublications({ serpApiKey, client })
+    const dedupe = await dedupePublications({ client, apply: true })
+    return NextResponse.json({ sync, dedupe })
   } catch (err) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : String(err) },
