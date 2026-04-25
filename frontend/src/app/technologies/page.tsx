@@ -2,6 +2,8 @@ import { getTechnologies } from '@/sanity/lib/fetch'
 import type { SanityTechnology } from '@/sanity/lib/types'
 import TechnologyCard from '@/components/TechnologyCard'
 
+export const revalidate = 60
+
 export const metadata = {
   title: 'Technologies | SASEL Lab',
   description: 'Software platforms and tools built by SASEL Lab for sustainable agrifood research.',

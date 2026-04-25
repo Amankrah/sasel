@@ -6,6 +6,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+export const revalidate = 60
+
 interface NewsPageProps {
   params: Promise<{ slug: string }>
 }

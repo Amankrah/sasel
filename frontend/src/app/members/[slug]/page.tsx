@@ -6,6 +6,8 @@ import { getMemberBySlug, getMembers, getPublications } from '@/sanity/lib/fetch
 import { urlForImage } from '@/sanity/lib/image';
 import MemberPublicationsList from '@/components/MemberPublicationsList';
 
+export const revalidate = 60;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

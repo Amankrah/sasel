@@ -3,6 +3,8 @@ import MemberCard from "@/components/MemberCard";
 import { getMembers } from "@/sanity/lib/fetch";
 import type { MemberTypeValue } from "@/sanity/lib/types";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "Our Team | SASEL Lab",
   description:

@@ -1,6 +1,8 @@
 import { getPublications } from '@/sanity/lib/fetch';
 import PublicationsList from '@/components/PublicationsList';
 
+export const revalidate = 60;
+
 export const metadata = {
   title: 'Publications | SASEL Lab',
   description:

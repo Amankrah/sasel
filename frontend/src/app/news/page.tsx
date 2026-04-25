@@ -2,6 +2,8 @@ import { getNews } from '@/sanity/lib/fetch'
 import type { SanityNews } from '@/sanity/lib/types'
 import NewsCard from '@/components/NewsCard'
 
+export const revalidate = 60
+
 export const metadata = {
   title: 'News & Announcements | SASEL Lab',
   description: 'Stay updated with the latest news, awards, publications, grants, and events from the SASEL Lab.',

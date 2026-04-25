@@ -2,6 +2,8 @@ import { getProjects } from '@/sanity/lib/fetch'
 import type { SanityProject } from '@/sanity/lib/types'
 import ProjectCard from '@/components/ProjectCard'
 
+export const revalidate = 60
+
 export const metadata = {
   title: 'Research Projects | SASEL Lab',
   description: 'Explore our innovative research projects advancing sustainable agrifood systems and environmental solutions.',

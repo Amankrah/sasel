@@ -3,6 +3,8 @@ import { getPartners } from '@/sanity/lib/fetch';
 import { urlForImage } from '@/sanity/lib/image';
 import type { PartnerCategory, SanityPartner } from '@/sanity/lib/types';
 
+export const revalidate = 60;
+
 export const metadata = {
   title: 'Partners & Sponsors | SASEL Lab',
   description:
