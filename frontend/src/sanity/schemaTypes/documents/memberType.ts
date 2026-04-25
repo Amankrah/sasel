@@ -60,6 +60,8 @@ export const memberType = defineType({
           { title: 'Postdoctoral Fellow', value: 'POSTDOC' },
           { title: 'PhD Researcher', value: 'PHD' },
           { title: 'Masters Student', value: 'MASTERS' },
+          { title: 'International Student', value: 'INTL_STUDENT' },
+          { title: 'Intern', value: 'INTERN' },
           { title: 'Research Assistant', value: 'RA' },
           { title: 'Software Engineer', value: 'SOFTWARE_ENG' },
           { title: 'Staff', value: 'STAFF' },

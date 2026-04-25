@@ -85,6 +85,8 @@ export type MemberTypeValue =
   | 'POSTDOC'
   | 'PHD'
   | 'MASTERS'
+  | 'INTL_STUDENT'
+  | 'INTERN'
   | 'RA'
   | 'SOFTWARE_ENG'
   | 'STAFF'

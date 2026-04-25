@@ -22,6 +22,8 @@ const MEMBER_GROUPS: Array<{
   { key: 'POSTDOC', types: ['POSTDOC'], label: 'Postdoctoral Fellows', description: 'Driving advanced research initiatives' },
   { key: 'PHD', types: ['PHD'], label: 'PhD Researchers', description: 'Conducting in-depth doctoral studies' },
   { key: 'MASTERS', types: ['MASTERS'], label: 'Masters Students', description: 'Developing specialized expertise' },
+  { key: 'INTL_STUDENT', types: ['INTL_STUDENT'], label: 'International Students', description: 'Visiting and exchange students contributing to lab research' },
+  { key: 'INTERN', types: ['INTERN'], label: 'Interns', description: 'Short-term interns gaining hands-on research experience' },
   { key: 'RA', types: ['RA'], label: 'Research Assistants', description: 'Supporting key research projects' },
   { key: 'ASSOC', types: ['ASSOC'], label: 'Research Associates', description: 'Contributing long-term expertise' },
   { key: 'STAFF', types: ['STAFF'], label: 'Staff', description: 'Essential lab operations and support' },
